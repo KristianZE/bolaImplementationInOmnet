@@ -1,0 +1,4 @@
+#!/bin/sh
+cd `dirname $0`
+../src/improved5gns -n .:../src $*
+# for shared lib, use: opp_run -l ../src/improved5gns -n .:../src $*
