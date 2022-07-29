@@ -33,6 +33,7 @@ network baselineTestQoS
         int nFDO = default(1); // Number of file download clients
         int nSSH = default(1); // Number of SSH clients
         int nVIP = default(1); // Number of VoIP clients
+        int ncVIP = default(1); // Number of VoIP clients
     types:
         channel C extends DatarateChannel
         {
@@ -41,14 +42,27 @@ network baselineTestQoS
         configurator: Ipv4NetworkConfigurator {
             @display("p=10,10;is=s");
         }
-//        adjustmentModule: linkAdjuster {
-//            @display("p=30,120;is=s");
-//        };
-        hostVID[nVID]: StandardHost;
-        hostLVD[nLVD]: StandardHost;
-        hostFDO[nFDO]: StandardHost;
-        hostSSH[nSSH]: StandardHost;
-        hostVIP[nVIP]: StandardHost;
+        //        adjustmentModule: linkAdjuster {
+        //            @display("p=30,120;is=s");
+        //        };
+        hostVID[nVID]: StandardHost {
+            @display("p=293,342");
+        }
+        hostLVD[nLVD]: StandardHost {
+            @display("p=214,84");
+        }
+        hostFDO[nFDO]: StandardHost {
+            @display("p=353,123");
+        }
+        hostSSH[nSSH]: StandardHost {
+            @display("p=90,241");
+        }
+        hostVIP[nVIP]: StandardHost {
+            @display("p=159,328");
+        }
+        hostcVIP[ncVIP]: StandardHost {
+            @display("p=120,162");
+        }
         router0: Router {
             @display("p=233,203");
         }
@@ -73,10 +87,13 @@ network baselineTestQoS
         serverVIP: StandardHost {
             @display("p=560,353");
         }
+        servercVIP: StandardHost {
+            @display("p=560,353");
+        }
     connections:
-//        router0.pppg++ <--> connFIX0: C { datarate = 100Mbps; delay = 1ms; } <--> router1.pppg++;
-//		router0.pppg++ <--> connFIX0: C { delay = 1ms; } <--> router1.pppg++;
-		router0.pppg++ <--> connFIX0: C {  } <--> router1.pppg++;
+        //        router0.pppg++ <--> connFIX0: C { datarate = 100Mbps; delay = 1ms; } <--> router1.pppg++;
+        //		router0.pppg++ <--> connFIX0: C { delay = 1ms; } <--> router1.pppg++;
+        router0.pppg++ <--> connFIX0: C <--> router1.pppg++;
 
         for i=0..nVID-1 {
             hostVID[i].pppg++ <--> C {  datarate = 1Gbps; delay = 100ns; } <--> router0.pppg++;
@@ -93,9 +110,13 @@ network baselineTestQoS
         for i=0..nVIP-1 {
             hostVIP[i].pppg++ <--> C {  datarate = 1Gbps; delay = 100ns; } <--> router0.pppg++;
         }
+        for i=0..ncVIP-1 {
+            hostcVIP[i].pppg++ <--> C {  datarate = 1Gbps; delay = 100ns; } <--> router0.pppg++;
+        }
         serverVID.pppg++ <--> C {  datarate = 10Gbps; delay = 100ns; } <--> router1.pppg++;
         serverLVD.pppg++ <--> C {  datarate = 10Gbps; delay = 100ns; } <--> router1.pppg++;
         serverFDO.pppg++ <--> C {  datarate = 10Gbps; delay = 100ns; } <--> router1.pppg++;
         serverSSH.pppg++ <--> C {  datarate = 10Gbps; delay = 100ns; } <--> router1.pppg++;
         serverVIP.pppg++ <--> C {  datarate = 10Gbps; delay = 100ns; } <--> router1.pppg++;
+        servercVIP.pppg++ <--> C {  datarate = 10Gbps; delay = 100ns; } <--> router1.pppg++;
 }
