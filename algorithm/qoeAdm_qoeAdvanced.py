@@ -290,26 +290,26 @@ def genBaselineRoutingConfig(configName, hostTypes, hostNums, hostIPprefixes, se
 def genBaselineIniConfig(confName, base, numHostsPerType, hostIPprefixes, availBand, ceilMultiplier, guaranteeMultiplier):
     sumHosts = 0
 
-    packFilters = '\"'
-    packDataFiltersR0 = '\"'
-    packDataFiltersR1 = '\"'
+    #packFilters = '\"'
+    packDataFiltersR0 = '['
+    packDataFiltersR1 = '['
 
     for host in numHostsPerType:
         numHostsType = numHostsPerType[host]
         sumHosts += numHostsType
         for num in range(numHostsType):
-            packFilters += '*;'
-            packDataFiltersR0 += 'sourceAddress(' + makeIPhostNum(hostIPprefixes[host],num) + ');'
-            packDataFiltersR1 += 'destinationAddress(' + makeIPhostNum(hostIPprefixes[host],num) + ');'
+            #packFilters += '*;'
+            packDataFiltersR0 += 'expr(ipv4.srcAddress.str() =~ \"' + makeIPhostNum(hostIPprefixes[host],num) + '\"),'
+            packDataFiltersR1 += 'expr(ipv4.destAddress.str() =~ \"' + makeIPhostNum(hostIPprefixes[host],num) + '\"),'
 
 
-    packFilters = packFilters[:-1]
+    #packFilters = packFilters[:-1]
     packDataFiltersR0 = packDataFiltersR0[:-1]
     packDataFiltersR1 = packDataFiltersR1[:-1]
 
-    packFilters += '\"'
-    packDataFiltersR0 += '\"'
-    packDataFiltersR1 += '\"'
+    #packFilters += ']'
+    packDataFiltersR0 += ']'
+    packDataFiltersR1 += ']'
     
 
     configString = '[Config ' + confName + ']\n'
@@ -336,16 +336,16 @@ def genBaselineIniConfig(confName, base, numHostsPerType, hostIPprefixes, availB
         configString += '*.nVIP = ' + str(numHostsPerType['hostVIP']) + ' # Number of VoIP clients\n\n'
     else: 
         configString += '*.nVIP = 0 # Number of VoIP clients\n\n'
-    configString += '*.router*.ppp[0].ppp.queue.typename = \"HTBQueue\"\n'
-    configString += '*.router*.ppp[0].ppp.queue.numQueues = ' + str(sumHosts) + '\n'
-    configString += '*.router*.ppp[0].ppp.queue.queue[*].typename = \"DropTailQueue\"\n'
-    configString += '*.router*.ppp[0].ppp.queue.packetCapacity = -1\n'
-    configString += '*.router*.ppp[0].ppp.queue.htbHysterisis = false\n'
-    configString += '*.router*.ppp[0].ppp.queue.htbTreeConfig = xmldoc(\"configs/htbTree/' + confName + 'HTB.xml\")\n'
-    configString += '*.router*.ppp[0].ppp.queue.classifier.defaultGateIndex = 0\n'
-    configString += '*.router*.ppp[0].ppp.queue.classifier.packetFilters = ' + packFilters + '\n'
-    configString += '*.router0.ppp[0].ppp.queue.classifier.packetDataFilters = ' + packDataFiltersR0 + '\n'
-    configString += '*.router1.ppp[0].ppp.queue.classifier.packetDataFilters = ' + packDataFiltersR1 + '\n\n'
+    configString += '*.router*.ppp[0].queue.typename = \"HtbQueue\"\n'
+    configString += '*.router*.ppp[0].queue.numQueues = ' + str(sumHosts) + '\n'
+    configString += '*.router*.ppp[0].queue.queue[*].typename = \"DropTailQueue\"\n'
+    configString += '*.router*.ppp[0].queue.packetCapacity = -1\n'
+    configString += '*.router*.ppp[0].queue.htbHysterisis = false\n'
+    configString += '*.router*.ppp[0].queue.htbTreeConfig = xmldoc(\"configs/htbTree/' + confName + 'HTB.xml\")\n'
+    configString += '*.router*.ppp[0].queue.classifier.defaultGateIndex = 0\n'
+    #configString += '*.router*.ppp[0].ppp.queue.classifier.packetFilters = ' + packFilters + '\n'
+    configString += '*.router0.ppp[0].queue.classifier.packetFilters = ' + packDataFiltersR0 + '\n'
+    configString += '*.router1.ppp[0].queue.classifier.packetFilters = ' + packDataFiltersR1 + '\n\n'
 
     configString += '**.connFIX0.datarate = ' + str(availBand) + 'bps\n'
     configString += '**.connFIX0.delay = 40ms\n\n\n'
