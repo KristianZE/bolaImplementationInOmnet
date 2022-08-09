@@ -108,7 +108,7 @@ def plotHeatMap(testName):
     ax.yaxis.set_major_locator(MultipleLocator(3))
     ax.yaxis.set_minor_locator(MultipleLocator(1))
     ax.set_yticklabels(newLabels, rotation=0) # set new labels
-    plt.show()
+    # plt.show()
     plt.ylabel("Link Delay [ms]")
     plt.xlabel("Link Throughput [kbps]")
     outPath = '../exports/plots/heatMapTest/' + testName + '.pdf'

@@ -37,6 +37,8 @@ class ClientQoeEstimator:
                               'maxMOS' : 4.394885531954699},
                  'hostVIP' : {'minMOS' : 1.0,
                               'maxMOS' : 4.5},
+                 'hostcVIP' : {'minMOS' : 1.0,
+                              'maxMOS' : 4.5},
                  'hostLVD' : {'minMOS' : 1.0,
                               'maxMOS' : 4.585703050898499}}
 
@@ -72,6 +74,8 @@ class ClientQoeEstimator:
         if  self.cliType == 'hostVIP':
             suffix = '_corrected'    
         if  self.cliType == 'hostSSH':
+            suffix = ''    
+        if  self.cliType == 'hostcVIP':
             suffix = ''    
           
         
@@ -145,8 +149,9 @@ class ClientQoeEstimator:
         
         cbar = ax.figure.colorbar(im, ax=ax, norm=norm, cmap=cmap)
 
+        
+        cbar.mappable.set_clim(1.0, 5.0)
         cbar.ax.set_ylabel('Mos Value', rotation=-90, va="bottom")
-        cbar.set_clim(1.0, 5.0)
 
 
         xAxis = [int(x) for x in self.xAxis]
@@ -207,11 +212,13 @@ if __name__ == "__main__":
     test3 = ClientQoeEstimator('hostVID')
     test4 = ClientQoeEstimator('hostVIP')
     test5 = ClientQoeEstimator('hostLVD')
+    test6 = ClientQoeEstimator('hostcVIP')
     test1.plotMOSWithDelay()
     test2.plotMOSWithDelay()
     test3.plotMOSWithDelay()
     test4.plotMOSWithDelay()
     test5.plotMOSWithDelay()
+    test6.plotMOSWithDelay()
     # print(test1.cliType, '-> minMOS: ', test1.minMos, '\t- maxMOS: ', test1.maxMos)
     # print(test2.cliType, '-> minMOS: ', test2.minMos, '\t\t- maxMOS: ', test2.maxMos)
     # print(test3.cliType, '-> minMOS: ', test3.minMos, '\t- maxMOS: ', test3.maxMos)
