@@ -24,7 +24,7 @@ class SimpleVoipPacket;
 /**
  * Implements a simple VoIP source. See the NED file for more information.
  */
-class INET_API SimpleVoipReceiver : public cSimpleModule, public LifecycleUnsupported, public UdpSocket::ICallback
+class INET_API SimpleVoipReceiverCustom : public cSimpleModule, public LifecycleUnsupported, public UdpSocket::ICallback
 {
   private:
     class VoipPacketInfo {
@@ -98,8 +98,8 @@ class INET_API SimpleVoipReceiver : public cSimpleModule, public LifecycleUnsupp
     virtual void socketClosed(UdpSocket *socket) override {}
 
   public:
-    SimpleVoipReceiver();
-    ~SimpleVoipReceiver();
+    SimpleVoipReceiverCustom();
+    ~SimpleVoipReceiverCustom();
 };
 
 } // namespace inet

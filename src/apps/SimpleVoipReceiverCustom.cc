@@ -5,7 +5,7 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 //
 
-#include "inet/applications/voip/SimpleVoipReceiver.h"
+#include "SimpleVoipReceiverCustom.h"
 
 #include "inet/applications/voip/SimpleVoipPacket_m.h"
 #include "inet/common/ModuleAccess.h"
@@ -13,16 +13,16 @@
 
 namespace inet {
 
-Define_Module(SimpleVoipReceiver);
+Define_Module(SimpleVoipReceiverCustom);
 
-simsignal_t SimpleVoipReceiver::voipPacketLossRateSignal = registerSignal("voipPacketLossRate");
-simsignal_t SimpleVoipReceiver::voipPacketDelaySignal = registerSignal("voipPacketDelay");
-simsignal_t SimpleVoipReceiver::voipPlayoutDelaySignal = registerSignal("voipPlayoutDelay");
-simsignal_t SimpleVoipReceiver::voipPlayoutLossRateSignal = registerSignal("voipPlayoutLossRate");
-simsignal_t SimpleVoipReceiver::voipMosRateSignal = registerSignal("voipMosRate");
-simsignal_t SimpleVoipReceiver::voipTaildropLossRateSignal = registerSignal("voipTaildropLossRate");
+simsignal_t SimpleVoipReceiverCustom::voipPacketLossRateSignal = registerSignal("voipPacketLossRate");
+simsignal_t SimpleVoipReceiverCustom::voipPacketDelaySignal = registerSignal("voipPacketDelay");
+simsignal_t SimpleVoipReceiverCustom::voipPlayoutDelaySignal = registerSignal("voipPlayoutDelay");
+simsignal_t SimpleVoipReceiverCustom::voipPlayoutLossRateSignal = registerSignal("voipPlayoutLossRate");
+simsignal_t SimpleVoipReceiverCustom::voipMosRateSignal = registerSignal("voipMosRate");
+simsignal_t SimpleVoipReceiverCustom::voipTaildropLossRateSignal = registerSignal("voipTaildropLossRate");
 
-void SimpleVoipReceiver::TalkspurtInfo::startTalkspurt(const SimpleVoipPacket *pk)
+void SimpleVoipReceiverCustom::TalkspurtInfo::startTalkspurt(const SimpleVoipPacket *pk)
 {
     status = ACTIVE;
     talkspurtID = pk->getTalkspurtID();
@@ -33,14 +33,14 @@ void SimpleVoipReceiver::TalkspurtInfo::startTalkspurt(const SimpleVoipPacket *p
     addPacket(pk);
 }
 
-bool SimpleVoipReceiver::TalkspurtInfo::checkPacket(const SimpleVoipPacket *pk)
+bool SimpleVoipReceiverCustom::TalkspurtInfo::checkPacket(const SimpleVoipPacket *pk)
 {
     return talkspurtID == pk->getTalkspurtID()
            && talkspurtNumPackets == pk->getTalkspurtNumPackets()
            && voiceDuration == pk->getVoiceDuration();
 }
 
-void SimpleVoipReceiver::TalkspurtInfo::addPacket(const SimpleVoipPacket *pk)
+void SimpleVoipReceiverCustom::TalkspurtInfo::addPacket(const SimpleVoipPacket *pk)
 {
     VoipPacketInfo packet;
     packet.packetID = pk->getPacketID();
@@ -49,16 +49,16 @@ void SimpleVoipReceiver::TalkspurtInfo::addPacket(const SimpleVoipPacket *pk)
     packets.push_back(packet);
 }
 
-SimpleVoipReceiver::SimpleVoipReceiver()
+SimpleVoipReceiverCustom::SimpleVoipReceiverCustom()
 {
 }
 
-SimpleVoipReceiver::~SimpleVoipReceiver()
+SimpleVoipReceiverCustom::~SimpleVoipReceiverCustom()
 {
     cancelAndDelete(selfTalkspurtFinished);
 }
 
-void SimpleVoipReceiver::initialize(int stage)
+void SimpleVoipReceiverCustom::initialize(int stage)
 {
     cSimpleModule::initialize(stage);
 
@@ -93,7 +93,7 @@ void SimpleVoipReceiver::initialize(int stage)
     }
 }
 
-void SimpleVoipReceiver::startTalkspurt(Packet *packet)
+void SimpleVoipReceiverCustom::startTalkspurt(Packet *packet)
 {
     const auto& voice = packet->peekAtFront<SimpleVoipPacket>();
     currentTalkspurt.startTalkspurt(voice.get());
@@ -101,7 +101,7 @@ void SimpleVoipReceiver::startTalkspurt(Packet *packet)
     scheduleAt(endTime, selfTalkspurtFinished);
 }
 
-void SimpleVoipReceiver::handleMessage(cMessage *msg)
+void SimpleVoipReceiverCustom::handleMessage(cMessage *msg)
 {
     if (msg->isSelfMessage()) {
         // selfTalkspurtFinished
@@ -114,7 +114,7 @@ void SimpleVoipReceiver::handleMessage(cMessage *msg)
         throw cRuntimeError("Unknown incoming gate: '%s'", msg->getArrivalGate()->getFullName());
 }
 
-void SimpleVoipReceiver::socketDataArrived(UdpSocket *socket, Packet *packet)
+void SimpleVoipReceiverCustom::socketDataArrived(UdpSocket *socket, Packet *packet)
 {
     // process incoming packet
     const auto& voice = packet->peekAtFront<SimpleVoipPacket>();
@@ -152,13 +152,13 @@ void SimpleVoipReceiver::socketDataArrived(UdpSocket *socket, Packet *packet)
     delete packet;
 }
 
-void SimpleVoipReceiver::socketErrorArrived(UdpSocket *socket, Indication *indication)
+void SimpleVoipReceiverCustom::socketErrorArrived(UdpSocket *socket, Indication *indication)
 {
     EV_WARN << "Unknown message '" << indication->getName() << "', kind = " << indication->getKind() << ", discarding it." << endl;
     delete indication;
 }
 
-void SimpleVoipReceiver::evaluateTalkspurt(bool finish)
+void SimpleVoipReceiverCustom::evaluateTalkspurt(bool finish)
 {
     ASSERT(!currentTalkspurt.packets.empty());
     ASSERT(currentTalkspurt.isActive());
@@ -253,7 +253,7 @@ void SimpleVoipReceiver::evaluateTalkspurt(bool finish)
     EV_DEBUG << "proportionalLossRate " << proportionalLossRate << "(tailDropLoss=" << tailDropLoss
              << " - playoutLoss=" << playoutLoss << " - channelLoss=" << channelLoss << ")\n\n";
 
-    double mos = eModel(SIMTIME_DBL(mouthToEarDelay*delayMultiplier), proportionalLossRate); //cVIP is e.g. 10x stricter for MOS calculations
+    double mos = eModel(SIMTIME_DBL(mouthToEarDelay*10), proportionalLossRate); //cVIP is e.g. 10x stricter for MOS calculations
 
     emit(voipPlayoutDelaySignal, playoutDelay);
     double lossRate = ((double)playoutLoss / (double)talkspurtNumPackets);
@@ -285,7 +285,7 @@ void SimpleVoipReceiver::evaluateTalkspurt(bool finish)
 // described in ETSI technical report ETR 250, and then standardized by the ITU as G.107.
 // The objective of the model was to determine a quality rating that incorporated the
 // "mouth to ear" characteristics of a speech path.
-double SimpleVoipReceiver::eModel(double delay, double lossRate)
+double SimpleVoipReceiverCustom::eModel(double delay, double lossRate)
 {
     static const double alpha3 = 177.3; // ms
     double delayms = 1000.0 * delay;
@@ -320,7 +320,7 @@ double SimpleVoipReceiver::eModel(double delay, double lossRate)
     return mos;
 }
 
-void SimpleVoipReceiver::finish()
+void SimpleVoipReceiverCustom::finish()
 {
     // evaluate last talkspurt
     cancelEvent(selfTalkspurtFinished);

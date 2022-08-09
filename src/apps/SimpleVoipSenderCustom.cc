@@ -5,7 +5,7 @@
 // SPDX-License-Identifier: LGPL-3.0-or-later
 //
 
-#include "inet/applications/voip/SimpleVoipSender.h"
+#include "SimpleVoipSenderCustom.h"
 
 #include <cmath>
 
@@ -15,19 +15,19 @@
 
 namespace inet {
 
-Define_Module(SimpleVoipSender);
+Define_Module(SimpleVoipSenderCustom);
 
-SimpleVoipSender::SimpleVoipSender()
+SimpleVoipSenderCustom::SimpleVoipSenderCustom()
 {
 }
 
-SimpleVoipSender::~SimpleVoipSender()
+SimpleVoipSenderCustom::~SimpleVoipSenderCustom()
 {
     cancelAndDelete(selfSender);
     cancelAndDelete(selfSource);
 }
 
-void SimpleVoipSender::initialize(int stage)
+void SimpleVoipSenderCustom::initialize(int stage)
 {
     EV_TRACE << "VoIP Sender initialize: stage " << stage << endl;
 
@@ -71,7 +71,7 @@ void SimpleVoipSender::initialize(int stage)
     }
 }
 
-void SimpleVoipSender::handleMessage(cMessage *msg)
+void SimpleVoipSenderCustom::handleMessage(cMessage *msg)
 {
     if (msg->isSelfMessage()) {
         if (msg == selfSender)
@@ -83,7 +83,7 @@ void SimpleVoipSender::handleMessage(cMessage *msg)
         throw cRuntimeError("Unknown incoming message: '%s' on gate '%s'", msg->getClassName(), msg->getArrivalGate()->getFullName());
 }
 
-void SimpleVoipSender::talkspurt(simtime_t dur)
+void SimpleVoipSenderCustom::talkspurt(simtime_t dur)
 {
     simtime_t curTime = simTime();
     simtime_t startTime = curTime;
@@ -103,7 +103,7 @@ void SimpleVoipSender::talkspurt(simtime_t dur)
     scheduleAt(startTime + packetizationInterval, selfSender);
 }
 
-void SimpleVoipSender::selectTalkOrSilenceInterval()
+void SimpleVoipSenderCustom::selectTalkOrSilenceInterval()
 {
     simtime_t now = simTime();
     if (stopTime >= SIMTIME_ZERO && now >= stopTime)
@@ -132,7 +132,7 @@ void SimpleVoipSender::selectTalkOrSilenceInterval()
     }
 }
 
-void SimpleVoipSender::sendVoIPPacket()
+void SimpleVoipSenderCustom::sendVoIPPacket()
 {
     if (destAddress.isUnspecified())
         destAddress = L3AddressResolver().resolve(par("destAddress"));

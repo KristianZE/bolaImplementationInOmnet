@@ -6,7 +6,7 @@
 //
 
 package improved5gns.apps;
-
+@namespace(inet);
 import inet.applications.contract.IApp;
 
 //
@@ -33,7 +33,7 @@ import inet.applications.contract.IApp;
 //
 // @author: Adriano
 //
-simple SimpleVoipSender like IApp
+simple SimpleVoipSenderCustom like IApp
 {
     parameters:
         int localPort = default(-1);

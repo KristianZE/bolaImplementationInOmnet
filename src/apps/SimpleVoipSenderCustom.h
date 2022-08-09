@@ -19,7 +19,7 @@ namespace inet {
 /**
  * Implements a simple VoIP source. See the NED file for more information.
  */
-class INET_API SimpleVoipSender : public cSimpleModule, public LifecycleUnsupported
+class INET_API SimpleVoipSenderCustom : public cSimpleModule, public LifecycleUnsupported
 {
   private:
     UdpSocket socket;
@@ -52,8 +52,8 @@ class INET_API SimpleVoipSender : public cSimpleModule, public LifecycleUnsuppor
     virtual void handleMessage(cMessage *msg) override;
 
   public:
-    virtual ~SimpleVoipSender();
-    SimpleVoipSender();
+    virtual ~SimpleVoipSenderCustom();
+    SimpleVoipSenderCustom();
 };
 
 } // namespace inet

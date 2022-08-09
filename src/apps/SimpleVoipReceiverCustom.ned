@@ -6,7 +6,7 @@
 //
 
 package improved5gns.apps;
-
+@namespace(inet);
 import inet.applications.contract.IApp;
 
 //
@@ -24,7 +24,7 @@ import inet.applications.contract.IApp;
 // The playout delay, buffer space, the UDP port to listen on, and other input
 // can be specified in module parameters.
 //
-simple SimpleVoipReceiver like IApp
+simple SimpleVoipReceiverCustom like IApp
 {
     parameters:
         int localPort;
