@@ -18,8 +18,8 @@ package improved5gns.simulations;
 import inet.networklayer.configurator.ipv4.Ipv4NetworkConfigurator;
 import inet.node.inet.Router;
 import inet.node.inet.StandardHost;
-import inet.visualizer.common.IntegratedVisualizer;
-import inet.visualizer.common.InterfaceTableVisualizer;
+//import inet.visualizer.common.IntegratedVisualizer;
+//import inet.visualizer.common.InterfaceTableVisualizer;
 import ned.DatarateChannel;
 import inet.node.internetcloud.InternetCloud;
 //import inet.applications.generic.linkAdjuster;
@@ -69,9 +69,9 @@ network baselineTestQoS
         router1: Router {
             @display("p=438,203");
         }
-        visualizer: IntegratedVisualizer {
-            @display("p=18,71");
-        }
+//        visualizer: IntegratedVisualizer {
+//            @display("p=18,71");
+//        }
         serverVID: StandardHost {
             @display("p=560,53");
         }

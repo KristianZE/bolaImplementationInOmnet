@@ -73,6 +73,9 @@ def simpleAdmission(expName, availBand, desiredQoE, trafficMix, maxNumClis, ceil
         elif host == 'VIP':
             ceilBitrates['host'+host] = int(reqBitratesPerType[host] * 2.0)
             assuredBitrates['host'+host] = int(reqBitratesPerType[host] * 0.8)
+        elif host == 'cVIP':
+            ceilBitrates['host'+host] = int(reqBitratesPerType[host] * 2.0)
+            assuredBitrates['host'+host] = int(reqBitratesPerType[host] * 1.0)
         resultString += '\tFor a QoE of ' + str(desiredQoE) + ' ' + str(host) + ' needs ' + str(reqBitratesPerType[host]) + ' kbps. It translates to a GBR of ' + str(assuredBitrates['host'+host]) + ' kbps and a MBR of ' + str(ceilBitrates['host'+host]) + 'kbps.\n'
         numHostsAdmittedPerType['host'+host] = 0
         numHostsRejectedPerType['host'+host] = 0
@@ -234,7 +237,7 @@ def genHTBconfigWithInner(configName, linkSpeed, leafClassesConfigs, innerClasse
     myfile.write(mydata)
 
 
-    # shutil.copy2(configName+"HTB.xml", '../5gNS/simulations/configs/htbTree')
+    shutil.copy2('admissionData/htbConfigs/'+configName+"HTB.xml", '../simulations/configs/htbTree')
 
 
 # genHTBconfig('stasTest10a', 10000, {'One':[4000, 7000, 0, 0], 'Two':[2000, 5000, 0, 1]})
@@ -281,8 +284,8 @@ def genBaselineRoutingConfig(configName, hostTypes, hostNums, hostIPprefixes, se
     myfile.write(mydata)
     
     
-    # time.sleep(0.5)
-    # shutil.copy2(configName+"Routing.xml", '../5gNS/simulations/configs/baseQoS')
+    time.sleep(0.5)
+    shutil.copy2('admissionData/routingConfigs/'+configName+"Routing.xml", '../simulations/configs/routing')
 
 
 # genBaselineRoutingConfig('stasTest10a', ['hostFDO'], [2], {'hostFDO':'10.3'}, ['serverFDO'],  {'serverFDO':'10.6'})
@@ -315,7 +318,7 @@ def genBaselineIniConfig(confName, base, numHostsPerType, hostIPprefixes, availB
     configString = '[Config ' + confName + ']\n'
     configString += 'description = \"Configuration for ' + confName + '. All five applications. QoS employed. Guarantee Multiplier: ' + str(guaranteeMultiplier) + '; Ceil multiplier: ' + str(ceilMultiplier) +'\"\n\n'
     configString += 'extends = ' + base + '\n\n'
-    configString += '*.configurator.config = xmldoc(\"configs/baseQoS/' + confName + 'Routing.xml\")\n\n'
+    configString += '*.configurator.config = xmldoc(\"configs/routing/' + confName + 'Routing.xml\")\n\n'
     if 'hostVID' in numHostsPerType:
         configString += '*.nVID = ' + str(numHostsPerType['hostVID']) + ' # Number of video clients\n'
     else: 
@@ -333,17 +336,22 @@ def genBaselineIniConfig(confName, base, numHostsPerType, hostIPprefixes, availB
     else: 
         configString += '*.nSSH = 0 # Number of SSH clients\n'
     if 'hostVIP' in numHostsPerType:
-        configString += '*.nVIP = ' + str(numHostsPerType['hostVIP']) + ' # Number of VoIP clients\n\n'
+        configString += '*.nVIP = ' + str(numHostsPerType['hostVIP']) + ' # Number of VoIP clients\n'
     else: 
-        configString += '*.nVIP = 0 # Number of VoIP clients\n\n'
+        configString += '*.nVIP = 0 # Number of VoIP clients\n'
+    if 'hostcVIP' in numHostsPerType:
+        configString += '*.ncVIP = ' + str(numHostsPerType['hostcVIP']) + ' # Number of critical VoIP clients\n\n'
+    else: 
+        configString += '*.ncVIP = 0 # Number of critical VoIP clients\n\n'
     configString += '*.router*.ppp[0].queue.typename = \"HtbQueue\"\n'
     configString += '*.router*.ppp[0].queue.numQueues = ' + str(sumHosts) + '\n'
     configString += '*.router*.ppp[0].queue.queue[*].typename = \"DropTailQueue\"\n'
     configString += '*.router*.ppp[0].queue.packetCapacity = -1\n'
     configString += '*.router*.ppp[0].queue.htbHysterisis = false\n'
+    configString += '*.router*.ppp[0].queue.scheduler.adjustHTBTreeValuesForCorectness = false\n'
+    configString += '*.router*.ppp[0].queue.scheduler.checkHTBTreeValuesForCorectness = false\n'
     configString += '*.router*.ppp[0].queue.htbTreeConfig = xmldoc(\"configs/htbTree/' + confName + 'HTB.xml\")\n'
     configString += '*.router*.ppp[0].queue.classifier.defaultGateIndex = 0\n'
-    #configString += '*.router*.ppp[0].ppp.queue.classifier.packetFilters = ' + packFilters + '\n'
     configString += '*.router0.ppp[0].queue.classifier.packetFilters = ' + packDataFiltersR0 + '\n'
     configString += '*.router1.ppp[0].queue.classifier.packetFilters = ' + packDataFiltersR1 + '\n\n'
 
@@ -362,7 +370,7 @@ def genBaselineIniConfig(confName, base, numHostsPerType, hostIPprefixes, availB
     # print(configString)
 
 
-def genAllSliConfigsHTBRun(configName, baseName, namePrefix, trafficMix, availBand, desiredQoE, types, hostToSlice, sliceNames, maxNumCliType, ceilMultiplier, guaranteeMultiplier, differentiatePrios, seed):
+def genAllSliConfigsHTBRun(configName, baseName, trafficMix, availBand, desiredQoE, types, hostToSlice, sliceNames, maxNumCliType, ceilMultiplier, guaranteeMultiplier, differentiatePrios, seed):
     cliTypes = ['host'+x for x in types]
     serverTypes = ['server'+x for x in types]
     numHostsPerType, reqBitratesPerType, ceilBitrates, sliAlloc = simpleAdmission(configName, availBand*1000, desiredQoE, trafficMix, maxNumCliType, ceilMultiplier, guaranteeMultiplier, hostToSlice, seed)
@@ -382,9 +390,9 @@ def genAllSliConfigsHTBRun(configName, baseName, namePrefix, trafficMix, availBa
             numLev = 1
         for hType in hostToSlice[sliNum]:
             host = 'host'+hType
-            priority = 0
-            if differentiatePrios == True and host != 'hostVIP' and host != 'hostSSH':
-                priority = 1
+            priority = priorityMap[hType]
+            # if differentiatePrios == True and host != 'hostVIP' and host != 'hostSSH':
+            #     priority = 1
             for num in range(numHostsPerType[host]):
                 leafClassesConfigs[host+str(num)] = [reqBitratesPerType[host], ceilBitrates[host], priority, queueInt, parentName, 0]
                 queueInt += 1
@@ -415,24 +423,39 @@ def genAllSliConfigsHTBRun(configName, baseName, namePrefix, trafficMix, availBa
 targetQoE = [3.5]
 assuredMulti = [1.0]
 rates = [100]
-maxNumCli = [150]
+maxNumCli = [200]
 ceils = [1.0]
 trafficMix = {'VID' : 0.4, 
               'LVD' : 0.2, 
               'FDO' : 0.05, 
-              'VIP' : 0.3, 
-              'SSH' : 0.05}
+              'VIP' : 0.2, 
+              'SSH' : 0.05,
+              'cVIP' : 0.1}
+priorityMap = {'VID' : 1, 
+               'LVD' : 1, 
+               'FDO' : 0, 
+               'VIP' : 2, 
+               'SSH' : 2,
+               'cVIP' : 3}
 # seed = 'aNewHope'
 seed = 'thisIsInteresting'
-expNamePrefix = 'qoeSlicingTesting'
-consideredClients = ['VID', 'LVD', 'FDO', 'VIP', 'SSH']
-hostToSli = [['VID','FDO','LVD'], ['VIP', 'SSH']]
+expNamePrefix = 'criticalVoIPtest2'
+consideredClients = ['VID', 'LVD', 'FDO', 'VIP', 'SSH', 'cVIP']
+hostToSli = [['VID','FDO','LVD'], ['VIP', 'SSH', 'cVIP']]
 sliNames = ['connBWS', 'connDEL']
+sliToCeil = {
+    'connBWS' : 1.0,
+    'connDEL' : 1.0
+}
+sliToAssured = {
+    'connBWS' : 1.0,
+    'connDEL' : 1.0
+}
 for rate, maxCli in zip(rates, maxNumCli):
     for qoE in targetQoE:
         for mult in assuredMulti:
             for ceil in ceils:
-                genAllSliConfigsHTBRun(expNamePrefix+'Base_R'+str(int(rate))+'_Q'+str(int(qoE*10))+'_M'+str(int(mult*100))+'_C'+str(int(ceil*100)), 'liteCbaselineTestTokenQoS_base', expNamePrefix, trafficMix, rate, qoE, consideredClients, hostToSli, sliNames, maxCli, ceil, mult, 'False', seed)
+                genAllSliConfigsHTBRun(expNamePrefix+'2SlicesHTB_R'+str(int(rate))+'_Q'+str(int(qoE*10))+'_M'+str(int(mult*100))+'_C'+str(int(ceil*100)), 'liteCbaselineTestTokenQoS_base', trafficMix, rate, qoE, consideredClients, hostToSli, sliNames, maxCli, ceil, mult, priorityMap, seed)
                 # genAllSliConfigsHTBRun(expNamePrefix+'5SlicesHTB_R'+str(int(rate))+'_Q'+str(int(qoE*10))+'_M'+str(int(mult*100))+'_C'+str(int(ceil*100)), 'liteCbaselineTestTokenQoS_base', expNamePrefix, trafficMix, rate, qoE, consideredClients, [[x] for x in consideredClients], ['conn'+x for x in consideredClients], maxCli, ceil, mult, 'False', seed)
                 # admitted, gbrs, mbrs, sliceRes = simpleAdmission(expNamePrefix, rate*1000, qoE, trafficMix, maxCli, ceil, mult, [[x] for x in consideredClients], seed)
                 # simpleAdmission(expNamePrefix, rate*1000, qoE, trafficMix, maxCli, ceil, mult, [consideredClients], seed)
