@@ -71,5 +71,5 @@ if __name__ == "__main__":
     numSSH = int(name.split('SSH')[1].split('_VIP')[0])
     numVIP = int(name.split('_VIP')[1].split('_cVIP')[0])
     numcVIP = int(name.split('_cVIP')[1])
-    numCLI = numVID + numLVD + numFDO + numSSH + numVIP
+    numCLI = numVID + numLVD + numFDO + numSSH + numVIP + numcVIP
     recalculateQoEsimulationRun(sys.argv[1], numCLI, ['hostVID', 'hostLVD', 'hostFDO', 'hostSSH', 'hostVIP', 'hostcVIP'],  [numVID, numLVD, numFDO, numSSH, numVIP, numcVIP], 'hostSSH')

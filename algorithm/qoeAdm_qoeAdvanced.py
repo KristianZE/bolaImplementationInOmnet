@@ -75,7 +75,7 @@ def simpleAdmission(expName, availBand, desiredQoE, trafficMix, maxNumClis, ceil
             assuredBitrates['host'+host] = int(reqBitratesPerType[host] * 0.8)
         elif host == 'cVIP':
             ceilBitrates['host'+host] = int(reqBitratesPerType[host] * 2.0)
-            assuredBitrates['host'+host] = int(reqBitratesPerType[host] * 1.0)
+            assuredBitrates['host'+host] = int(reqBitratesPerType[host] * 1.2)
         resultString += '\tFor a QoE of ' + str(desiredQoE) + ' ' + str(host) + ' needs ' + str(reqBitratesPerType[host]) + ' kbps. It translates to a GBR of ' + str(assuredBitrates['host'+host]) + ' kbps and a MBR of ' + str(ceilBitrates['host'+host]) + 'kbps.\n'
         numHostsAdmittedPerType['host'+host] = 0
         numHostsRejectedPerType['host'+host] = 0
@@ -356,7 +356,7 @@ def genBaselineIniConfig(confName, base, numHostsPerType, hostIPprefixes, availB
     configString += '*.router1.ppp[0].queue.classifier.packetFilters = ' + packDataFiltersR1 + '\n\n'
 
     configString += '**.connFIX0.datarate = ' + str(availBand) + 'bps\n'
-    configString += '**.connFIX0.delay = 40ms\n\n\n'
+    configString += '**.connFIX0.delay = 10ms\n\n\n'
 
     # print(configString)
 
@@ -439,7 +439,7 @@ priorityMap = {'VID' : 1,
                'cVIP' : 3}
 # seed = 'aNewHope'
 seed = 'thisIsInteresting'
-expNamePrefix = 'criticalVoIPtest2'
+expNamePrefix = 'criticalVoIPtestQuatro'
 consideredClients = ['VID', 'LVD', 'FDO', 'VIP', 'SSH', 'cVIP']
 hostToSli = [['VID','FDO','LVD'], ['VIP', 'SSH', 'cVIP']]
 sliNames = ['connBWS', 'connDEL']
