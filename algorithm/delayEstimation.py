@@ -31,7 +31,7 @@ def estDelay(cliType, availBand):
     #         return retVal
     if cliType in cliTypeFuncMapping:
         delay = negExpFunc(availBand, *funcMap)
-        if cliType == 'hostVIP' or cliType == 'hostcVIP':
+        if cliType == 'hostVIP' or cliType == 'hostcVP':
             return delay
         return delay/2
     else:

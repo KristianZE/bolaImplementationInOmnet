@@ -122,9 +122,9 @@ def genHTBconfig(configName, linkSpeed, leafClassesConfigs):
 
     # create a new XML file with the results
     mydata = ET.tostring(configElem)
-    myfile = open('../5gNS/simulations/configs/htbTree/'+configName+"HTB.xml", "wb")
+    myfile = open('../simulations/configs/htbTree/'+configName+"HTB.xml", "wb")
     myfile.write(mydata)
-    # shutil.copy2(configName+"HTB.xml", '../5gNS/simulations/configs/htbTree')
+    # shutil.copy2(configName+"HTB.xml", '../simulations/configs/htbTree')
 
 # {leafName:[assuredRate, ceilRate, priority, queueNum, parentId, level]}
 # {innerName:[assuredRate, ceilRate, parentId, level]}
@@ -148,9 +148,9 @@ def genHTBconfigWithInner(configName, linkSpeed, leafClassesConfigs, innerClasse
 
     # create a new XML file with the results
     mydata = ET.tostring(configElem)
-    myfile = open('../5gNS/simulations/configs/htbTree/'+configName+"HTB.xml", "wb")
+    myfile = open('../simulations/configs/htbTree/'+configName+"HTB.xml", "wb")
     myfile.write(mydata)
-    # shutil.copy2(configName+"HTB.xml", '../5gNS/simulations/configs/htbTree')
+    # shutil.copy2(configName+"HTB.xml", '../simulations/configs/htbTree')
 
 # genHTBconfig('stasTest10a', 10000, {'One':[4000, 7000, 0, 0], 'Two':[2000, 5000, 0, 1]})
 
@@ -192,9 +192,9 @@ def genBaselineRoutingConfig(configName, hostTypes, hostNums, hostIPprefixes, se
 
     # create a new XML file with the results
     mydata = ET.tostring(configElem)
-    myfile = open('../5gNS/simulations/configs/baseQoS/'+configName+"Routing.xml", "wb")
+    myfile = open('../simulations/configs/routing/'+configName+"Routing.xml", "wb")
     myfile.write(mydata)
-    # shutil.copy2(configName+"Routing.xml", '../5gNS/simulations/configs/baseQoS')
+    # shutil.copy2(configName+"Routing.xml", '../simulations/configs/baseQoS')
 
 
 # genBaselineRoutingConfig('stasTest10a', ['hostFDO'], [2], {'hostFDO':'10.3'}, ['serverFDO'],  {'serverFDO':'10.6'})
@@ -227,7 +227,7 @@ def genBaselineIniConfig(confName, base, numHostsPerType, hostIPprefixes, availB
     configString = '[Config ' + confName + ']\n'
     configString += 'description = \"Configuration for ' + confName + '. All five applications. QoS employed. Guarantee Multiplier: ' + str(guaranteeMultiplier) + '; Ceil multiplier: ' + str(ceilMultiplier) +'\"\n\n'
     configString += 'extends = ' + base + '\n\n'
-    configString += '*.configurator.config = xmldoc(\"configs/baseQoS/' + confName + 'Routing.xml\")\n\n'
+    configString += '*.configurator.config = xmldoc(\"configs/routing/' + confName + 'Routing.xml\")\n\n'
     if 'hostVID' in numHostsPerType:
         configString += '*.nVID = ' + str(numHostsPerType['hostVID']) + ' # Number of video clients\n'
     else: 
@@ -248,10 +248,10 @@ def genBaselineIniConfig(confName, base, numHostsPerType, hostIPprefixes, availB
         configString += '*.nVIP = ' + str(numHostsPerType['hostVIP']) + ' # Number of VoIP clients\n\n'
     else: 
         configString += '*.nVIP = 0 # Number of VoIP clients\n\n'
-    if 'hostcVP' in numHostsPerType:
-        configString += '*.ncVP = ' + str(numHostsPerType['hostVIP']) + ' # Number of VoIP clients\n\n'
+    if 'hostcVIP' in numHostsPerType:
+        configString += '*.ncVIP = ' + str(numHostsPerType['hostcVIP']) + ' # Number of VoIP clients\n\n'
     else: 
-        configString += '*.ncVP = 0 # Number of critical VoIP clients\n\n'
+        configString += '*.ncVIP = 0 # Number of critical VoIP clients\n\n'
     configString += '*.router*.ppp[0].queue.typename = \"HtbQueue\"\n'
     configString += '*.router*.ppp[0].queue.numQueues = ' + str(sumHosts) + '\n'
     configString += '*.router*.ppp[0].queue.queue[*].typename = \"DropTailQueue\"\n'
@@ -271,7 +271,7 @@ def genBaselineIniConfig(confName, base, numHostsPerType, hostIPprefixes, availB
     f.write(configString)
     f.close()
 
-    f2 = open('../5gNS/simulations/parameterStudyConfiguration.ini', 'a')
+    f2 = open('../simulations/parameterStudyConfiguration.ini', 'a')
     f2.write(configString)
     f2.close()
     # print(configString)
@@ -330,8 +330,8 @@ def genAllSliConfigsHTBRun(configName, baseName, availBand, desiredQoE, types, h
     hostNums = [numHostsPerType[x] for x in numHostsPerType]
     genBaselineRoutingConfig(configName, cliTypes, hostNums, hostIPprefixes, serverTypes, serverIPprefixes)
     genBaselineIniConfig(configName, baseName, numHostsPerType, hostIPprefixes, availBand, ceilMultiplier, guaranteeMultiplier)
-
-    f2 = open('../5gNS/simulations/'+configName.split('-')[0]+'.txt', 'a+')
+    print('../simulations/'+configName.split('-')[0]+'.txt')
+    f2 = open('../simulations/'+configName.split('-')[0]+'.txt', 'a+')
     f2.write('./runAndExportSimConfig.sh -i parameterStudyConfiguration.ini -c ' + configName + ' -s 1\n')
     f2.close()
 
@@ -398,6 +398,19 @@ def genAllSliConfigsHTBRun(configName, baseName, availBand, desiredQoE, types, h
 # dPrio = [False]
 # client = 'FDO'
 # studyName = 'parameterStudyFileDownloadV2'
+
+####################################################################
+# Settings for parameter study for the critical VoIP client
+targetQoE = [3.5]
+assuredMulti = [1.0, 0.95, 0.9, 0.85, 0.8, 0.75, 0.7, 0.65, 0.6, 0.55, 0.5]
+# assuredMulti = [1.0, 0.9, 0.8, 0.7, 0.6, 0.5]
+rates = [100]
+defaultNumClients = 100
+ceils = [1.0, 1.25, 1.5, 1.75, 2.0]
+# ceils = [1.0, 1.5, 2.0]
+dPrio = [False]
+client = 'cVIP'
+studyName = 'parameterStudycVIP'
 
 counter = 0
 for rate in rates:

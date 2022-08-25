@@ -69,26 +69,26 @@ network baselineTestQoS
         router1: Router {
             @display("p=438,203");
         }
-//        visualizer: IntegratedVisualizer {
-//            @display("p=18,71");
-//        }
+       // visualizer: IntegratedVisualizer {
+       //     @display("p=18,71");
+       // }
         serverVID: StandardHost {
-            @display("p=560,53");
+            @display("p=560,71");
         }
         serverLVD: StandardHost {
-            @display("p=560,53");
+            @display("p=496,50");
         }
         serverFDO: StandardHost {
             @display("p=560,153");
         }
         serverSSH: StandardHost {
-            @display("p=560,253");
+            @display("p=572,241");
         }
         serverVIP: StandardHost {
-            @display("p=560,353");
+            @display("p=572,311");
         }
         servercVIP: StandardHost {
-            @display("p=560,353");
+            @display("p=496,328");
         }
     connections:
         //        router0.pppg++ <--> connFIX0: C { datarate = 100Mbps; delay = 1ms; } <--> router1.pppg++;
