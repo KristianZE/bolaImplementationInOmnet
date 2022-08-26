@@ -746,14 +746,14 @@ def plotParameterStudyMOSheatMapAllInOneSmall(testPrefixes, appTypes, mbrs, gbrs
 
 ############################################################################################
 
-testNames = ['parameterStudyVoDV2','parameterStudyLiveV2','parameterStudySecureShellV2','parameterStudyVoIPV2', 'parameterStudyFileDownloadV2'] # Name prefix of the QoE test
+testNames = ["parameterStudycVIP", "parameterStudycVIP10ms"] # Name prefix of the QoE test
 # testNames = ['parameterStudyVoD-','parameterStudyLive-','parameterStudySecureShell-','parameterStudyVoIP-', 'parameterStudyFileDownloadFix'] # Name prefix of the QoE test
 # testNames = ['parameterStudyVoIPV2'] # Name prefix of the QoE test
 targetQoEs = [35] # Target QoEs
 mbrs = [100,125,150,175,200]
 gbrs = [100, 95, 90, 85, 80, 75, 70, 65, 60, 55, 50]
 sliNamess = [['none']]
-clients = ['VID','LVD','SSH','VIP','FDO']
+clients = ['cVIP','cVIP',]
 # clients = ['VIP']
 # maxNumCliPlot = [142,200]
 maxNumCliPlot = [200]
