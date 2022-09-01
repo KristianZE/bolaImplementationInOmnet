@@ -112,6 +112,8 @@ def filterDFType(df, filterType):
     return df.filter(like=filterType)
 
 def chooseName(dataName):
+    print(dataName)
+    print("in selection!!!!!!!!!")
     if dataName == 'VID':
         return 'VoD'
     elif dataName == 'FDO':
@@ -122,7 +124,8 @@ def chooseName(dataName):
         return 'VoIP'
     elif dataName == 'LVD':
         return 'Live'
-
+    elif dataName == 'cVIP':
+        return 'crit VIP'
 gbrToColor = {
     100 : 'lime',
     95 : 'tab:orange',
@@ -163,7 +166,7 @@ def getFileInfo(filename, desInfo):
 def plotParameterStudyMOS(testPrefix, appType, mbrs, gbrs, qs, maxNumCliPlot):
     print('-------------', testPrefix, '-------------')
     prePath = '../exports/extracted/mos2/'
-    filenames = glob.glob(prePath+testPrefix+'-*')
+    filenames = glob.glob(prePath+testPrefix+'*')
     print('-> There are', len(filenames), 'experiments in this parameter study.')
     fig, ax = plt.subplots(1, figsize=(16,12))
     filterName = 'Val'
@@ -237,7 +240,7 @@ def plotParameterStudyMOS(testPrefix, appType, mbrs, gbrs, qs, maxNumCliPlot):
     plt.legend(handles=legendHandles, fontsize=25, bbox_to_anchor=(1, 1), loc='upper left')
     plt.grid(axis='y')
     plt.xlabel('Number of Clients')
-    plt.ylabel('Mean ' + chooseName('host'+appType) + ' MOS')
+    plt.ylabel('Mean ' + chooseName(appType) + ' MOS')
     outPath = preOutPath+'sysUtilClient'+testPrefix+'_M'+str(gbrs)+'_C'+str(mbrs)+'_maxNumClis'+str(maxNumCliPlot)+'.png'
     fig.savefig(outPath, dpi=100, bbox_inches='tight', format='png')
     plt.close('all')
@@ -325,7 +328,7 @@ def plotParameterStudyMOSheatMap(testPrefix, appType, mbrs, gbrs, qs, maxNumCliP
     # print(heatMap)
 
     norm = matplotlib.colors.Normalize(vmin=minVal, vmax=maxVal)
-    cmap = plt.cm.get_cmap(name='viridis',lut=1024)
+    cmap = plt.get_cmap(name='viridis',lut=1024)
     im = ax.imshow(np.array(heatMap), norm=norm, cmap=cmap, aspect='auto')
     ax.set_ylabel('MBR\nMultiplier [%]')
     ax.set_xlabel('GBR Multiplier [%]')
@@ -538,8 +541,11 @@ def plotParameterStudyMOSheatMapAllInOne(testPrefixes, appTypes, mbrs, gbrs, qs,
 def plotParameterStudyMOSheatMapAllInOneSmall(testPrefixes, appTypes, mbrs, gbrs, qs, maxNumCliPlot, selectedGBRMBR):
     fig, axs = plt.subplots(len(testPrefixes), figsize=(10+sum([x for x in range(len(gbrs))])*1/5,(len(mbrs)-1)*len(testPrefixes)), sharex=True, sharey=True)
     count = 0
+    print(testPrefixes)
     for testPrefix, appType, selGBRMBR in zip(testPrefixes, appTypes, selectedGBRMBR):
         print('-------------', testPrefix, '-------------')
+        print("-------------",appType,"-----------")
+        print("--------------",selGBRMBR,"------------")
         prePath = '../exports/extracted/mos2/'
         filenames = glob.glob(prePath+testPrefix+'*')
         print('-> There are', len(filenames), 'experiments in this parameter study.')
@@ -593,42 +599,23 @@ def plotParameterStudyMOSheatMapAllInOneSmall(testPrefixes, appTypes, mbrs, gbrs
         minmax = (minValue-0.05,4.5)
 
         # Plot the means
-        # print(runResults)
+        print(runResults)
         target = 3.5
         closestVal = 5
         runName = ''
-        for run in runResults:
-            if abs(target-runResults[run]['meanVal']) < abs(target-closestVal):
-                closestVal = runResults[run]['meanVal']
-                runName = run
-        if len(runResults)>0:print('\t',runName.split('-')[0].split('Study')[1],': Closest value of', runResults[runName]['meanVal'], 'for M =', runResults[runName]['M'], 'and C =', runResults[runName]['C'])
-        closestVal = 5
         runNameClosestAbove = ''
+        closValMBRmult = {}
+        closNamMBRmult = {}
         for run in runResults:
-            if runResults[run]['meanVal'] >= target and runResults[run]['meanVal'] < closestVal:
-                closestVal = runResults[run]['meanVal']
-                runNameClosestAbove = run
-        if len(runResults)>0 and runNameClosestAbove !='':print('\t',runNameClosestAbove.split('-')[0].split('Study')[1],': Closest value of', runResults[runNameClosestAbove]['meanVal'], 'for M =', runResults[runNameClosestAbove]['M'], 'and C =', runResults[runNameClosestAbove]['C'])
-        selectGBR = runResults[runNameClosestAbove]['M']
-        runNameSelected = ''
-        for run in runResults:
-            if runResults[run]['M'] == selectGBR and runResults[run]['meanVal'] >= target and runResults[run]['meanVal'] >= closestVal:
-                closestVal = runResults[run]['meanVal']
-                runNameSelected = run
-        if len(runResults)>0 and runNameSelected !='':print('\t',runNameSelected.split('-')[0].split('Study')[1],': Closest value of', runResults[runNameSelected]['meanVal'], 'for M =', runResults[runNameSelected]['M'], 'and C =', runResults[runNameSelected]['C'])
-        
-        # closValMBRmult = {}
-        # closNamMBRmult = {}
-        # for run in runResults:
-        #     cMulti = run.split('_')[4]
-        #     if cMulti in closValMBRmult:
-        #         if runResults[run]['meanVal'] >= 3.5 and runResults[run]['meanVal'] < closValMBRmult[cMulti]:
-        #             closValMBRmult[cMulti] = runResults[run]['meanVal']
-        #             closNamMBRmult[cMulti] = run
-        #     else:
-        #         if runResults[run]['meanVal'] > 3.5:
-        #             closValMBRmult[cMulti] = runResults[run]['meanVal']
-        #             closNamMBRmult[cMulti] = run
+            cMulti = run.split('_')[4]
+            if cMulti in closValMBRmult:
+                if runResults[run]['meanVal'] >= 3.5 and runResults[run]['meanVal'] < closValMBRmult[cMulti]:
+                    closValMBRmult[cMulti] = runResults[run]['meanVal']
+                    closNamMBRmult[cMulti] = run
+            else:
+                if runResults[run]['meanVal'] > 3.5:
+                    closValMBRmult[cMulti] = runResults[run]['meanVal']
+                    closNamMBRmult[cMulti] = run
 
         
         
@@ -680,7 +667,8 @@ def plotParameterStudyMOSheatMapAllInOneSmall(testPrefixes, appTypes, mbrs, gbrs
         #     print(len(heatMap), len(heatMap[i]))
 
         axs[count].scatter(gbrs.index(selGBRMBR[0]), mbrs.index(selGBRMBR[1]), s=160.0, marker='o', c='maroon')
-        # if len(runResults)>0:axs[count].scatter(gbrs.index(runResults[runNameClosestAbove]['M']), mbrs.index(runResults[runNameClosestAbove]['C']), s=140.0, marker='X', c='red', zorder=500)
+    
+        #if len(runResults)>0:axs[count].scatter(gbrs.index(runResults[runNameClosestAbove]['M']), mbrs.index(runResults[runNameClosestAbove]['C']), s=140.0, marker='X', c='red', zorder=500)
         if len(runResults)>0 and runNameClosestAbove!='':
             axs[count].text(gbrs.index(runResults[runNameClosestAbove]['M']), mbrs.index(runResults[runNameClosestAbove]['C']), str(round(runResults[runNameClosestAbove]['meanVal'],2)), ha='center', va='center', c='maroon', zorder=500)
             axs[count].text(gbrs.index(runResults[runNameSelected]['M']), mbrs.index(runResults[runNameSelected]['C']), str(round(runResults[runNameSelected]['meanVal'],2)), ha='center', va='center', c='green', zorder=600)
@@ -746,27 +734,29 @@ def plotParameterStudyMOSheatMapAllInOneSmall(testPrefixes, appTypes, mbrs, gbrs
 
 ############################################################################################
 
-testNames = ["parameterStudycVIP", "parameterStudycVIP10ms"] # Name prefix of the QoE test
+testNames = ["parameterStudycVIP10ms-","parameterStudycVIP-"] # Name prefix of the QoE test
 # testNames = ['parameterStudyVoD-','parameterStudyLive-','parameterStudySecureShell-','parameterStudyVoIP-', 'parameterStudyFileDownloadFix'] # Name prefix of the QoE test
 # testNames = ['parameterStudyVoIPV2'] # Name prefix of the QoE test
 targetQoEs = [35] # Target QoEs
 mbrs = [100,125,150,175,200]
 gbrs = [100, 95, 90, 85, 80, 75, 70, 65, 60, 55, 50]
 sliNamess = [['none']]
-clients = ['cVIP','cVIP',]
+clients = ['cVIP',"cVIP"]
 # clients = ['VIP']
 # maxNumCliPlot = [142,200]
 maxNumCliPlot = [200]
 # selectedGBRMBR = [[90,125],[80,150],[100,100],[70,200],[100,150]]
-selectedGBRMBR = [[85,125],[60,150],[50,100],[70,200],[100,125]]
+selectedGBRMBR = [[85,125],[60,150]]
 maxi = 0
 mini = 5
-# plotParameterStudyMOSheatMapAllInOne(testNames, clients, mbrs, gbrs, targetQoEs[0], maxNumCliPlot[0], selectedGBRMBR)
+#plotParameterStudyMOSheatMapAllInOne(testNames, clients, mbrs, gbrs, targetQoEs[0], maxNumCliPlot[0], selectedGBRMBR)
 plotParameterStudyMOSheatMapAllInOneSmall(testNames, clients, mbrs, gbrs, targetQoEs[0], maxNumCliPlot[0], selectedGBRMBR)
-# for testName, client in zip(testNames, clients):
+#for testName, client in zip(testNames, clients):
 #     for tQ in targetQoEs:
 #         for numCli in maxNumCliPlot:
-#             # plotParameterStudyMOS(testName, client, mbrs, gbrs, tQ, numCli)
+#             print(testName)
+#             print(client)
+#             plotParameterStudyMOS(testName, client, mbrs, gbrs, tQ, numCli)
 #             maxVal, minVal = plotParameterStudyMOSheatMap(testName, client, mbrs, gbrs, tQ, numCli)
-#             # for mbr in mbrs:
-#             #     plotParameterStudyMOS(testName, client, [mbr], gbrs, tQ, numCli)
+#             for mbr in mbrs:
+#                 plotParameterStudyMOS(testName, client, [mbr], gbrs, tQ, numCli)
