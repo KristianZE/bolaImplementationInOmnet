@@ -62,8 +62,8 @@ def simpleAdmission(expName, availBand, desiredQoE, trafficMix, maxNumClis, ceil
             ceilBitrates['host'+host] = int(reqBitratesPerType[host] * 1.25)
             assuredBitrates['host'+host] = int(reqBitratesPerType[host] * 0.85)
         elif host == 'LVD':
-            ceilBitrates['host'+host] = int(reqBitratesPerType[host] * 1.5)
-            assuredBitrates['host'+host] = int(reqBitratesPerType[host] * 0.6)
+            ceilBitrates['host'+host] = int(reqBitratesPerType[host] * 1.25)
+            assuredBitrates['host'+host] = int(reqBitratesPerType[host] * 0.55)
         elif host == 'FDO':
             ceilBitrates['host'+host] = int(reqBitratesPerType[host] * 1.25)
             assuredBitrates['host'+host] = int(reqBitratesPerType[host] * 1.0)
@@ -72,10 +72,10 @@ def simpleAdmission(expName, availBand, desiredQoE, trafficMix, maxNumClis, ceil
             assuredBitrates['host'+host] = int(reqBitratesPerType[host] * 0.5)
         elif host == 'VIP':
             ceilBitrates['host'+host] = int(reqBitratesPerType[host] * 2.0)
-            assuredBitrates['host'+host] = int(reqBitratesPerType[host] * 0.8)
+            assuredBitrates['host'+host] = int(reqBitratesPerType[host] * 0.7)
         elif host == 'cVIP':
             ceilBitrates['host'+host] = int(reqBitratesPerType[host] * 2.0)
-            assuredBitrates['host'+host] = int(reqBitratesPerType[host] * 1.2)
+            assuredBitrates['host'+host] = int(reqBitratesPerType[host] * 0.7)
         resultString += '\tFor a QoE of ' + str(desiredQoE) + ' ' + str(host) + ' needs ' + str(reqBitratesPerType[host]) + ' kbps. It translates to a GBR of ' + str(assuredBitrates['host'+host]) + ' kbps and a MBR of ' + str(ceilBitrates['host'+host]) + 'kbps.\n'
         numHostsAdmittedPerType['host'+host] = 0
         numHostsRejectedPerType['host'+host] = 0
@@ -364,9 +364,9 @@ def genBaselineIniConfig(confName, base, numHostsPerType, hostIPprefixes, availB
     f.write(configString)
     f.close()
 
-    # f2 = open('../5gNS/simulations/qosFlowsConfig.ini', 'a')
-    # f2.write(configString)
-    # f2.close()
+    f2 = open('../simulations/QoEStudies.ini', 'a')
+    f2.write(configString)
+    f2.close()
     # print(configString)
 
 
@@ -415,34 +415,46 @@ def genAllSliConfigsHTBRun(configName, baseName, trafficMix, availBand, desiredQ
     genBaselineRoutingConfig(configName, cliTypes, hostNums, hostIPprefixes, serverTypes, serverIPprefixes)
     genBaselineIniConfig(configName, baseName, numHostsPerType, hostIPprefixes, int(availBand*1000000), ceilMultiplier, guaranteeMultiplier)
 
-    # f2 = open('../5gNS/simulations/runCommandsqoeFlowsV8and9.txt', 'a+')
-    # f2.write('./runAndExportSimConfigWithCleanup.sh -i qosFlowsConfig.ini -c ' + configName + ' -s 1\n')
-    # f2.close()
+    f2 = open('../improved5gNS/simulations/runCommandsqoeFlowsV8and9.txt', 'a+')
+    f2.write('./runAndExportSimConfigWithCleanup.sh -i qosFlowsConfig.ini -c ' + configName + ' -s 1\n')
+    f2.close()
 
 
-targetQoE = [3.5]
-assuredMulti = [1.0]
-rates = [100]
+targetQoE = [3.5] #the desired QoE of all application
+assuredMulti = [1.0] #what is this? 
+rates = [100] #link rate in Mbps
 maxNumCli = [200]
-ceils = [1.0]
-trafficMix = {'VID' : 0.4, 
-              'LVD' : 0.2, 
+ceils = [1.0] 
+trafficMix = {'VID' : 0.44, 
+              'LVD' : 0.24, 
               'FDO' : 0.05, 
               'VIP' : 0.2, 
               'SSH' : 0.05,
-              'cVIP' : 0.1}
-priorityMap = {'VID' : 1, 
-               'LVD' : 1, 
+              'cVIP' : 0.02}
+priorityMap = {'VID' : 0, 
+               'LVD' : 0, 
                'FDO' : 0, 
-               'VIP' : 2, 
-               'SSH' : 2,
-               'cVIP' : 3}
+               'VIP' : 0, 
+               'SSH' : 0,
+               'cVIP' : 0}
 # seed = 'aNewHope'
 seed = 'thisIsInteresting'
-expNamePrefix = 'criticalVoIPtestQuatro'
+expNamePrefix = 'QoESli1_'#QoESli1,QoESli2
 consideredClients = ['VID', 'LVD', 'FDO', 'VIP', 'SSH', 'cVIP']
-hostToSli = [['VID','FDO','LVD'], ['VIP', 'SSH', 'cVIP']]
-sliNames = ['connBWS', 'connDEL']
+
+#--- 2slices ---
+#hostToSli = [['VID','FDO','LVD'], ['VIP', 'SSH', 'cVIP']]
+#sliNames = ['connBWS', 'connDEL']
+
+#--- 6slices ---
+hostToSli = [['VID'],['LVD'],['FDO'],['VIP'],['SSH'],[ 'cVIP']]
+sliNames = ['VID', 'LVD', 'FDO', 'VIP', 'SSH', 'cVIP']
+
+
+
+
+
+
 sliToCeil = {
     'connBWS' : 1.0,
     'connDEL' : 1.0
@@ -451,11 +463,12 @@ sliToAssured = {
     'connBWS' : 1.0,
     'connDEL' : 1.0
 }
+
 for rate, maxCli in zip(rates, maxNumCli):
     for qoE in targetQoE:
         for mult in assuredMulti:
             for ceil in ceils:
-                genAllSliConfigsHTBRun(expNamePrefix+'2SlicesHTB_R'+str(int(rate))+'_Q'+str(int(qoE*10))+'_M'+str(int(mult*100))+'_C'+str(int(ceil*100)), 'liteCbaselineTestTokenQoS_base', trafficMix, rate, qoE, consideredClients, hostToSli, sliNames, maxCli, ceil, mult, priorityMap, seed)
+                genAllSliConfigsHTBRun(expNamePrefix+'6SlicesHTB_R'+str(int(rate))+'_Q'+str(int(qoE*10))+'_M'+str(int(mult*100))+'_C'+str(int(ceil*100)), 'liteCbaselineTestTokenQoS_base', trafficMix, rate, qoE, consideredClients, hostToSli, sliNames, maxCli, ceil, mult, priorityMap, seed)
                 # genAllSliConfigsHTBRun(expNamePrefix+'5SlicesHTB_R'+str(int(rate))+'_Q'+str(int(qoE*10))+'_M'+str(int(mult*100))+'_C'+str(int(ceil*100)), 'liteCbaselineTestTokenQoS_base', expNamePrefix, trafficMix, rate, qoE, consideredClients, [[x] for x in consideredClients], ['conn'+x for x in consideredClients], maxCli, ceil, mult, 'False', seed)
                 # admitted, gbrs, mbrs, sliceRes = simpleAdmission(expNamePrefix, rate*1000, qoE, trafficMix, maxCli, ceil, mult, [[x] for x in consideredClients], seed)
                 # simpleAdmission(expNamePrefix, rate*1000, qoE, trafficMix, maxCli, ceil, mult, [consideredClients], seed)
