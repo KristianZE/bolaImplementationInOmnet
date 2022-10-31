@@ -206,6 +206,11 @@ def genHTBconfig(configName, linkSpeed, leafClassesConfigs):
 
 
     # shutil.copy2(configName+"HTB.xml", '../5gNS/simulations/configs/htbTree')
+    mydata = ET.tostring(configElem)
+    # print(mydata)
+    myfile = open('admissionData/htbConfigs/'+configName+"HTB.xml", "wb")
+    myfile.write(mydata)
+    shutil.copy2('admissionData/htbConfigs/'+configName+"HTB.xml", '../simulations/configs/htbTree')
 
 # {leafName:[assuredRate, ceilRate, priority, queueNum, parentId, level]}
 # {innerName:[assuredRate, ceilRate, parentId, level]}
@@ -410,13 +415,15 @@ def genAllSliConfigsHTBRun(configName, baseName, trafficMix, availBand, desiredQ
         serverIPprefixes[server] = '10.'+str(prefIPno+10)
         prefIPno += 1
 
+
     genHTBconfigWithInner(configName, int(availBand*1000), leafClassesConfigs, innerClassConfigs, numLev)
+
     hostNums = [numHostsPerType[x] for x in numHostsPerType]
     genBaselineRoutingConfig(configName, cliTypes, hostNums, hostIPprefixes, serverTypes, serverIPprefixes)
     genBaselineIniConfig(configName, baseName, numHostsPerType, hostIPprefixes, int(availBand*1000000), ceilMultiplier, guaranteeMultiplier)
 
-    f2 = open('../improved5gNS/simulations/runCommandsqoeFlowsV8and9.txt', 'a+')
-    f2.write('./runAndExportSimConfigWithCleanup.sh -i qosFlowsConfig.ini -c ' + configName + ' -s 1\n')
+    f2 = open('../simulations/runCommandsqoe.txt', 'a+')
+    f2.write('./runAndExportSimConfig.sh -i QoEStudies.ini -c ' + configName + ' -s ' + str(len(hostToSlice)) +  '\n') 
     f2.close()
 
 
@@ -439,7 +446,7 @@ priorityMap = {'VID' : 0,
                'cVIP' : 0}
 # seed = 'aNewHope'
 seed = 'thisIsInteresting'
-expNamePrefix = 'QoESli1_'#QoESli1,QoESli2
+expNamePrefix = 'qoeFlowsSamePrio'#QoESli1,QoESli2
 consideredClients = ['VID', 'LVD', 'FDO', 'VIP', 'SSH', 'cVIP']
 
 #--- 2slices ---
@@ -447,10 +454,13 @@ consideredClients = ['VID', 'LVD', 'FDO', 'VIP', 'SSH', 'cVIP']
 #sliNames = ['connBWS', 'connDEL']
 
 #--- 6slices ---
-hostToSli = [['VID'],['LVD'],['FDO'],['VIP'],['SSH'],[ 'cVIP']]
-sliNames = ['VID', 'LVD', 'FDO', 'VIP', 'SSH', 'cVIP']
+#hostToSli = [['VID'],['LVD'],['FDO'],['VIP'],['SSH'],[ 'cVIP']]
+#sliNames = ['VID', 'LVD', 'FDO', 'VIP', 'SSH', 'cVIP']
 
 
+#-- Noslices ---
+hostToSli = [['VID', 'LVD', 'FDO', 'VIP', 'SSH', 'cVIP']]
+sliNames = ['connFIX0']
 
 
 
@@ -468,7 +478,20 @@ for rate, maxCli in zip(rates, maxNumCli):
     for qoE in targetQoE:
         for mult in assuredMulti:
             for ceil in ceils:
-                genAllSliConfigsHTBRun(expNamePrefix+'6SlicesHTB_R'+str(int(rate))+'_Q'+str(int(qoE*10))+'_M'+str(int(mult*100))+'_C'+str(int(ceil*100)), 'liteCbaselineTestTokenQoS_base', trafficMix, rate, qoE, consideredClients, hostToSli, sliNames, maxCli, ceil, mult, priorityMap, seed)
+                #genAllSliConfigsHTBRun(expNamePrefix+'GBR'+str(int(mult*100))+'No12Base_R'+str(int(rate))+'_Q'+str(int(qoE*10))+'_M'+str(int(mult*100))+'_C'+str(int(ceil*100)), 'liteCbaselineTestTokenQoS_base', trafficMix, rate, qoE,consideredClients, [['VID', 'LVD', 'FDO', 'VIP', 'SSH', 'cVIP']],['connFIX0'], maxCli, ceil, mult, 'priorityMap', seed)
+                #genAllSliConfigsHTBRun(expNamePrefix+'GBR'+str(int(mult*100))+'No2_2sli_R'+str(int(rate))+'_Q'+str(int(qoE*10))+'_M'+str(int(mult*100))+'_C'+str(int(ceil*100)), 'liteCbaselineTestTokenQoS_base', trafficMix, rate, qoE,consideredClients, [['VID', 'LVD', 'FDO'], ['VIP', 'SSH','cVIP']], ['connBWS', 'connDES'], maxCli, ceil, mult, 'False', seed)
+                #genAllSliConfigsHTBRun(expNamePrefix+'GBR'+str(int(mult*100))+'No3_6sli_R'+str(int(rate))+'_Q'+str(int(qoE*10))+'_M'+str(int(mult*100))+'_C'+str(int(ceil*100)), 'liteCbaselineTestTokenQoS_base', trafficMix, rate, qoE, consideredClients, [['VID'],['LVD'],['FDO'],['VIP'],['SSH'],[ 'cVIP']], ['connVID', 'connLVD', 'connFDO', 'connVIP', 'connSSH','conncVIP'], maxCli, ceil, mult, 'False', seed)
+                admitted, gbrs, mbrs, sliceRes = simpleAdmission(expNamePrefix, rate*1000, qoE, trafficMix, maxCli, ceil, mult, [[x] for x in consideredClients], seed)
+
+                # print(admitted, gbrs, mbrs, sliceRes)
+                for cli in consideredClients:
+                    numHosts = admitted['host'+cli]
+                    availResources = sliceRes[consideredClients.index(cli)]
+                    # print(cli, numHosts, availResources)
+                    genAllSliConfigsHTBRun(expNamePrefix+'No4_6SlicesNoHTB'+cli+'Slice_R'+str(int(rate))+'_Q'+str(int(qoE*10))+'_M'+str(int(mult*100))+'_C'+str(int(ceil*100)), 'liteCbaselineTestTokenQoS_base', {cli : 1.0}, availResources/1000.0, qoE, [cli], [[cli]], ['connFIX0'], numHosts, ceil, mult, 'False', seed)
+                    
+
+                #genAllSliConfigsHTBRun(expNamePrefix+'_R'+str(int(rate))+'_Q'+str(int(qoE*10))+'_M'+str(int(mult*100))+'_C'+str(int(ceil*100)), 'liteCbaselineTestTokenQoS_base', trafficMix, rate, qoE, consideredClients, hostToSli, sliNames, maxCli, ceil, mult, priorityMap, seed)
                 # genAllSliConfigsHTBRun(expNamePrefix+'5SlicesHTB_R'+str(int(rate))+'_Q'+str(int(qoE*10))+'_M'+str(int(mult*100))+'_C'+str(int(ceil*100)), 'liteCbaselineTestTokenQoS_base', expNamePrefix, trafficMix, rate, qoE, consideredClients, [[x] for x in consideredClients], ['conn'+x for x in consideredClients], maxCli, ceil, mult, 'False', seed)
                 # admitted, gbrs, mbrs, sliceRes = simpleAdmission(expNamePrefix, rate*1000, qoE, trafficMix, maxCli, ceil, mult, [[x] for x in consideredClients], seed)
                 # simpleAdmission(expNamePrefix, rate*1000, qoE, trafficMix, maxCli, ceil, mult, [consideredClients], seed)
