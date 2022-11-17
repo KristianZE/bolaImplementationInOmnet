@@ -1,0 +1,22 @@
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+-> Experiment qoeFlowsSamePrioNo4_5SlicesNoHTBSSHSlice_R100_Q35_M100_C100 with requirements:
+	GBR multiplier: 1.0
+	MBR multiplier: 1.0
+	Number of arriving clients: 5
+	Traffic Mix: {'SSH': 1.0}
+	Available Bandwidth: 47.0kbps
+	Desired Target QoE: 3.5	Slicing Configuration: [['SSH']]
+
+Client type requirements:
+	For a QoE of 3.5 SSH needs 10 kbps. It translates to a GBR of 5 kbps and a MBR of 10kbps.
+
+Slice settings:
+	Slice 0 contains the following client types: |SSH| and has 47kbps available
+
+Admission complete:
+	Hosts admitted for desired QoE of 3.5 and link bitrate of 47.0kbps is : 5
+	This allocation will use 25kbps out of available 47.0kbps
+
+For each host type:
+	SSH: 5 arrived, 5 were admitted (total used 25kbps), and 0 were rejected. That corresponds to rejection rate of: 0.0%

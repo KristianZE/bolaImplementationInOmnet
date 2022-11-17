@@ -1,0 +1,32 @@
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+-> Experiment xGBR100No12Base_R100_Q35_M100_C100 with requirements:
+	GBR multiplier: 1.0
+	MBR multiplier: 1.0
+	Number of arriving clients: 200
+	Traffic Mix: {'VID': 0.4, 'LVD': 0.2, 'FDO': 0.05, 'VIP': 0.28, 'SSH': 0.05, 'cVIP': 0.02}
+	Available Bandwidth: 100000kbps
+	Desired Target QoE: 3.5	Slicing Configuration: [['VID', 'LVD', 'FDO', 'VIP', 'SSH', 'cVIP']]
+
+Client type requirements:
+	For a QoE of 3.5 VID needs 1120 kbps. It translates to a GBR of 952 kbps and a MBR of 1400kbps.
+	For a QoE of 3.5 LVD needs 1820 kbps. It translates to a GBR of 1001 kbps and a MBR of 2275kbps.
+	For a QoE of 3.5 FDO needs 2240 kbps. It translates to a GBR of 2240 kbps and a MBR of 2800kbps.
+	For a QoE of 3.5 VIP needs 30 kbps. It translates to a GBR of 21 kbps and a MBR of 60kbps.
+	For a QoE of 3.5 SSH needs 10 kbps. It translates to a GBR of 5 kbps and a MBR of 10kbps.
+	For a QoE of 3.5 cVIP needs 310 kbps. It translates to a GBR of 217 kbps and a MBR of 620kbps.
+
+Slice settings:
+	Slice 0 contains the following client types: |VID|LVD|FDO|VIP|SSH|cVIP| and has 99998kbps available
+
+Admission complete:
+	Hosts admitted for desired QoE of 3.5 and link bitrate of 100000kbps is : 159
+	This allocation will use 99803kbps out of available 100000kbps
+
+For each host type:
+	VID: 73 arrived, 47 were admitted (total used 44744kbps), and 26 were rejected. That corresponds to rejection rate of: 35.61643835616438%
+	LVD: 47 arrived, 33 were admitted (total used 33033kbps), and 14 were rejected. That corresponds to rejection rate of: 29.78723404255319%
+	FDO: 10 arrived, 9 were admitted (total used 20160kbps), and 1 were rejected. That corresponds to rejection rate of: 10.0%
+	VIP: 55 arrived, 55 were admitted (total used 1155kbps), and 0 were rejected. That corresponds to rejection rate of: 0.0%
+	SSH: 12 arrived, 12 were admitted (total used 60kbps), and 0 were rejected. That corresponds to rejection rate of: 0.0%
+	cVIP: 3 arrived, 3 were admitted (total used 651kbps), and 0 were rejected. That corresponds to rejection rate of: 0.0%

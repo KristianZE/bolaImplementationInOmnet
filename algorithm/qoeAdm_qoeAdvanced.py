@@ -432,10 +432,10 @@ assuredMulti = [1.0] #what is this?
 rates = [100] #link rate in Mbps
 maxNumCli = [200]
 ceils = [1.0] 
-trafficMix = {'VID' : 0.44, 
-              'LVD' : 0.24, 
+trafficMix = {'VID' : 0.40, 
+              'LVD' : 0.20, 
               'FDO' : 0.05, 
-              'VIP' : 0.2, 
+              'VIP' : 0.28, 
               'SSH' : 0.05,
               'cVIP' : 0.02}
 priorityMap = {'VID' : 0, 
@@ -445,8 +445,8 @@ priorityMap = {'VID' : 0,
                'SSH' : 0,
                'cVIP' : 0}
 # seed = 'aNewHope'
-seed = 'thisIsInteresting'
-expNamePrefix = 'qoeFlowsSamePrio'#QoESli1,QoESli2
+seed = 'this'
+expNamePrefix = 'x'#QoESli1,QoESli2
 consideredClients = ['VID', 'LVD', 'FDO', 'VIP', 'SSH', 'cVIP']
 
 #--- 2slices ---
@@ -478,17 +478,17 @@ for rate, maxCli in zip(rates, maxNumCli):
     for qoE in targetQoE:
         for mult in assuredMulti:
             for ceil in ceils:
-                #genAllSliConfigsHTBRun(expNamePrefix+'GBR'+str(int(mult*100))+'No12Base_R'+str(int(rate))+'_Q'+str(int(qoE*10))+'_M'+str(int(mult*100))+'_C'+str(int(ceil*100)), 'liteCbaselineTestTokenQoS_base', trafficMix, rate, qoE,consideredClients, [['VID', 'LVD', 'FDO', 'VIP', 'SSH', 'cVIP']],['connFIX0'], maxCli, ceil, mult, 'priorityMap', seed)
-                #genAllSliConfigsHTBRun(expNamePrefix+'GBR'+str(int(mult*100))+'No2_2sli_R'+str(int(rate))+'_Q'+str(int(qoE*10))+'_M'+str(int(mult*100))+'_C'+str(int(ceil*100)), 'liteCbaselineTestTokenQoS_base', trafficMix, rate, qoE,consideredClients, [['VID', 'LVD', 'FDO'], ['VIP', 'SSH','cVIP']], ['connBWS', 'connDES'], maxCli, ceil, mult, 'False', seed)
-                #genAllSliConfigsHTBRun(expNamePrefix+'GBR'+str(int(mult*100))+'No3_6sli_R'+str(int(rate))+'_Q'+str(int(qoE*10))+'_M'+str(int(mult*100))+'_C'+str(int(ceil*100)), 'liteCbaselineTestTokenQoS_base', trafficMix, rate, qoE, consideredClients, [['VID'],['LVD'],['FDO'],['VIP'],['SSH'],[ 'cVIP']], ['connVID', 'connLVD', 'connFDO', 'connVIP', 'connSSH','conncVIP'], maxCli, ceil, mult, 'False', seed)
+                genAllSliConfigsHTBRun(expNamePrefix+'GBR'+str(int(mult*100))+'No12Base_R'+str(int(rate))+'_Q'+str(int(qoE*10))+'_M'+str(int(mult*100))+'_C'+str(int(ceil*100)), 'liteCbaselineTestTokenQoS_base', trafficMix, rate, qoE,consideredClients, [['VID', 'LVD', 'FDO', 'VIP', 'SSH', 'cVIP']],['connFIX0'], maxCli, ceil, mult, 'priorityMap', seed)
+                genAllSliConfigsHTBRun(expNamePrefix+'GBR'+str(int(mult*100))+'No2_2sli_R'+str(int(rate))+'_Q'+str(int(qoE*10))+'_M'+str(int(mult*100))+'_C'+str(int(ceil*100)), 'liteCbaselineTestTokenQoS_base', trafficMix, rate, qoE,consideredClients, [['VID', 'LVD', 'FDO'], ['VIP', 'SSH','cVIP']], ['connBWS', 'connDES'], maxCli, ceil, mult, 'False', seed)
+                genAllSliConfigsHTBRun(expNamePrefix+'GBR'+str(int(mult*100))+'No3_6sli_R'+str(int(rate))+'_Q'+str(int(qoE*10))+'_M'+str(int(mult*100))+'_C'+str(int(ceil*100)), 'liteCbaselineTestTokenQoS_base', trafficMix, rate, qoE, consideredClients, [['VID'],['LVD'],['FDO'],['VIP'],['SSH'],[ 'cVIP']], ['connVID', 'connLVD', 'connFDO', 'connVIP', 'connSSH','conncVIP'], maxCli, ceil, mult, 'False', seed)
                 admitted, gbrs, mbrs, sliceRes = simpleAdmission(expNamePrefix, rate*1000, qoE, trafficMix, maxCli, ceil, mult, [[x] for x in consideredClients], seed)
 
                 # print(admitted, gbrs, mbrs, sliceRes)
-                for cli in consideredClients:
-                    numHosts = admitted['host'+cli]
-                    availResources = sliceRes[consideredClients.index(cli)]
-                    # print(cli, numHosts, availResources)
-                    genAllSliConfigsHTBRun(expNamePrefix+'No4_6SlicesNoHTB'+cli+'Slice_R'+str(int(rate))+'_Q'+str(int(qoE*10))+'_M'+str(int(mult*100))+'_C'+str(int(ceil*100)), 'liteCbaselineTestTokenQoS_base', {cli : 1.0}, availResources/1000.0, qoE, [cli], [[cli]], ['connFIX0'], numHosts, ceil, mult, 'False', seed)
+                # for cli in consideredClients:
+                #     numHosts = admitted['host'+cli]
+                #     availResources = sliceRes[consideredClients.index(cli)]
+                #     # print(cli, numHosts, availResources)
+                #     genAllSliConfigsHTBRun(expNamePrefix+'No4_6SlicesNoHTB'+cli+'Slice_R'+str(int(rate))+'_Q'+str(int(qoE*10))+'_M'+str(int(mult*100))+'_C'+str(int(ceil*100)), 'liteCbaselineTestTokenQoS_base', {cli : 1.0}, availResources/1000.0, qoE, [cli], [[cli]], ['connFIX0'], numHosts, ceil, mult, 'False', seed)
                     
 
                 #genAllSliConfigsHTBRun(expNamePrefix+'_R'+str(int(rate))+'_Q'+str(int(qoE*10))+'_M'+str(int(mult*100))+'_C'+str(int(ceil*100)), 'liteCbaselineTestTokenQoS_base', trafficMix, rate, qoE, consideredClients, hostToSli, sliNames, maxCli, ceil, mult, priorityMap, seed)

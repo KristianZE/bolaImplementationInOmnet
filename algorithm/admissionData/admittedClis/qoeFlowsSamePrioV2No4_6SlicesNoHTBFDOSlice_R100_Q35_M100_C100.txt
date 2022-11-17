@@ -1,0 +1,22 @@
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+-> Experiment qoeFlowsSamePrioV2No4_6SlicesNoHTBFDOSlice_R100_Q35_M100_C100 with requirements:
+	GBR multiplier: 1.0
+	MBR multiplier: 1.0
+	Number of arriving clients: 5
+	Traffic Mix: {'FDO': 1.0}
+	Available Bandwidth: 11926.0kbps
+	Desired Target QoE: 3.5	Slicing Configuration: [['FDO']]
+
+Client type requirements:
+	For a QoE of 3.5 FDO needs 2240 kbps. It translates to a GBR of 2240 kbps and a MBR of 2800kbps.
+
+Slice settings:
+	Slice 0 contains the following client types: |FDO| and has 11926kbps available
+
+Admission complete:
+	Hosts admitted for desired QoE of 3.5 and link bitrate of 11926.0kbps is : 5
+	This allocation will use 11200kbps out of available 11926.0kbps
+
+For each host type:
+	FDO: 5 arrived, 5 were admitted (total used 11200kbps), and 0 were rejected. That corresponds to rejection rate of: 0.0%

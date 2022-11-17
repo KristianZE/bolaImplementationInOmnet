@@ -1,0 +1,22 @@
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+-> Experiment qoeFlowsSamePrioV2No4_6SlicesNoHTBLVDSlice_R100_Q35_M100_C100 with requirements:
+	GBR multiplier: 1.0
+	MBR multiplier: 1.0
+	Number of arriving clients: 38
+	Traffic Mix: {'LVD': 1.0}
+	Available Bandwidth: 38760.0kbps
+	Desired Target QoE: 3.5	Slicing Configuration: [['LVD']]
+
+Client type requirements:
+	For a QoE of 3.5 LVD needs 1820 kbps. It translates to a GBR of 1001 kbps and a MBR of 2275kbps.
+
+Slice settings:
+	Slice 0 contains the following client types: |LVD| and has 38760kbps available
+
+Admission complete:
+	Hosts admitted for desired QoE of 3.5 and link bitrate of 38760.0kbps is : 38
+	This allocation will use 38038kbps out of available 38760.0kbps
+
+For each host type:
+	LVD: 38 arrived, 38 were admitted (total used 38038kbps), and 0 were rejected. That corresponds to rejection rate of: 0.0%

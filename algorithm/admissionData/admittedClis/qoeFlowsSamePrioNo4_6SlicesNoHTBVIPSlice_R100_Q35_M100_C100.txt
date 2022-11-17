@@ -1,0 +1,22 @@
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+-> Experiment qoeFlowsSamePrioNo4_6SlicesNoHTBVIPSlice_R100_Q35_M100_C100 with requirements:
+	GBR multiplier: 1.0
+	MBR multiplier: 1.0
+	Number of arriving clients: 27
+	Traffic Mix: {'VIP': 1.0}
+	Available Bandwidth: 569.0kbps
+	Desired Target QoE: 3.5	Slicing Configuration: [['VIP']]
+
+Client type requirements:
+	For a QoE of 3.5 VIP needs 30 kbps. It translates to a GBR of 21 kbps and a MBR of 60kbps.
+
+Slice settings:
+	Slice 0 contains the following client types: |VIP| and has 569kbps available
+
+Admission complete:
+	Hosts admitted for desired QoE of 3.5 and link bitrate of 569.0kbps is : 27
+	This allocation will use 567kbps out of available 569.0kbps
+
+For each host type:
+	VIP: 27 arrived, 27 were admitted (total used 567kbps), and 0 were rejected. That corresponds to rejection rate of: 0.0%

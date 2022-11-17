@@ -1,0 +1,30 @@
+[Config qoeFlowsSamePrioNo4_6SlicesNoHTBSSHSlice_R100_Q35_M100_C100]
+description = "Configuration for qoeFlowsSamePrioNo4_6SlicesNoHTBSSHSlice_R100_Q35_M100_C100. All five applications. QoS employed. Guarantee Multiplier: 1.0; Ceil multiplier: 1.0"
+
+extends = liteCbaselineTestTokenQoS_base
+
+*.configurator.config = xmldoc("configs/routing/qoeFlowsSamePrioNo4_6SlicesNoHTBSSHSlice_R100_Q35_M100_C100Routing.xml")
+
+*.nVID = 0 # Number of video clients
+*.nLVD = 0 # Number of live video client
+*.nFDO = 0 # Number of file download clients
+*.nSSH = 5 # Number of SSH clients
+*.nVIP = 0 # Number of VoIP clients
+*.ncVIP = 0 # Number of critical VoIP clients
+
+*.router*.ppp[0].queue.typename = "HtbQueue"
+*.router*.ppp[0].queue.numQueues = 5
+*.router*.ppp[0].queue.queue[*].typename = "DropTailQueue"
+*.router*.ppp[0].queue.packetCapacity = -1
+*.router*.ppp[0].queue.htbHysterisis = false
+*.router*.ppp[0].queue.scheduler.adjustHTBTreeValuesForCorectness = false
+*.router*.ppp[0].queue.scheduler.checkHTBTreeValuesForCorectness = false
+*.router*.ppp[0].queue.htbTreeConfig = xmldoc("configs/htbTree/qoeFlowsSamePrioNo4_6SlicesNoHTBSSHSlice_R100_Q35_M100_C100HTB.xml")
+*.router*.ppp[0].queue.classifier.defaultGateIndex = 0
+*.router0.ppp[0].queue.classifier.packetFilters = [expr(ipv4.srcAddress.str() =~ "10.0.0.0"),expr(ipv4.srcAddress.str() =~ "10.0.0.4"),expr(ipv4.srcAddress.str() =~ "10.0.0.8"),expr(ipv4.srcAddress.str() =~ "10.0.0.12"),expr(ipv4.srcAddress.str() =~ "10.0.0.16")]
+*.router1.ppp[0].queue.classifier.packetFilters = [expr(ipv4.destAddress.str() =~ "10.0.0.0"),expr(ipv4.destAddress.str() =~ "10.0.0.4"),expr(ipv4.destAddress.str() =~ "10.0.0.8"),expr(ipv4.destAddress.str() =~ "10.0.0.12"),expr(ipv4.destAddress.str() =~ "10.0.0.16")]
+
+**.connFIX0.datarate = 47000bps
+**.connFIX0.delay = 10ms
+
+

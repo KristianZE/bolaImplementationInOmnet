@@ -1,0 +1,22 @@
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+-> Experiment qoeFlowsSamePrioNo4_6SlicesNoHTBVIDSlice_R100_Q35_M100_C100 with requirements:
+	GBR multiplier: 1.0
+	MBR multiplier: 1.0
+	Number of arriving clients: 49
+	Traffic Mix: {'VID': 1.0}
+	Available Bandwidth: 46741.0kbps
+	Desired Target QoE: 3.5	Slicing Configuration: [['VID']]
+
+Client type requirements:
+	For a QoE of 3.5 VID needs 1120 kbps. It translates to a GBR of 952 kbps and a MBR of 1400kbps.
+
+Slice settings:
+	Slice 0 contains the following client types: |VID| and has 46741kbps available
+
+Admission complete:
+	Hosts admitted for desired QoE of 3.5 and link bitrate of 46741.0kbps is : 49
+	This allocation will use 46648kbps out of available 46741.0kbps
+
+For each host type:
+	VID: 49 arrived, 49 were admitted (total used 46648kbps), and 0 were rejected. That corresponds to rejection rate of: 0.0%
