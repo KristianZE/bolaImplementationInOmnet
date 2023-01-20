@@ -645,6 +645,9 @@ def plotSysUtilMultiExperiment(testNames, appTypes, descriptors, resToSli):
             fid = getFileInfo(filename, reqRunInfo)
             # print(fid)
             runIdent = testName + '_Q' + str(fid['Q']) + '_M' + str(fid['M']) + '_C' + str(fid['C'])
+            print("---------------------")
+            print(runIdent)
+            print(runs[testName])
             if runIdent not in runs[testName]:
                 runs[testName][runIdent] = {}
                 for aT in resToSli:
