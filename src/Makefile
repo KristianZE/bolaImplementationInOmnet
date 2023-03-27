@@ -19,10 +19,10 @@ USERIF_LIBS = $(ALL_ENV_LIBS) # that is, $(QTENV_LIBS) $(CMDENV_LIBS)
 #USERIF_LIBS = $(QTENV_LIBS)
 
 # C++ include paths (with -I)
-INCLUDE_PATH =  -I/src -I$(INET_PROJ)/src -I$(INETGPL_PROJ)/src
+INCLUDE_PATH = -I/src -I$(INET_PROJ)/src -I$(INETGPL_PROJ)/src
 
 # Additional object and library files to link with
-EXTRA_OBJS =  $(LDFLAG_LIBPATH)$(INET_PROJ)/src  -lINET$(D) $(LDFLAG_LIBPATH)$(INETGPL_PROJ)/src  -lINETGPL$(D)
+EXTRA_OBJS = $(LDFLAG_LIBPATH)$(INET_PROJ)/src  -lINET$(D) $(LDFLAG_LIBPATH)$(INETGPL_PROJ)/src  -lINETGPL$(D)
 
 # Additional libraries (-L, -l options)
 LIBS =
@@ -53,8 +53,8 @@ MSGFILES =
 # SM files
 SMFILES =
 
-INET_PROJ=/Users/marijagajic/omnetpp-6.0/inet
-INETGPL_PROJ=/Users/marijagajic/omnetpp-6.0/inet-gpl
+INET_PROJ=/Users/kriedv/Documents/omnetpp-6.0.1/inet
+INETGPL_PROJ=/Users/kriedv/Documents/omnetpp-6.0.1/inet-gpl
 
 #------------------------------------------------------------------------------
 
@@ -111,7 +111,8 @@ $O/$(TARGET): $(OBJS)  $(wildcard $(EXTRA_OBJS)) Makefile $(CONFIGFILE)
 
 .PHONY: all clean cleanall depend msgheaders smheaders
 
-.SUFFIXES: .cc
+# disabling all implicit rules
+.SUFFIXES :
 
 $O/%.o: %.cc $(COPTS_FILE) | msgheaders smheaders
 	@$(MKPATH) $(dir $@)

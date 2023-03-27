@@ -40,6 +40,11 @@ protected:
     int video_buffer_min_rebuffering = 1; // if video_buffer < video_buffer_min_rebuffering then a rebuffering event occurs
     int manifest_size;
 
+    //FOR BOLA
+    int max_level = 5;
+    int last_level = 0;
+    long current_rate;
+
     simtime_t startTime;
     simtime_t stopTime;
     cMessage *timeoutMsg;
@@ -116,6 +121,11 @@ protected:
     int generateRandomNumberFromRange(int min, int max);
     int generateRandomizedBitrate(int minBitrate, int maxBitrate);
     int getVideoBitrate(int resolution);
+    int getBufferLevel();
+    int get_m_star_n(int max_level, double V_D, double y, double p, int q);
+    double utility_v(int m);
+    int get_m_dash();
+    double getSize(int m);
 //    std::string getVResString(int resolution);
 
 public:
