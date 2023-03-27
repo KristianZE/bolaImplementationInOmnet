@@ -44,6 +44,7 @@ protected:
     int max_level = 5;
     int last_level = 0;
     long current_rate;
+    int rates[];
 
     simtime_t startTime;
     simtime_t stopTime;
