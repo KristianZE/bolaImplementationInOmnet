@@ -44,7 +44,8 @@ protected:
     int max_level = 5;
     int last_level = 0;
     long current_rate;
-    int rates[];
+    int rates[5] = {}; // In byte/s
+    int p = 1;
 
     simtime_t startTime;
     simtime_t stopTime;

@@ -20,7 +20,6 @@
 
 #include <random>
 #include <string>
-#include <cstdlib>
 
 namespace inet {
 
@@ -86,7 +85,7 @@ double TCPVideoStreamCliAppV2lite::getSize(int m) //rates should be global?
 int TCPVideoStreamCliAppV2lite::get_m_dash(){
     int p = segment_length;
     int r = current_rate;
-    double size_Min = getSize(0);
+    int size_Min = getSize(0);
     double val2 = std::max(r, size_Min / p);
     for (int m = 0; m < max_level; m++)
     {
@@ -99,12 +98,15 @@ int TCPVideoStreamCliAppV2lite::get_m_dash(){
     return 0;
 }
 
+//video_current_quality_index = std::max(video_current_quality_index - 1, 0);
+
+
 
 double TCPVideoStreamCliAppV2lite::utility_v(int m)
     {
         double size_m = getSize(m);
         double size_max = getSize(max_level);
-        return (size_m / size_Max);
+        return (size_m / size_max);
     }
 
 int TCPVideoStreamCliAppV2lite::get_m_star_n(int max_level, double V_D, double y, double p, int q)
@@ -128,17 +130,15 @@ int TCPVideoStreamCliAppV2lite::get_m_star_n(int max_level, double V_D, double y
 int TCPVideoStreamCliAppV2lite::getBufferLevel()  { //last_level must be set globally
     int p = segment_length;
     double y = 5.0 * p;
-    int q_max = (int)(video_buffer_max_length / p); // maximal buffer size in chucks
+    double q_max = (int)(video_buffer_max_length / p); // maximal buffer size in chucks
     int q = (int)(video_buffer / p);         // buffer level in chuncks
 
 
-    float playtime_from_beginning = media_engine.current_time;
-    //cout << "playtime_from_beginning " << playtime_from_beginning << endl;
-    //map<string, dynamic> playlist = parser.playlists[0]; need this?
+    double playtime_from_beginning = simTime(); //Not sure if simTime will be the current playtime.
     double playtime_to_end = video_duration - playtime_from_beginning;
 
     double t = std::min(playtime_from_beginning, playtime_to_end);
-    double t_dash = std::max(t / 2, 3 * p);
+    double t_dash = std::max(t / 2, (double)3 * p);
     double q_D_max = std::min(q_max, t_dash / p);
     double V_D = (q_D_max - 1) / (utility_v(0) + y * p); // or V=0.93
     int m_star_n = get_m_star_n(max_level, V_D, y, p, q);
@@ -146,7 +146,7 @@ int TCPVideoStreamCliAppV2lite::getBufferLevel()  { //last_level must be set glo
     if (m_star_n > last_level) // Is m*[n] > m*[n-1]?
     {
         int m_dash = get_m_dash(); // m' = max m such that Sm/p ≤ max[r, S1/p]
-        if (m_dash >= m_star_n) // DOUBLE CHECK THIS Is m' ≥ m∗[n]? If m' ≥ m∗[n] then m'← m∗[n]
+        if (m_dash >= m_star_n)
         {
             m_dash = m_star_n;
         }
@@ -156,7 +156,7 @@ int TCPVideoStreamCliAppV2lite::getBufferLevel()  { //last_level must be set glo
         }
         else
         {
-            m_dash = m_dash - 1;
+            m_dash = m_dash + 1;
         }
         m_star_n = m_dash;
     }
