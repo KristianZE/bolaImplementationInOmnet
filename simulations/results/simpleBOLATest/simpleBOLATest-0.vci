@@ -1,0 +1,219 @@
+file 3341013 1681224507                                         
+version 3
+run simpleBOLATest-0-20230411-16:48:22-84453
+attr configname simpleBOLATest
+attr datetime 20230411-16:48:22
+attr datetimef 20230411-164822
+attr experiment simpleBOLATest
+attr inifile BOLASetup.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network simpleBOLASetup
+attr processid 84453
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config image-path ../../inet/images
+config description "All five applications - base configuration without any resource allocation"
+config network simpleBOLASetup
+config sim-time-limit 280s
+config output-vector-file results/simpleBOLATest/simpleBOLATest-0.vec
+config output-scalar-file results/simpleBOLATest/simpleBOLATest-0.sca
+config **.crcMode "\"computed\""
+config *.hostVID[*].numApps 1
+config **.hostVID[*].hasTcp true
+config **.hostVID[*].app[0].typename improved5gns.apps.TCPVideoStreamCliAppV2lite
+config **.hostVID[*].app[0].localAddress "\"\""
+config **.hostVID[*].app[0].localPort -1
+config **.hostVID[*].app[0].connectAddress "\"serverVID\""
+config **.hostVID[*].app[0].connectPort 1042
+config **.hostVID[*].app[0].dataTransferMode "\"object\""
+config **.hostVID[*].app[0].startTime uniform(0.01s,1s)
+config **.hostVID[*].app[0].stopTime -1s
+config **.hostVID[*].app[0].idleInterval 1s
+config **.hostVID[*].app[0].requestLength 200B
+config **.hostVID[*].app[0].reconnectInterval 1s
+config **.hostVID[*].app[0].numRequestsPerSession 1
+config **.hostVID[*].app[0].thinkTime 1s
+config **.hostVID[*].app[0].video_resolution "\"360 480 720 1080\""
+config **.hostVID[*].app[0].manifest_size 100000
+config **.hostVID[*].app[0].video_buffer_max_length 30s
+config **.hostVID[*].app[0].video_duration int(uniform(120s,200s))
+config **.hostVID[*].app[0].segment_length 5s
+config **.hostVID[*].app[0].useFlexibleBitrate "\"flexible\""
+config *.serverVID.hasTcp true
+config *.serverVID.numApps 1
+config *.serverVID.app[0].typename TcpGenericServerApp
+config *.serverVID.app[0].localAddress "\"\""
+config *.serverVID.app[0].localPort 1042
+config *.serverVID.app[0].replyDelay 0s
+config *.serverVID.app[0].stopOperationExtraTime -1s
+config *.serverVID.app[0].stopOperationTimeout 2s
+config sim-time-limit 250s
+config num-rngs 1
+config seed-0-mt 5
+config output-scalar-file-append false
+config record-eventlog false
+config *.visualizer.*.interfaceTableVisualizer.displayInterfaceTables true
+config **.tcp.typename Tcp
+config **.udp.typename Udp
+config **.packetCapacity 500
+config **.tcp.advertisedWindow 65535
+config **.tcp.delayedAcksEnabled false
+config **.tcp.nagleEnabled true
+config **.tcp.limitedTransmitEnabled false
+config **.tcp.increasedIWEnabled false
+config **.tcp.sackSupport false
+config **.tcp.windowScalingSupport false
+config **.tcp.timestampSupport false
+config **.tcp.mss 1452
+config **.tcp.tcpAlgorithmClass "\"TcpReno\""
+config **.tcp.*.*.vector-recording true
+config **.tcp.*.rtt.result-recording-modes +vector
+config **.tcp.*.*.result-recording-modes -vector
+config **.host*.app*.*.vector-recording true
+config **.ppp.*xPk*.vector-recording true
+config **.vector-recording false
+
+vector 0 simpleBOLASetup.hostVID[0].app[0] numActiveSessions:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source sum(connect)
+attr title "number of active sessions"
+vector 1 simpleBOLASetup.hostVID[0].app[0] DASHBufferLength:vector ETV
+attr recordingmode vector
+attr title "Video buffer length (in seconds)"
+vector 2 simpleBOLASetup.hostVID[0].app[0] DASHVideoPlaybackPointer:vector ETV
+attr recordingmode vector
+attr title "Video playback pointer"
+vector 3 simpleBOLASetup.hostVID[0].app[0] DASHVideoBitrate:vector ETV
+attr recordingmode vector
+attr title "Requested video bitrate"
+vector 4 simpleBOLASetup.hostVID[0].app[0] DASHVideoResolution:vector ETV
+attr recordingmode vector
+attr title "Requested video resolution"
+vector 5 simpleBOLASetup.hostVID[0].app[0] DASHVideoPlaybackStatus:vector ETV
+attr recordingmode vector
+attr title "Video playback statuatus (playing=1, buffering=0)"
+0	4062 8 0 0 0 0 1 0 0 0 0
+1	4070 8 0 0 0 0 1 0 0 0 0
+2	4078 8 0 0 0 0 1 0 0 0 0
+3	4086 10 0 0 0 0 1 112 112 112 12544
+4	4096 10 0 0 0 0 1 360 360 360 129600
+5	4106 21 2 2 0.229773239663 0.229773239663 1 0 0 0 0
+
+s"
+vector 7 simpleBOLASetup.router0.ppp[1].ppp rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, packetBytes"
+vector 8 simpleBOLASetup.router0.ppp[0].ppp txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, packetBytes"
+0	4701 29 0 2 0 0.229773239663 2 0 1 1 1
+1	4730 8 0 0 0 0 1 0 0 0 0
+2	4738 8 0 0 0 0 1 0 0 0 0
+3	4746 10 0 0 0 0 1 112 112 112 12544
+4	4756 10 0 0 0 0 1 360 360 360 129600
+5	4766 21 2 2 0.229773239663 0.229773239663 1 0 0 0 0
+6	4787 22 5 5 0.229773239663 0.229773239663 1 51 51 51 2601
+7	4809 22 7 7 0.229773380463 0.229773380463 1 51 51 51 2601
+8	4831 22 9 9 0.229773380463 0.229773380463 1 51 51 51 2601
+
+ed, packetBytes"
+vector 11 simpleBOLASetup.serverVID.ppp[0].ppp rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, packetBytes"
+vector 12 simpleBOLASetup.serverVID.ppp[0].ppp txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, packetBytes"
+vector 13 simpleBOLASetup.router1.ppp[1].ppp rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, packetBytes"
+vector 14 simpleBOLASetup.router1.ppp[0].ppp txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, packetBytes"
+vector 15 simpleBOLASetup.router0.ppp[0].ppp rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, packetBytes"
+vector 16 simpleBOLASetup.router0.ppp[1].ppp txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, packetBytes"
+vector 17 simpleBOLASetup.hostVID[0].ppp[0].ppp rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, packetBytes"
+vector 18 simpleBOLASetup.hostVID[0].tcp.conn-8 rtt:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+vector 19 simpleBOLASetup.hostVID[0].app[0] endToEndDelay:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source dataAge(packetReceived)
+attr title "end-to-end delay"
+attr unit s
+vector 20 simpleBOLASetup.serverVID.tcp.conn-9 rtt:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+vector 21 simpleBOLASetup.hostVID[0].app[0] DASHReceivedBytes:vector ETV
+attr recordingmode vector
+attr title "Bytes received with last segment"
+20	7208 7329 109 101704 0.229779362863 95.230081208463 205 1.5552e-06 5.3964e-05 0.003581876 1.36680599344e-07
+vector 22 simpleBOLASetup.hostVID[0].tcp.conn-10 rtt:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+vector 23 simpleBOLASetup.serverVID.tcp.conn-11 rtt:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+23	14786 7652 101890 201452 125.229937085263 220.230149859663 201 1.5552e-06 5.3964e-05 0.0034813304 1.32262092944e-07
+vector 24 simpleBOLASetup.hostVID[0].tcp.conn-12 rtt:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+vector 25 simpleBOLASetup.serverVID.tcp.conn-13 rtt:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+0	22687 140 0 201531 0 250.229999613263 6 0 1 3 3
+1	22827 9581 0 242645 0 279.230068264463 341 0 30 8330 221030
+2	32408 7917 0 242645 0 279.230068264463 280 0 124 15935 1295055
+3	40325 1779 0 238405 0 275.230068264463 62 112 336 19264 6297088
+4	42104 1779 0 238405 0 275.230068264463 62 360 720 33480 19224000
+5	43883 213 2 203016 0.229773239663 250.230068264463 8 0 1 3 3
+6	44096 234048 5 242629 0.229773239663 275.230252615663 8352 47 247 404956 22096344
+7	278144 234048 7 242631 0.229773380463 275.230252753263 8352 47 247 404956 22096344
+8	512192 234049 9 242633 0.229773380463 275.230252753263 8352 47 247 404956 22096344
+9	746241 234050 11 242635 0.229773521263 275.230252890863 8352 47 247 404956 22096344
+10	980291 242402 13 242637 0.229773521263 275.230252890863 8352 47 247 404956 22096344
+11	1222693 242402 15 242639 0.229773662063 275.230253028463 8352 47 247 404956 22096344
+12	1465095 258744 19 242614 0.229773662063 275.230250014063 8349 47 1499 12378415 18519485813
+13	1723839 258747 21 242616 0.229773802863 275.230250881263 8349 47 1499 12378415 18519485813
+14	1982586 258749 23 242618 0.229773802863 275.230250881263 8349 47 1499 12378415 18519485813
+15	2241335 258752 25 242620 0.229773943663 275.230251748463 8349 47 1499 12378415 18519485813
+16	2500087 258753 27 242622 0.229773943663 275.230251748463 8349 47 1499 12378415 18519485813
+17	2758840 258756 29 242624 0.229774084463 275.230252615663 8349 47 1499 12378415 18519485813
+18	3017596 921 82 98330 0.229775427663 95.229932267663 26 1.3056e-06 1.3432e-06 3.42088e-05 4.501653952e-11
+19	3018517 316238 95 242627 0.229778950063 275.230252615663 8280 3.9352e-06 0.0001834584 0.7549623664 8.9994304410282e-05
+21	3334755 2039 2067 242627 0.229868178863 275.230252615663 62 70000 210000 11986000 2433148000000
+22	3336794 950 101863 198078 125.229933150063 220.230000918863 25 1.3056e-06 1.3432e-06 3.28656e-05 4.321235328e-11
+24	3337744 418 201611 238438 250.230001801263 275.230069570063 11 1.3056e-06 1.3432e-06 1.45872e-05 1.934807424e-11
+25	3338162 2850 201638 242641 250.230005736463 275.230253028463 75 1.5552e-06 5.3964e-05 0.0014944824 6.319771025728e-08
+

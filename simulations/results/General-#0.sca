@@ -1,0 +1,2902 @@
+version 3
+run General-0-20230404-11:31:21-76654
+attr configname General
+attr datetime 20230404-11:31:21
+attr datetimef 20230404-113121
+attr experiment General
+attr inifile simpleBOLASetup.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network simpleBOLASetup
+attr processid 76654
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config image-path ../../inet/images
+config network simpleBOLASetup
+
+par simpleBOLASetup.client.pppg$o[0].channel typename "\"improved5gns.simulations.simpleBOLASetup.C\""
+par simpleBOLASetup.client.pppg$o[0].channel disabled false
+attr mutable ""
+par simpleBOLASetup.client.pppg$o[0].channel delay 1e-07s
+attr mutable ""
+attr unit s
+par simpleBOLASetup.client.pppg$o[0].channel datarate 1e+09bps
+attr mutable ""
+attr unit bps
+par simpleBOLASetup.client.pppg$o[0].channel ber 0
+attr mutable ""
+par simpleBOLASetup.client.pppg$o[0].channel per 0
+attr mutable ""
+par simpleBOLASetup.router0.pppg$o[0].channel typename "\"improved5gns.simulations.simpleBOLASetup.C\""
+par simpleBOLASetup.router0.pppg$o[0].channel disabled false
+attr mutable ""
+par simpleBOLASetup.router0.pppg$o[0].channel delay 1e-07s
+attr mutable ""
+attr unit s
+par simpleBOLASetup.router0.pppg$o[0].channel datarate 1e+09bps
+attr mutable ""
+attr unit bps
+par simpleBOLASetup.router0.pppg$o[0].channel ber 0
+attr mutable ""
+par simpleBOLASetup.router0.pppg$o[0].channel per 0
+attr mutable ""
+par simpleBOLASetup.server.pppg$o[0].channel typename "\"improved5gns.simulations.simpleBOLASetup.C\""
+par simpleBOLASetup.server.pppg$o[0].channel disabled false
+attr mutable ""
+par simpleBOLASetup.server.pppg$o[0].channel delay 1e-07s
+attr mutable ""
+attr unit s
+par simpleBOLASetup.server.pppg$o[0].channel datarate 1e+10bps
+attr mutable ""
+attr unit bps
+par simpleBOLASetup.server.pppg$o[0].channel ber 0
+attr mutable ""
+par simpleBOLASetup.server.pppg$o[0].channel per 0
+attr mutable ""
+par simpleBOLASetup.router1.pppg$o[0].channel typename "\"improved5gns.simulations.simpleBOLASetup.C\""
+par simpleBOLASetup.router1.pppg$o[0].channel disabled false
+attr mutable ""
+par simpleBOLASetup.router1.pppg$o[0].channel delay 1e-07s
+attr mutable ""
+attr unit s
+par simpleBOLASetup.router1.pppg$o[0].channel datarate 1e+10bps
+attr mutable ""
+attr unit bps
+par simpleBOLASetup.router1.pppg$o[0].channel ber 0
+attr mutable ""
+par simpleBOLASetup.router1.pppg$o[0].channel per 0
+attr mutable ""
+par simpleBOLASetup.router0.pppg$o[1].conn1 typename "\"improved5gns.simulations.simpleBOLASetup.C\""
+par simpleBOLASetup.router0.pppg$o[1].conn1 disabled false
+attr mutable ""
+par simpleBOLASetup.router0.pppg$o[1].conn1 delay 0s
+attr mutable ""
+attr unit s
+par simpleBOLASetup.router0.pppg$o[1].conn1 datarate 0bps
+attr mutable ""
+attr unit bps
+par simpleBOLASetup.router0.pppg$o[1].conn1 ber 0
+attr mutable ""
+par simpleBOLASetup.router0.pppg$o[1].conn1 per 0
+attr mutable ""
+par simpleBOLASetup.router1.pppg$o[1].conn1 typename "\"improved5gns.simulations.simpleBOLASetup.C\""
+par simpleBOLASetup.router1.pppg$o[1].conn1 disabled false
+attr mutable ""
+par simpleBOLASetup.router1.pppg$o[1].conn1 delay 0s
+attr mutable ""
+attr unit s
+par simpleBOLASetup.router1.pppg$o[1].conn1 datarate 0bps
+attr mutable ""
+attr unit bps
+par simpleBOLASetup.router1.pppg$o[1].conn1 ber 0
+attr mutable ""
+par simpleBOLASetup.router1.pppg$o[1].conn1 per 0
+attr mutable ""
+par simpleBOLASetup.configurator typename "\"inet.networklayer.configurator.ipv4.Ipv4NetworkConfigurator\""
+par simpleBOLASetup.configurator minLinkWeight 0.001
+par simpleBOLASetup.configurator configureIsolatedNetworksSeparatly false
+par simpleBOLASetup.configurator config "<config>...</config> at content:1"
+par simpleBOLASetup.configurator assignAddresses true
+par simpleBOLASetup.configurator assignUniqueAddresses true
+par simpleBOLASetup.configurator assignDisjunctSubnetAddresses true
+par simpleBOLASetup.configurator addStaticRoutes true
+par simpleBOLASetup.configurator addDefaultRoutes true
+par simpleBOLASetup.configurator addSubnetRoutes true
+par simpleBOLASetup.configurator addDirectRoutes true
+par simpleBOLASetup.configurator optimizeRoutes true
+par simpleBOLASetup.configurator dumpTopology false
+par simpleBOLASetup.configurator dumpLinks false
+par simpleBOLASetup.configurator dumpAddresses false
+par simpleBOLASetup.configurator dumpRoutes false
+par simpleBOLASetup.configurator dumpConfig "\"\""
+par simpleBOLASetup.router0.pppg$i[0].channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router0.ppp[0].phys$o.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router0.pppg$i[1].channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router0.ppp[1].phys$o.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router0.interfaceTable typename "\"inet.networklayer.common.InterfaceTable\""
+par simpleBOLASetup.router0.interfaceTable displayAddresses false
+par simpleBOLASetup.router0.cb typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.router0.cb displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.router0.cb forwardServiceRegistration true
+par simpleBOLASetup.router0.cb forwardProtocolRegistration true
+par simpleBOLASetup.router0.bl typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.router0.bl displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.router0.bl forwardServiceRegistration true
+par simpleBOLASetup.router0.bl forwardProtocolRegistration true
+par simpleBOLASetup.router0.li typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.router0.li displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.router0.li forwardServiceRegistration true
+par simpleBOLASetup.router0.li forwardProtocolRegistration true
+par simpleBOLASetup.router0.lo[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router0.lo[0].lo.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router0.lo[0].lo typename "\"inet.linklayer.loopback.Loopback\""
+par simpleBOLASetup.router0.lo[0].lo interfaceTableModule "\"simpleBOLASetup.router0.interfaceTable\""
+par simpleBOLASetup.router0.lo[0].lo mtu 4470B
+attr unit B
+scalar simpleBOLASetup.router0.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar simpleBOLASetup.router0.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar simpleBOLASetup.router0.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar simpleBOLASetup.router0.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+par simpleBOLASetup.router0.lo[0] typename "\"inet.linklayer.loopback.LoopbackInterface\""
+par simpleBOLASetup.router0.lo[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par simpleBOLASetup.router0.lo[0] recordPcap false
+par simpleBOLASetup.router0.lo[0] numPcapRecorders 0
+par simpleBOLASetup.router0.lo[0] interfaceTableModule "\"simpleBOLASetup.router0.interfaceTable\""
+scalar simpleBOLASetup.router0.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar simpleBOLASetup.router0.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar simpleBOLASetup.router0.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar simpleBOLASetup.router0.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+par simpleBOLASetup.router0.ppp[0].phys$i.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router0.ppp[0].ppp.phys$o.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router0.ppp[0].ppp.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router0.ppp[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router0.ppp[0].queue typename "\"inet.queueing.queue.DropTailQueue\""
+par simpleBOLASetup.router0.ppp[0].queue displayStringTextFormat "\"contains %p pk (%l) pushed %u\\npulled %o removed %r dropped %d\""
+par simpleBOLASetup.router0.ppp[0].queue packetCapacity 10000
+par simpleBOLASetup.router0.ppp[0].queue dataCapacity -1b
+attr unit b
+par simpleBOLASetup.router0.ppp[0].queue dropperClass "\"inet::queueing::PacketAtCollectionEndDropper\""
+par simpleBOLASetup.router0.ppp[0].queue comparatorClass "\"\""
+par simpleBOLASetup.router0.ppp[0].queue bufferModule "\"\""
+scalar simpleBOLASetup.router0.ppp[0].queue queueLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar simpleBOLASetup.router0.ppp[0].queue queueLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar simpleBOLASetup.router0.ppp[0].queue queueLength:timeavg nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar simpleBOLASetup.router0.ppp[0].queue queueBitLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar simpleBOLASetup.router0.ppp[0].queue queueBitLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar simpleBOLASetup.router0.ppp[0].queue queueBitLength:timeavg nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic simpleBOLASetup.router0.ppp[0].queue queueingTime:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar simpleBOLASetup.router0.ppp[0].queue outgoingPackets:count 0
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar simpleBOLASetup.router0.ppp[0].queue outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic simpleBOLASetup.router0.ppp[0].queue outgoingPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic simpleBOLASetup.router0.ppp[0].queue flowQueueingTime:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar simpleBOLASetup.router0.ppp[0].queue incomingPackets:count 0
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar simpleBOLASetup.router0.ppp[0].queue incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic simpleBOLASetup.router0.ppp[0].queue incomingPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar simpleBOLASetup.router0.ppp[0].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar simpleBOLASetup.router0.ppp[0].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+par simpleBOLASetup.router0.ppp[0].ppp typename "\"inet.linklayer.ppp.Ppp\""
+par simpleBOLASetup.router0.ppp[0].ppp interfaceTableModule "\"simpleBOLASetup.router0.interfaceTable\""
+par simpleBOLASetup.router0.ppp[0].ppp displayStringTextFormat "\"rate: %b\\nsent: %s, rcvd: %r\\nqueue: %q, drop: %d\""
+par simpleBOLASetup.router0.ppp[0].ppp sendRawBytes false
+par simpleBOLASetup.router0.ppp[0].ppp mtu 4470B
+attr unit B
+par simpleBOLASetup.router0.ppp[0].ppp stopOperationExtraTime -1s
+attr unit s
+par simpleBOLASetup.router0.ppp[0].ppp stopOperationTimeout 2s
+attr unit s
+scalar simpleBOLASetup.router0.ppp[0].ppp transmissionState:timeavg nan
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source transmissionStateChanged
+attr title "tx state, timeavg"
+scalar simpleBOLASetup.router0.ppp[0].ppp rxPkOk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar simpleBOLASetup.router0.ppp[0].ppp rxPkOk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar simpleBOLASetup.router0.ppp[0].ppp txPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar simpleBOLASetup.router0.ppp[0].ppp txPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar simpleBOLASetup.router0.ppp[0].ppp rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar simpleBOLASetup.router0.ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar simpleBOLASetup.router0.ppp[0].ppp passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar simpleBOLASetup.router0.ppp[0].ppp passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar simpleBOLASetup.router0.ppp[0].ppp packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar simpleBOLASetup.router0.ppp[0].ppp packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar simpleBOLASetup.router0.ppp[0].ppp packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar simpleBOLASetup.router0.ppp[0].ppp packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+par simpleBOLASetup.router0.ppp[0] typename "\"inet.linklayer.ppp.PppInterface\""
+par simpleBOLASetup.router0.ppp[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par simpleBOLASetup.router0.ppp[0] recordPcap false
+par simpleBOLASetup.router0.ppp[0] numPcapRecorders 0
+par simpleBOLASetup.router0.ppp[0] interfaceTableModule "\"simpleBOLASetup.router0.interfaceTable\""
+scalar simpleBOLASetup.router0.ppp[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar simpleBOLASetup.router0.ppp[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar simpleBOLASetup.router0.ppp[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar simpleBOLASetup.router0.ppp[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+par simpleBOLASetup.router0.ppp[1].phys$i.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router0.ppp[1].ppp.phys$o.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router0.ppp[1].ppp.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router0.ppp[1].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router0.ppp[1].queue typename "\"inet.queueing.queue.DropTailQueue\""
+par simpleBOLASetup.router0.ppp[1].queue displayStringTextFormat "\"contains %p pk (%l) pushed %u\\npulled %o removed %r dropped %d\""
+par simpleBOLASetup.router0.ppp[1].queue packetCapacity 10000
+par simpleBOLASetup.router0.ppp[1].queue dataCapacity -1b
+attr unit b
+par simpleBOLASetup.router0.ppp[1].queue dropperClass "\"inet::queueing::PacketAtCollectionEndDropper\""
+par simpleBOLASetup.router0.ppp[1].queue comparatorClass "\"\""
+par simpleBOLASetup.router0.ppp[1].queue bufferModule "\"\""
+scalar simpleBOLASetup.router0.ppp[1].queue queueLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar simpleBOLASetup.router0.ppp[1].queue queueLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar simpleBOLASetup.router0.ppp[1].queue queueLength:timeavg nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar simpleBOLASetup.router0.ppp[1].queue queueBitLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar simpleBOLASetup.router0.ppp[1].queue queueBitLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar simpleBOLASetup.router0.ppp[1].queue queueBitLength:timeavg nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic simpleBOLASetup.router0.ppp[1].queue queueingTime:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar simpleBOLASetup.router0.ppp[1].queue outgoingPackets:count 0
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar simpleBOLASetup.router0.ppp[1].queue outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic simpleBOLASetup.router0.ppp[1].queue outgoingPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic simpleBOLASetup.router0.ppp[1].queue flowQueueingTime:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar simpleBOLASetup.router0.ppp[1].queue incomingPackets:count 0
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar simpleBOLASetup.router0.ppp[1].queue incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic simpleBOLASetup.router0.ppp[1].queue incomingPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar simpleBOLASetup.router0.ppp[1].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar simpleBOLASetup.router0.ppp[1].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+par simpleBOLASetup.router0.ppp[1].ppp typename "\"inet.linklayer.ppp.Ppp\""
+par simpleBOLASetup.router0.ppp[1].ppp interfaceTableModule "\"simpleBOLASetup.router0.interfaceTable\""
+par simpleBOLASetup.router0.ppp[1].ppp displayStringTextFormat "\"rate: %b\\nsent: %s, rcvd: %r\\nqueue: %q, drop: %d\""
+par simpleBOLASetup.router0.ppp[1].ppp sendRawBytes false
+par simpleBOLASetup.router0.ppp[1].ppp mtu 4470B
+attr unit B
+par simpleBOLASetup.router0.ppp[1].ppp stopOperationExtraTime -1s
+attr unit s
+par simpleBOLASetup.router0.ppp[1].ppp stopOperationTimeout 2s
+attr unit s
+scalar simpleBOLASetup.router0.ppp[1].ppp transmissionState:timeavg nan
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source transmissionStateChanged
+attr title "tx state, timeavg"
+scalar simpleBOLASetup.router0.ppp[1].ppp rxPkOk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar simpleBOLASetup.router0.ppp[1].ppp rxPkOk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar simpleBOLASetup.router0.ppp[1].ppp txPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar simpleBOLASetup.router0.ppp[1].ppp txPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar simpleBOLASetup.router0.ppp[1].ppp rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar simpleBOLASetup.router0.ppp[1].ppp rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar simpleBOLASetup.router0.ppp[1].ppp passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar simpleBOLASetup.router0.ppp[1].ppp passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar simpleBOLASetup.router0.ppp[1].ppp packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar simpleBOLASetup.router0.ppp[1].ppp packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar simpleBOLASetup.router0.ppp[1].ppp packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar simpleBOLASetup.router0.ppp[1].ppp packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+par simpleBOLASetup.router0.ppp[1] typename "\"inet.linklayer.ppp.PppInterface\""
+par simpleBOLASetup.router0.ppp[1] displayStringTextFormat "\"%a (%i)\\n%m\""
+par simpleBOLASetup.router0.ppp[1] recordPcap false
+par simpleBOLASetup.router0.ppp[1] numPcapRecorders 0
+par simpleBOLASetup.router0.ppp[1] interfaceTableModule "\"simpleBOLASetup.router0.interfaceTable\""
+scalar simpleBOLASetup.router0.ppp[1] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar simpleBOLASetup.router0.ppp[1] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar simpleBOLASetup.router0.ppp[1] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar simpleBOLASetup.router0.ppp[1] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+par simpleBOLASetup.router0.ipv4.transportIn.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router0.ipv4.up.out[0].channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router0.ipv4.lp.out[2].channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router0.ipv4.ifIn.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router0.ipv4.configurator typename "\"inet.networklayer.configurator.ipv4.Ipv4NodeConfigurator\""
+par simpleBOLASetup.router0.ipv4.configurator interfaceTableModule "\"simpleBOLASetup.router0.interfaceTable\""
+par simpleBOLASetup.router0.ipv4.configurator routingTableModule "\"simpleBOLASetup.router0.ipv4.routingTable\""
+par simpleBOLASetup.router0.ipv4.configurator networkConfiguratorModule "\"configurator\""
+par simpleBOLASetup.router0.ipv4.configurator configureRoutingTable true
+par simpleBOLASetup.router0.ipv4.routingTable typename "\"inet.networklayer.ipv4.Ipv4RoutingTable\""
+par simpleBOLASetup.router0.ipv4.routingTable interfaceTableModule "\"simpleBOLASetup.router0.interfaceTable\""
+par simpleBOLASetup.router0.ipv4.routingTable routerId "\"auto\""
+par simpleBOLASetup.router0.ipv4.routingTable netmaskRoutes "\"*\""
+par simpleBOLASetup.router0.ipv4.routingTable forwarding true
+par simpleBOLASetup.router0.ipv4.routingTable multicastForwarding false
+par simpleBOLASetup.router0.ipv4.routingTable useAdminDist false
+par simpleBOLASetup.router0.ipv4.routingTable routingFile "\"\""
+par simpleBOLASetup.router0.ipv4.natTable typename "\"inet.networklayer.ipv4.Ipv4NatTable\""
+par simpleBOLASetup.router0.ipv4.natTable networkProtocolModule "\"^.ip\""
+par simpleBOLASetup.router0.ipv4.natTable config "<config/> at content:1"
+par simpleBOLASetup.router0.ipv4.up typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.router0.ipv4.up displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.router0.ipv4.up forwardServiceRegistration true
+par simpleBOLASetup.router0.ipv4.up forwardProtocolRegistration true
+par simpleBOLASetup.router0.ipv4.igmp typename "\"inet.networklayer.ipv4.Igmpv2\""
+par simpleBOLASetup.router0.ipv4.igmp interfaceTableModule "\"simpleBOLASetup.router0.interfaceTable\""
+par simpleBOLASetup.router0.ipv4.igmp routingTableModule "\"simpleBOLASetup.router0.ipv4.routingTable\""
+par simpleBOLASetup.router0.ipv4.igmp crcMode "\"declared\""
+attr enum declared,computed
+par simpleBOLASetup.router0.ipv4.igmp enabled true
+par simpleBOLASetup.router0.ipv4.igmp robustnessVariable 2
+par simpleBOLASetup.router0.ipv4.igmp queryInterval 125s
+attr unit s
+par simpleBOLASetup.router0.ipv4.igmp queryResponseInterval 10s
+attr unit s
+par simpleBOLASetup.router0.ipv4.igmp groupMembershipInterval 260s
+attr unit s
+par simpleBOLASetup.router0.ipv4.igmp otherQuerierPresentInterval 255s
+attr unit s
+par simpleBOLASetup.router0.ipv4.igmp startupQueryInterval 31.25s
+attr unit s
+par simpleBOLASetup.router0.ipv4.igmp startupQueryCount 2
+par simpleBOLASetup.router0.ipv4.igmp lastMemberQueryInterval 1s
+attr unit s
+par simpleBOLASetup.router0.ipv4.igmp lastMemberQueryCount 2
+par simpleBOLASetup.router0.ipv4.igmp unsolicitedReportInterval 10s
+attr unit s
+par simpleBOLASetup.router0.ipv4.icmp typename "\"inet.networklayer.ipv4.Icmp\""
+par simpleBOLASetup.router0.ipv4.icmp interfaceTableModule "\"simpleBOLASetup.router0.interfaceTable\""
+par simpleBOLASetup.router0.ipv4.icmp routingTableModule "\"simpleBOLASetup.router0.ipv4.routingTable\""
+par simpleBOLASetup.router0.ipv4.icmp crcMode "\"declared\""
+attr enum declared,computed
+attr mutable ""
+par simpleBOLASetup.router0.ipv4.icmp quoteLength 8B
+attr mutable ""
+attr unit B
+par simpleBOLASetup.router0.ipv4.mp typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.router0.ipv4.mp displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.router0.ipv4.mp forwardServiceRegistration true
+par simpleBOLASetup.router0.ipv4.mp forwardProtocolRegistration true
+par simpleBOLASetup.router0.ipv4.ip typename "\"inet.networklayer.ipv4.Ipv4\""
+par simpleBOLASetup.router0.ipv4.ip interfaceTableModule "\"simpleBOLASetup.router0.interfaceTable\""
+par simpleBOLASetup.router0.ipv4.ip routingTableModule "\"simpleBOLASetup.router0.ipv4.routingTable\""
+par simpleBOLASetup.router0.ipv4.ip arpModule "\"simpleBOLASetup.router0.ipv4.arp\""
+par simpleBOLASetup.router0.ipv4.ip icmpModule "\"simpleBOLASetup.router0.ipv4.icmp\""
+par simpleBOLASetup.router0.ipv4.ip crcMode "\"declared\""
+attr enum declared,computed
+par simpleBOLASetup.router0.ipv4.ip timeToLive 32
+par simpleBOLASetup.router0.ipv4.ip multicastTimeToLive 32
+par simpleBOLASetup.router0.ipv4.ip fragmentTimeout 60s
+attr unit s
+par simpleBOLASetup.router0.ipv4.ip limitedBroadcast false
+par simpleBOLASetup.router0.ipv4.ip directBroadcastInterfaces "\"\""
+scalar simpleBOLASetup.router0.ipv4.ip packetDropAddressResolutionFailed:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar simpleBOLASetup.router0.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar simpleBOLASetup.router0.ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar simpleBOLASetup.router0.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar simpleBOLASetup.router0.ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar simpleBOLASetup.router0.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar simpleBOLASetup.router0.ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar simpleBOLASetup.router0.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar simpleBOLASetup.router0.ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar simpleBOLASetup.router0.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar simpleBOLASetup.router0.ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar simpleBOLASetup.router0.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+par simpleBOLASetup.router0.ipv4.arp typename "\"inet.networklayer.arp.ipv4.Arp\""
+par simpleBOLASetup.router0.ipv4.arp interfaceTableModule "\"simpleBOLASetup.router0.interfaceTable\""
+par simpleBOLASetup.router0.ipv4.arp routingTableModule "\"simpleBOLASetup.router0.ipv4.routingTable\""
+par simpleBOLASetup.router0.ipv4.arp retryTimeout 1s
+attr unit s
+par simpleBOLASetup.router0.ipv4.arp retryCount 3
+par simpleBOLASetup.router0.ipv4.arp cacheTimeout 120s
+attr unit s
+par simpleBOLASetup.router0.ipv4.arp proxyArpInterfaces "\"*\""
+scalar simpleBOLASetup.router0.ipv4.arp arpResolutionFailed:count 0
+attr recordingmode count
+attr title "ARP failed resolutions, count"
+scalar simpleBOLASetup.router0.ipv4.arp arpResolutionCompleted:count 0
+attr recordingmode count
+attr title "ARP completed resolutions, count"
+scalar simpleBOLASetup.router0.ipv4.arp arpResolutionInitiated:count 0
+attr recordingmode count
+attr title "ARP initiated resolutions, count"
+scalar simpleBOLASetup.router0.ipv4.arp arpReplySent:count 0
+attr recordingmode count
+attr source arpReplySent
+attr title "ARP replies sent, count"
+scalar simpleBOLASetup.router0.ipv4.arp arpReplySent:sum(packetBytes) 0
+attr recordingmode sum(packetBytes)
+attr source arpReplySent
+attr title "ARP replies sent, sum(packetBytes)"
+scalar simpleBOLASetup.router0.ipv4.arp arpRequestSent:count 0
+attr recordingmode count
+attr source arpRequestSent
+attr title "ARP request sent, count"
+scalar simpleBOLASetup.router0.ipv4.arp arpRequestSent:sum(packetBytes) 0
+attr recordingmode sum(packetBytes)
+attr source arpRequestSent
+attr title "ARP request sent, sum(packetBytes)"
+par simpleBOLASetup.router0.ipv4.lp typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.router0.ipv4.lp displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.router0.ipv4.lp forwardServiceRegistration true
+par simpleBOLASetup.router0.ipv4.lp forwardProtocolRegistration true
+par simpleBOLASetup.router0.ipv4 typename "\"inet.networklayer.ipv4.Ipv4NetworkLayer\""
+par simpleBOLASetup.router0.ipv4 forwarding true
+par simpleBOLASetup.router0.ipv4 multicastForwarding false
+par simpleBOLASetup.router0.ipv4 interfaceTableModule "\"simpleBOLASetup.router0.interfaceTable\""
+par simpleBOLASetup.router0.ipv4 displayStringTextFormat "\"%i\""
+par simpleBOLASetup.router0.nl typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.router0.nl displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.router0.nl forwardServiceRegistration true
+par simpleBOLASetup.router0.nl forwardProtocolRegistration true
+par simpleBOLASetup.router0.tn typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.router0.tn displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.router0.tn forwardServiceRegistration true
+par simpleBOLASetup.router0.tn forwardProtocolRegistration true
+par simpleBOLASetup.router0.at typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.router0.at displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.router0.at forwardServiceRegistration true
+par simpleBOLASetup.router0.at forwardProtocolRegistration true
+par simpleBOLASetup.router0 typename "\"inet.node.inet.Router\""
+par simpleBOLASetup.router0 hasStatus false
+par simpleBOLASetup.router0 osgModel "\"\""
+par simpleBOLASetup.router0 osgModelColor "\"\""
+par simpleBOLASetup.router0 canvasImage "\"\""
+par simpleBOLASetup.router0 canvasImageColor "\"\""
+par simpleBOLASetup.router0 recordPcap false
+par simpleBOLASetup.router0 numPcapRecorders 0
+par simpleBOLASetup.router0 numLoInterfaces 1
+par simpleBOLASetup.router0 numWlanInterfaces 0
+par simpleBOLASetup.router0 numEthInterfaces 0
+par simpleBOLASetup.router0 numPppInterfaces 0
+par simpleBOLASetup.router0 numTunInterfaces 0
+par simpleBOLASetup.router0 numVirtInterfaces 0
+par simpleBOLASetup.router0 fcsMode "\"declared\""
+attr enum declared,computed
+par simpleBOLASetup.router0 hasIpv4 true
+par simpleBOLASetup.router0 hasIpv6 false
+par simpleBOLASetup.router0 hasGn false
+par simpleBOLASetup.router0 forwarding true
+par simpleBOLASetup.router0 multicastForwarding false
+par simpleBOLASetup.router0 hasUdp false
+par simpleBOLASetup.router0 hasTcp false
+par simpleBOLASetup.router0 hasSctp false
+par simpleBOLASetup.router0 numApps 0
+par simpleBOLASetup.router0 hasEigrp false
+par simpleBOLASetup.router0 hasOspf false
+par simpleBOLASetup.router0 hasRip false
+par simpleBOLASetup.router0 hasBgp false
+par simpleBOLASetup.router0 hasPim false
+par simpleBOLASetup.router0 hasDhcp false
+par simpleBOLASetup.router1.pppg$i[0].channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router1.ppp[0].phys$o.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router1.pppg$i[1].channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router1.ppp[1].phys$o.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router1.interfaceTable typename "\"inet.networklayer.common.InterfaceTable\""
+par simpleBOLASetup.router1.interfaceTable displayAddresses false
+par simpleBOLASetup.router1.cb typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.router1.cb displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.router1.cb forwardServiceRegistration true
+par simpleBOLASetup.router1.cb forwardProtocolRegistration true
+par simpleBOLASetup.router1.bl typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.router1.bl displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.router1.bl forwardServiceRegistration true
+par simpleBOLASetup.router1.bl forwardProtocolRegistration true
+par simpleBOLASetup.router1.li typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.router1.li displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.router1.li forwardServiceRegistration true
+par simpleBOLASetup.router1.li forwardProtocolRegistration true
+par simpleBOLASetup.router1.lo[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router1.lo[0].lo.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router1.lo[0].lo typename "\"inet.linklayer.loopback.Loopback\""
+par simpleBOLASetup.router1.lo[0].lo interfaceTableModule "\"simpleBOLASetup.router1.interfaceTable\""
+par simpleBOLASetup.router1.lo[0].lo mtu 4470B
+attr unit B
+scalar simpleBOLASetup.router1.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar simpleBOLASetup.router1.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar simpleBOLASetup.router1.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar simpleBOLASetup.router1.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+par simpleBOLASetup.router1.lo[0] typename "\"inet.linklayer.loopback.LoopbackInterface\""
+par simpleBOLASetup.router1.lo[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par simpleBOLASetup.router1.lo[0] recordPcap false
+par simpleBOLASetup.router1.lo[0] numPcapRecorders 0
+par simpleBOLASetup.router1.lo[0] interfaceTableModule "\"simpleBOLASetup.router1.interfaceTable\""
+scalar simpleBOLASetup.router1.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar simpleBOLASetup.router1.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar simpleBOLASetup.router1.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar simpleBOLASetup.router1.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+par simpleBOLASetup.router1.ppp[0].phys$i.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router1.ppp[0].ppp.phys$o.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router1.ppp[0].ppp.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router1.ppp[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router1.ppp[0].queue typename "\"inet.queueing.queue.DropTailQueue\""
+par simpleBOLASetup.router1.ppp[0].queue displayStringTextFormat "\"contains %p pk (%l) pushed %u\\npulled %o removed %r dropped %d\""
+par simpleBOLASetup.router1.ppp[0].queue packetCapacity 10000
+par simpleBOLASetup.router1.ppp[0].queue dataCapacity -1b
+attr unit b
+par simpleBOLASetup.router1.ppp[0].queue dropperClass "\"inet::queueing::PacketAtCollectionEndDropper\""
+par simpleBOLASetup.router1.ppp[0].queue comparatorClass "\"\""
+par simpleBOLASetup.router1.ppp[0].queue bufferModule "\"\""
+scalar simpleBOLASetup.router1.ppp[0].queue queueLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar simpleBOLASetup.router1.ppp[0].queue queueLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar simpleBOLASetup.router1.ppp[0].queue queueLength:timeavg nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar simpleBOLASetup.router1.ppp[0].queue queueBitLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar simpleBOLASetup.router1.ppp[0].queue queueBitLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar simpleBOLASetup.router1.ppp[0].queue queueBitLength:timeavg nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic simpleBOLASetup.router1.ppp[0].queue queueingTime:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar simpleBOLASetup.router1.ppp[0].queue outgoingPackets:count 0
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar simpleBOLASetup.router1.ppp[0].queue outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic simpleBOLASetup.router1.ppp[0].queue outgoingPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic simpleBOLASetup.router1.ppp[0].queue flowQueueingTime:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar simpleBOLASetup.router1.ppp[0].queue incomingPackets:count 0
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar simpleBOLASetup.router1.ppp[0].queue incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic simpleBOLASetup.router1.ppp[0].queue incomingPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar simpleBOLASetup.router1.ppp[0].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar simpleBOLASetup.router1.ppp[0].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+par simpleBOLASetup.router1.ppp[0].ppp typename "\"inet.linklayer.ppp.Ppp\""
+par simpleBOLASetup.router1.ppp[0].ppp interfaceTableModule "\"simpleBOLASetup.router1.interfaceTable\""
+par simpleBOLASetup.router1.ppp[0].ppp displayStringTextFormat "\"rate: %b\\nsent: %s, rcvd: %r\\nqueue: %q, drop: %d\""
+par simpleBOLASetup.router1.ppp[0].ppp sendRawBytes false
+par simpleBOLASetup.router1.ppp[0].ppp mtu 4470B
+attr unit B
+par simpleBOLASetup.router1.ppp[0].ppp stopOperationExtraTime -1s
+attr unit s
+par simpleBOLASetup.router1.ppp[0].ppp stopOperationTimeout 2s
+attr unit s
+scalar simpleBOLASetup.router1.ppp[0].ppp transmissionState:timeavg nan
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source transmissionStateChanged
+attr title "tx state, timeavg"
+scalar simpleBOLASetup.router1.ppp[0].ppp rxPkOk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar simpleBOLASetup.router1.ppp[0].ppp rxPkOk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar simpleBOLASetup.router1.ppp[0].ppp txPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar simpleBOLASetup.router1.ppp[0].ppp txPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar simpleBOLASetup.router1.ppp[0].ppp rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar simpleBOLASetup.router1.ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar simpleBOLASetup.router1.ppp[0].ppp passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar simpleBOLASetup.router1.ppp[0].ppp passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar simpleBOLASetup.router1.ppp[0].ppp packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar simpleBOLASetup.router1.ppp[0].ppp packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar simpleBOLASetup.router1.ppp[0].ppp packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar simpleBOLASetup.router1.ppp[0].ppp packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+par simpleBOLASetup.router1.ppp[0] typename "\"inet.linklayer.ppp.PppInterface\""
+par simpleBOLASetup.router1.ppp[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par simpleBOLASetup.router1.ppp[0] recordPcap false
+par simpleBOLASetup.router1.ppp[0] numPcapRecorders 0
+par simpleBOLASetup.router1.ppp[0] interfaceTableModule "\"simpleBOLASetup.router1.interfaceTable\""
+scalar simpleBOLASetup.router1.ppp[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar simpleBOLASetup.router1.ppp[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar simpleBOLASetup.router1.ppp[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar simpleBOLASetup.router1.ppp[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+par simpleBOLASetup.router1.ppp[1].phys$i.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router1.ppp[1].ppp.phys$o.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router1.ppp[1].ppp.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router1.ppp[1].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router1.ppp[1].queue typename "\"inet.queueing.queue.DropTailQueue\""
+par simpleBOLASetup.router1.ppp[1].queue displayStringTextFormat "\"contains %p pk (%l) pushed %u\\npulled %o removed %r dropped %d\""
+par simpleBOLASetup.router1.ppp[1].queue packetCapacity 10000
+par simpleBOLASetup.router1.ppp[1].queue dataCapacity -1b
+attr unit b
+par simpleBOLASetup.router1.ppp[1].queue dropperClass "\"inet::queueing::PacketAtCollectionEndDropper\""
+par simpleBOLASetup.router1.ppp[1].queue comparatorClass "\"\""
+par simpleBOLASetup.router1.ppp[1].queue bufferModule "\"\""
+scalar simpleBOLASetup.router1.ppp[1].queue queueLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar simpleBOLASetup.router1.ppp[1].queue queueLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar simpleBOLASetup.router1.ppp[1].queue queueLength:timeavg nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar simpleBOLASetup.router1.ppp[1].queue queueBitLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar simpleBOLASetup.router1.ppp[1].queue queueBitLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar simpleBOLASetup.router1.ppp[1].queue queueBitLength:timeavg nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic simpleBOLASetup.router1.ppp[1].queue queueingTime:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar simpleBOLASetup.router1.ppp[1].queue outgoingPackets:count 0
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar simpleBOLASetup.router1.ppp[1].queue outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic simpleBOLASetup.router1.ppp[1].queue outgoingPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic simpleBOLASetup.router1.ppp[1].queue flowQueueingTime:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar simpleBOLASetup.router1.ppp[1].queue incomingPackets:count 0
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar simpleBOLASetup.router1.ppp[1].queue incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic simpleBOLASetup.router1.ppp[1].queue incomingPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar simpleBOLASetup.router1.ppp[1].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar simpleBOLASetup.router1.ppp[1].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+par simpleBOLASetup.router1.ppp[1].ppp typename "\"inet.linklayer.ppp.Ppp\""
+par simpleBOLASetup.router1.ppp[1].ppp interfaceTableModule "\"simpleBOLASetup.router1.interfaceTable\""
+par simpleBOLASetup.router1.ppp[1].ppp displayStringTextFormat "\"rate: %b\\nsent: %s, rcvd: %r\\nqueue: %q, drop: %d\""
+par simpleBOLASetup.router1.ppp[1].ppp sendRawBytes false
+par simpleBOLASetup.router1.ppp[1].ppp mtu 4470B
+attr unit B
+par simpleBOLASetup.router1.ppp[1].ppp stopOperationExtraTime -1s
+attr unit s
+par simpleBOLASetup.router1.ppp[1].ppp stopOperationTimeout 2s
+attr unit s
+scalar simpleBOLASetup.router1.ppp[1].ppp transmissionState:timeavg nan
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source transmissionStateChanged
+attr title "tx state, timeavg"
+scalar simpleBOLASetup.router1.ppp[1].ppp rxPkOk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar simpleBOLASetup.router1.ppp[1].ppp rxPkOk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar simpleBOLASetup.router1.ppp[1].ppp txPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar simpleBOLASetup.router1.ppp[1].ppp txPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar simpleBOLASetup.router1.ppp[1].ppp rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar simpleBOLASetup.router1.ppp[1].ppp rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar simpleBOLASetup.router1.ppp[1].ppp passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar simpleBOLASetup.router1.ppp[1].ppp passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar simpleBOLASetup.router1.ppp[1].ppp packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar simpleBOLASetup.router1.ppp[1].ppp packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar simpleBOLASetup.router1.ppp[1].ppp packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar simpleBOLASetup.router1.ppp[1].ppp packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+par simpleBOLASetup.router1.ppp[1] typename "\"inet.linklayer.ppp.PppInterface\""
+par simpleBOLASetup.router1.ppp[1] displayStringTextFormat "\"%a (%i)\\n%m\""
+par simpleBOLASetup.router1.ppp[1] recordPcap false
+par simpleBOLASetup.router1.ppp[1] numPcapRecorders 0
+par simpleBOLASetup.router1.ppp[1] interfaceTableModule "\"simpleBOLASetup.router1.interfaceTable\""
+scalar simpleBOLASetup.router1.ppp[1] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar simpleBOLASetup.router1.ppp[1] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar simpleBOLASetup.router1.ppp[1] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar simpleBOLASetup.router1.ppp[1] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+par simpleBOLASetup.router1.ipv4.transportIn.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router1.ipv4.up.out[0].channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router1.ipv4.lp.out[2].channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router1.ipv4.ifIn.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.router1.ipv4.configurator typename "\"inet.networklayer.configurator.ipv4.Ipv4NodeConfigurator\""
+par simpleBOLASetup.router1.ipv4.configurator interfaceTableModule "\"simpleBOLASetup.router1.interfaceTable\""
+par simpleBOLASetup.router1.ipv4.configurator routingTableModule "\"simpleBOLASetup.router1.ipv4.routingTable\""
+par simpleBOLASetup.router1.ipv4.configurator networkConfiguratorModule "\"configurator\""
+par simpleBOLASetup.router1.ipv4.configurator configureRoutingTable true
+par simpleBOLASetup.router1.ipv4.routingTable typename "\"inet.networklayer.ipv4.Ipv4RoutingTable\""
+par simpleBOLASetup.router1.ipv4.routingTable interfaceTableModule "\"simpleBOLASetup.router1.interfaceTable\""
+par simpleBOLASetup.router1.ipv4.routingTable routerId "\"auto\""
+par simpleBOLASetup.router1.ipv4.routingTable netmaskRoutes "\"*\""
+par simpleBOLASetup.router1.ipv4.routingTable forwarding true
+par simpleBOLASetup.router1.ipv4.routingTable multicastForwarding false
+par simpleBOLASetup.router1.ipv4.routingTable useAdminDist false
+par simpleBOLASetup.router1.ipv4.routingTable routingFile "\"\""
+par simpleBOLASetup.router1.ipv4.natTable typename "\"inet.networklayer.ipv4.Ipv4NatTable\""
+par simpleBOLASetup.router1.ipv4.natTable networkProtocolModule "\"^.ip\""
+par simpleBOLASetup.router1.ipv4.natTable config "<config/> at content:1"
+par simpleBOLASetup.router1.ipv4.up typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.router1.ipv4.up displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.router1.ipv4.up forwardServiceRegistration true
+par simpleBOLASetup.router1.ipv4.up forwardProtocolRegistration true
+par simpleBOLASetup.router1.ipv4.igmp typename "\"inet.networklayer.ipv4.Igmpv2\""
+par simpleBOLASetup.router1.ipv4.igmp interfaceTableModule "\"simpleBOLASetup.router1.interfaceTable\""
+par simpleBOLASetup.router1.ipv4.igmp routingTableModule "\"simpleBOLASetup.router1.ipv4.routingTable\""
+par simpleBOLASetup.router1.ipv4.igmp crcMode "\"declared\""
+attr enum declared,computed
+par simpleBOLASetup.router1.ipv4.igmp enabled true
+par simpleBOLASetup.router1.ipv4.igmp robustnessVariable 2
+par simpleBOLASetup.router1.ipv4.igmp queryInterval 125s
+attr unit s
+par simpleBOLASetup.router1.ipv4.igmp queryResponseInterval 10s
+attr unit s
+par simpleBOLASetup.router1.ipv4.igmp groupMembershipInterval 260s
+attr unit s
+par simpleBOLASetup.router1.ipv4.igmp otherQuerierPresentInterval 255s
+attr unit s
+par simpleBOLASetup.router1.ipv4.igmp startupQueryInterval 31.25s
+attr unit s
+par simpleBOLASetup.router1.ipv4.igmp startupQueryCount 2
+par simpleBOLASetup.router1.ipv4.igmp lastMemberQueryInterval 1s
+attr unit s
+par simpleBOLASetup.router1.ipv4.igmp lastMemberQueryCount 2
+par simpleBOLASetup.router1.ipv4.igmp unsolicitedReportInterval 10s
+attr unit s
+par simpleBOLASetup.router1.ipv4.icmp typename "\"inet.networklayer.ipv4.Icmp\""
+par simpleBOLASetup.router1.ipv4.icmp interfaceTableModule "\"simpleBOLASetup.router1.interfaceTable\""
+par simpleBOLASetup.router1.ipv4.icmp routingTableModule "\"simpleBOLASetup.router1.ipv4.routingTable\""
+par simpleBOLASetup.router1.ipv4.icmp crcMode "\"declared\""
+attr enum declared,computed
+attr mutable ""
+par simpleBOLASetup.router1.ipv4.icmp quoteLength 8B
+attr mutable ""
+attr unit B
+par simpleBOLASetup.router1.ipv4.mp typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.router1.ipv4.mp displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.router1.ipv4.mp forwardServiceRegistration true
+par simpleBOLASetup.router1.ipv4.mp forwardProtocolRegistration true
+par simpleBOLASetup.router1.ipv4.ip typename "\"inet.networklayer.ipv4.Ipv4\""
+par simpleBOLASetup.router1.ipv4.ip interfaceTableModule "\"simpleBOLASetup.router1.interfaceTable\""
+par simpleBOLASetup.router1.ipv4.ip routingTableModule "\"simpleBOLASetup.router1.ipv4.routingTable\""
+par simpleBOLASetup.router1.ipv4.ip arpModule "\"simpleBOLASetup.router1.ipv4.arp\""
+par simpleBOLASetup.router1.ipv4.ip icmpModule "\"simpleBOLASetup.router1.ipv4.icmp\""
+par simpleBOLASetup.router1.ipv4.ip crcMode "\"declared\""
+attr enum declared,computed
+par simpleBOLASetup.router1.ipv4.ip timeToLive 32
+par simpleBOLASetup.router1.ipv4.ip multicastTimeToLive 32
+par simpleBOLASetup.router1.ipv4.ip fragmentTimeout 60s
+attr unit s
+par simpleBOLASetup.router1.ipv4.ip limitedBroadcast false
+par simpleBOLASetup.router1.ipv4.ip directBroadcastInterfaces "\"\""
+scalar simpleBOLASetup.router1.ipv4.ip packetDropAddressResolutionFailed:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar simpleBOLASetup.router1.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar simpleBOLASetup.router1.ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar simpleBOLASetup.router1.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar simpleBOLASetup.router1.ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar simpleBOLASetup.router1.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar simpleBOLASetup.router1.ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar simpleBOLASetup.router1.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar simpleBOLASetup.router1.ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar simpleBOLASetup.router1.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar simpleBOLASetup.router1.ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar simpleBOLASetup.router1.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+par simpleBOLASetup.router1.ipv4.arp typename "\"inet.networklayer.arp.ipv4.Arp\""
+par simpleBOLASetup.router1.ipv4.arp interfaceTableModule "\"simpleBOLASetup.router1.interfaceTable\""
+par simpleBOLASetup.router1.ipv4.arp routingTableModule "\"simpleBOLASetup.router1.ipv4.routingTable\""
+par simpleBOLASetup.router1.ipv4.arp retryTimeout 1s
+attr unit s
+par simpleBOLASetup.router1.ipv4.arp retryCount 3
+par simpleBOLASetup.router1.ipv4.arp cacheTimeout 120s
+attr unit s
+par simpleBOLASetup.router1.ipv4.arp proxyArpInterfaces "\"*\""
+scalar simpleBOLASetup.router1.ipv4.arp arpResolutionFailed:count 0
+attr recordingmode count
+attr title "ARP failed resolutions, count"
+scalar simpleBOLASetup.router1.ipv4.arp arpResolutionCompleted:count 0
+attr recordingmode count
+attr title "ARP completed resolutions, count"
+scalar simpleBOLASetup.router1.ipv4.arp arpResolutionInitiated:count 0
+attr recordingmode count
+attr title "ARP initiated resolutions, count"
+scalar simpleBOLASetup.router1.ipv4.arp arpReplySent:count 0
+attr recordingmode count
+attr source arpReplySent
+attr title "ARP replies sent, count"
+scalar simpleBOLASetup.router1.ipv4.arp arpReplySent:sum(packetBytes) 0
+attr recordingmode sum(packetBytes)
+attr source arpReplySent
+attr title "ARP replies sent, sum(packetBytes)"
+scalar simpleBOLASetup.router1.ipv4.arp arpRequestSent:count 0
+attr recordingmode count
+attr source arpRequestSent
+attr title "ARP request sent, count"
+scalar simpleBOLASetup.router1.ipv4.arp arpRequestSent:sum(packetBytes) 0
+attr recordingmode sum(packetBytes)
+attr source arpRequestSent
+attr title "ARP request sent, sum(packetBytes)"
+par simpleBOLASetup.router1.ipv4.lp typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.router1.ipv4.lp displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.router1.ipv4.lp forwardServiceRegistration true
+par simpleBOLASetup.router1.ipv4.lp forwardProtocolRegistration true
+par simpleBOLASetup.router1.ipv4 typename "\"inet.networklayer.ipv4.Ipv4NetworkLayer\""
+par simpleBOLASetup.router1.ipv4 forwarding true
+par simpleBOLASetup.router1.ipv4 multicastForwarding false
+par simpleBOLASetup.router1.ipv4 interfaceTableModule "\"simpleBOLASetup.router1.interfaceTable\""
+par simpleBOLASetup.router1.ipv4 displayStringTextFormat "\"%i\""
+par simpleBOLASetup.router1.nl typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.router1.nl displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.router1.nl forwardServiceRegistration true
+par simpleBOLASetup.router1.nl forwardProtocolRegistration true
+par simpleBOLASetup.router1.tn typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.router1.tn displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.router1.tn forwardServiceRegistration true
+par simpleBOLASetup.router1.tn forwardProtocolRegistration true
+par simpleBOLASetup.router1.at typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.router1.at displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.router1.at forwardServiceRegistration true
+par simpleBOLASetup.router1.at forwardProtocolRegistration true
+par simpleBOLASetup.router1 typename "\"inet.node.inet.Router\""
+par simpleBOLASetup.router1 hasStatus false
+par simpleBOLASetup.router1 osgModel "\"\""
+par simpleBOLASetup.router1 osgModelColor "\"\""
+par simpleBOLASetup.router1 canvasImage "\"\""
+par simpleBOLASetup.router1 canvasImageColor "\"\""
+par simpleBOLASetup.router1 recordPcap false
+par simpleBOLASetup.router1 numPcapRecorders 0
+par simpleBOLASetup.router1 numLoInterfaces 1
+par simpleBOLASetup.router1 numWlanInterfaces 0
+par simpleBOLASetup.router1 numEthInterfaces 0
+par simpleBOLASetup.router1 numPppInterfaces 0
+par simpleBOLASetup.router1 numTunInterfaces 0
+par simpleBOLASetup.router1 numVirtInterfaces 0
+par simpleBOLASetup.router1 fcsMode "\"declared\""
+attr enum declared,computed
+par simpleBOLASetup.router1 hasIpv4 true
+par simpleBOLASetup.router1 hasIpv6 false
+par simpleBOLASetup.router1 hasGn false
+par simpleBOLASetup.router1 forwarding true
+par simpleBOLASetup.router1 multicastForwarding false
+par simpleBOLASetup.router1 hasUdp false
+par simpleBOLASetup.router1 hasTcp false
+par simpleBOLASetup.router1 hasSctp false
+par simpleBOLASetup.router1 numApps 0
+par simpleBOLASetup.router1 hasEigrp false
+par simpleBOLASetup.router1 hasOspf false
+par simpleBOLASetup.router1 hasRip false
+par simpleBOLASetup.router1 hasBgp false
+par simpleBOLASetup.router1 hasPim false
+par simpleBOLASetup.router1 hasDhcp false
+par simpleBOLASetup.server.pppg$i[0].channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.server.ppp[0].phys$o.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.server.interfaceTable typename "\"inet.networklayer.common.InterfaceTable\""
+par simpleBOLASetup.server.interfaceTable displayAddresses false
+par simpleBOLASetup.server.cb typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.server.cb displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.server.cb forwardServiceRegistration true
+par simpleBOLASetup.server.cb forwardProtocolRegistration true
+par simpleBOLASetup.server.bl typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.server.bl displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.server.bl forwardServiceRegistration true
+par simpleBOLASetup.server.bl forwardProtocolRegistration true
+par simpleBOLASetup.server.li typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.server.li displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.server.li forwardServiceRegistration true
+par simpleBOLASetup.server.li forwardProtocolRegistration true
+par simpleBOLASetup.server.lo[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.server.lo[0].lo.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.server.lo[0].lo typename "\"inet.linklayer.loopback.Loopback\""
+par simpleBOLASetup.server.lo[0].lo interfaceTableModule "\"simpleBOLASetup.server.interfaceTable\""
+par simpleBOLASetup.server.lo[0].lo mtu 4470B
+attr unit B
+scalar simpleBOLASetup.server.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar simpleBOLASetup.server.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar simpleBOLASetup.server.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar simpleBOLASetup.server.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+par simpleBOLASetup.server.lo[0] typename "\"inet.linklayer.loopback.LoopbackInterface\""
+par simpleBOLASetup.server.lo[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par simpleBOLASetup.server.lo[0] recordPcap false
+par simpleBOLASetup.server.lo[0] numPcapRecorders 0
+par simpleBOLASetup.server.lo[0] interfaceTableModule "\"simpleBOLASetup.server.interfaceTable\""
+scalar simpleBOLASetup.server.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar simpleBOLASetup.server.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar simpleBOLASetup.server.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar simpleBOLASetup.server.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+par simpleBOLASetup.server.ppp[0].phys$i.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.server.ppp[0].ppp.phys$o.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.server.ppp[0].ppp.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.server.ppp[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.server.ppp[0].queue typename "\"inet.queueing.queue.DropTailQueue\""
+par simpleBOLASetup.server.ppp[0].queue displayStringTextFormat "\"contains %p pk (%l) pushed %u\\npulled %o removed %r dropped %d\""
+par simpleBOLASetup.server.ppp[0].queue packetCapacity 10000
+par simpleBOLASetup.server.ppp[0].queue dataCapacity -1b
+attr unit b
+par simpleBOLASetup.server.ppp[0].queue dropperClass "\"inet::queueing::PacketAtCollectionEndDropper\""
+par simpleBOLASetup.server.ppp[0].queue comparatorClass "\"\""
+par simpleBOLASetup.server.ppp[0].queue bufferModule "\"\""
+scalar simpleBOLASetup.server.ppp[0].queue queueLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar simpleBOLASetup.server.ppp[0].queue queueLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar simpleBOLASetup.server.ppp[0].queue queueLength:timeavg nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar simpleBOLASetup.server.ppp[0].queue queueBitLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar simpleBOLASetup.server.ppp[0].queue queueBitLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar simpleBOLASetup.server.ppp[0].queue queueBitLength:timeavg nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic simpleBOLASetup.server.ppp[0].queue queueingTime:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar simpleBOLASetup.server.ppp[0].queue outgoingPackets:count 0
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar simpleBOLASetup.server.ppp[0].queue outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic simpleBOLASetup.server.ppp[0].queue outgoingPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic simpleBOLASetup.server.ppp[0].queue flowQueueingTime:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar simpleBOLASetup.server.ppp[0].queue incomingPackets:count 0
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar simpleBOLASetup.server.ppp[0].queue incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic simpleBOLASetup.server.ppp[0].queue incomingPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar simpleBOLASetup.server.ppp[0].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar simpleBOLASetup.server.ppp[0].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+par simpleBOLASetup.server.ppp[0].ppp typename "\"inet.linklayer.ppp.Ppp\""
+par simpleBOLASetup.server.ppp[0].ppp interfaceTableModule "\"simpleBOLASetup.server.interfaceTable\""
+par simpleBOLASetup.server.ppp[0].ppp displayStringTextFormat "\"rate: %b\\nsent: %s, rcvd: %r\\nqueue: %q, drop: %d\""
+par simpleBOLASetup.server.ppp[0].ppp sendRawBytes false
+par simpleBOLASetup.server.ppp[0].ppp mtu 4470B
+attr unit B
+par simpleBOLASetup.server.ppp[0].ppp stopOperationExtraTime -1s
+attr unit s
+par simpleBOLASetup.server.ppp[0].ppp stopOperationTimeout 2s
+attr unit s
+scalar simpleBOLASetup.server.ppp[0].ppp transmissionState:timeavg nan
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source transmissionStateChanged
+attr title "tx state, timeavg"
+scalar simpleBOLASetup.server.ppp[0].ppp rxPkOk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar simpleBOLASetup.server.ppp[0].ppp rxPkOk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar simpleBOLASetup.server.ppp[0].ppp txPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar simpleBOLASetup.server.ppp[0].ppp txPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar simpleBOLASetup.server.ppp[0].ppp rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar simpleBOLASetup.server.ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar simpleBOLASetup.server.ppp[0].ppp passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar simpleBOLASetup.server.ppp[0].ppp passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar simpleBOLASetup.server.ppp[0].ppp packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar simpleBOLASetup.server.ppp[0].ppp packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar simpleBOLASetup.server.ppp[0].ppp packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar simpleBOLASetup.server.ppp[0].ppp packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+par simpleBOLASetup.server.ppp[0] typename "\"inet.linklayer.ppp.PppInterface\""
+par simpleBOLASetup.server.ppp[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par simpleBOLASetup.server.ppp[0] recordPcap false
+par simpleBOLASetup.server.ppp[0] numPcapRecorders 0
+par simpleBOLASetup.server.ppp[0] interfaceTableModule "\"simpleBOLASetup.server.interfaceTable\""
+scalar simpleBOLASetup.server.ppp[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar simpleBOLASetup.server.ppp[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar simpleBOLASetup.server.ppp[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar simpleBOLASetup.server.ppp[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+par simpleBOLASetup.server.ipv4.transportIn.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.server.ipv4.up.out[0].channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.server.ipv4.lp.out[2].channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.server.ipv4.ifIn.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.server.ipv4.configurator typename "\"inet.networklayer.configurator.ipv4.Ipv4NodeConfigurator\""
+par simpleBOLASetup.server.ipv4.configurator interfaceTableModule "\"simpleBOLASetup.server.interfaceTable\""
+par simpleBOLASetup.server.ipv4.configurator routingTableModule "\"simpleBOLASetup.server.ipv4.routingTable\""
+par simpleBOLASetup.server.ipv4.configurator networkConfiguratorModule "\"configurator\""
+par simpleBOLASetup.server.ipv4.configurator configureRoutingTable true
+par simpleBOLASetup.server.ipv4.routingTable typename "\"inet.networklayer.ipv4.Ipv4RoutingTable\""
+par simpleBOLASetup.server.ipv4.routingTable interfaceTableModule "\"simpleBOLASetup.server.interfaceTable\""
+par simpleBOLASetup.server.ipv4.routingTable routerId "\"auto\""
+par simpleBOLASetup.server.ipv4.routingTable netmaskRoutes "\"*\""
+par simpleBOLASetup.server.ipv4.routingTable forwarding false
+par simpleBOLASetup.server.ipv4.routingTable multicastForwarding false
+par simpleBOLASetup.server.ipv4.routingTable useAdminDist false
+par simpleBOLASetup.server.ipv4.routingTable routingFile "\"\""
+par simpleBOLASetup.server.ipv4.natTable typename "\"inet.networklayer.ipv4.Ipv4NatTable\""
+par simpleBOLASetup.server.ipv4.natTable networkProtocolModule "\"^.ip\""
+par simpleBOLASetup.server.ipv4.natTable config "<config/> at content:1"
+par simpleBOLASetup.server.ipv4.up typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.server.ipv4.up displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.server.ipv4.up forwardServiceRegistration true
+par simpleBOLASetup.server.ipv4.up forwardProtocolRegistration true
+par simpleBOLASetup.server.ipv4.igmp typename "\"inet.networklayer.ipv4.Igmpv2\""
+par simpleBOLASetup.server.ipv4.igmp interfaceTableModule "\"simpleBOLASetup.server.interfaceTable\""
+par simpleBOLASetup.server.ipv4.igmp routingTableModule "\"simpleBOLASetup.server.ipv4.routingTable\""
+par simpleBOLASetup.server.ipv4.igmp crcMode "\"declared\""
+attr enum declared,computed
+par simpleBOLASetup.server.ipv4.igmp enabled true
+par simpleBOLASetup.server.ipv4.igmp robustnessVariable 2
+par simpleBOLASetup.server.ipv4.igmp queryInterval 125s
+attr unit s
+par simpleBOLASetup.server.ipv4.igmp queryResponseInterval 10s
+attr unit s
+par simpleBOLASetup.server.ipv4.igmp groupMembershipInterval 260s
+attr unit s
+par simpleBOLASetup.server.ipv4.igmp otherQuerierPresentInterval 255s
+attr unit s
+par simpleBOLASetup.server.ipv4.igmp startupQueryInterval 31.25s
+attr unit s
+par simpleBOLASetup.server.ipv4.igmp startupQueryCount 2
+par simpleBOLASetup.server.ipv4.igmp lastMemberQueryInterval 1s
+attr unit s
+par simpleBOLASetup.server.ipv4.igmp lastMemberQueryCount 2
+par simpleBOLASetup.server.ipv4.igmp unsolicitedReportInterval 10s
+attr unit s
+par simpleBOLASetup.server.ipv4.icmp typename "\"inet.networklayer.ipv4.Icmp\""
+par simpleBOLASetup.server.ipv4.icmp interfaceTableModule "\"simpleBOLASetup.server.interfaceTable\""
+par simpleBOLASetup.server.ipv4.icmp routingTableModule "\"simpleBOLASetup.server.ipv4.routingTable\""
+par simpleBOLASetup.server.ipv4.icmp crcMode "\"declared\""
+attr enum declared,computed
+attr mutable ""
+par simpleBOLASetup.server.ipv4.icmp quoteLength 8B
+attr mutable ""
+attr unit B
+par simpleBOLASetup.server.ipv4.mp typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.server.ipv4.mp displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.server.ipv4.mp forwardServiceRegistration true
+par simpleBOLASetup.server.ipv4.mp forwardProtocolRegistration true
+par simpleBOLASetup.server.ipv4.ip typename "\"inet.networklayer.ipv4.Ipv4\""
+par simpleBOLASetup.server.ipv4.ip interfaceTableModule "\"simpleBOLASetup.server.interfaceTable\""
+par simpleBOLASetup.server.ipv4.ip routingTableModule "\"simpleBOLASetup.server.ipv4.routingTable\""
+par simpleBOLASetup.server.ipv4.ip arpModule "\"simpleBOLASetup.server.ipv4.arp\""
+par simpleBOLASetup.server.ipv4.ip icmpModule "\"simpleBOLASetup.server.ipv4.icmp\""
+par simpleBOLASetup.server.ipv4.ip crcMode "\"declared\""
+attr enum declared,computed
+par simpleBOLASetup.server.ipv4.ip timeToLive 32
+par simpleBOLASetup.server.ipv4.ip multicastTimeToLive 32
+par simpleBOLASetup.server.ipv4.ip fragmentTimeout 60s
+attr unit s
+par simpleBOLASetup.server.ipv4.ip limitedBroadcast false
+par simpleBOLASetup.server.ipv4.ip directBroadcastInterfaces "\"\""
+scalar simpleBOLASetup.server.ipv4.ip packetDropAddressResolutionFailed:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar simpleBOLASetup.server.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar simpleBOLASetup.server.ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar simpleBOLASetup.server.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar simpleBOLASetup.server.ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar simpleBOLASetup.server.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar simpleBOLASetup.server.ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar simpleBOLASetup.server.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar simpleBOLASetup.server.ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar simpleBOLASetup.server.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar simpleBOLASetup.server.ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar simpleBOLASetup.server.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+par simpleBOLASetup.server.ipv4.arp typename "\"inet.networklayer.arp.ipv4.Arp\""
+par simpleBOLASetup.server.ipv4.arp interfaceTableModule "\"simpleBOLASetup.server.interfaceTable\""
+par simpleBOLASetup.server.ipv4.arp routingTableModule "\"simpleBOLASetup.server.ipv4.routingTable\""
+par simpleBOLASetup.server.ipv4.arp retryTimeout 1s
+attr unit s
+par simpleBOLASetup.server.ipv4.arp retryCount 3
+par simpleBOLASetup.server.ipv4.arp cacheTimeout 120s
+attr unit s
+par simpleBOLASetup.server.ipv4.arp proxyArpInterfaces "\"\""
+scalar simpleBOLASetup.server.ipv4.arp arpResolutionFailed:count 0
+attr recordingmode count
+attr title "ARP failed resolutions, count"
+scalar simpleBOLASetup.server.ipv4.arp arpResolutionCompleted:count 0
+attr recordingmode count
+attr title "ARP completed resolutions, count"
+scalar simpleBOLASetup.server.ipv4.arp arpResolutionInitiated:count 0
+attr recordingmode count
+attr title "ARP initiated resolutions, count"
+scalar simpleBOLASetup.server.ipv4.arp arpReplySent:count 0
+attr recordingmode count
+attr source arpReplySent
+attr title "ARP replies sent, count"
+scalar simpleBOLASetup.server.ipv4.arp arpReplySent:sum(packetBytes) 0
+attr recordingmode sum(packetBytes)
+attr source arpReplySent
+attr title "ARP replies sent, sum(packetBytes)"
+scalar simpleBOLASetup.server.ipv4.arp arpRequestSent:count 0
+attr recordingmode count
+attr source arpRequestSent
+attr title "ARP request sent, count"
+scalar simpleBOLASetup.server.ipv4.arp arpRequestSent:sum(packetBytes) 0
+attr recordingmode sum(packetBytes)
+attr source arpRequestSent
+attr title "ARP request sent, sum(packetBytes)"
+par simpleBOLASetup.server.ipv4.lp typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.server.ipv4.lp displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.server.ipv4.lp forwardServiceRegistration true
+par simpleBOLASetup.server.ipv4.lp forwardProtocolRegistration true
+par simpleBOLASetup.server.ipv4 typename "\"inet.networklayer.ipv4.Ipv4NetworkLayer\""
+par simpleBOLASetup.server.ipv4 forwarding false
+par simpleBOLASetup.server.ipv4 multicastForwarding false
+par simpleBOLASetup.server.ipv4 interfaceTableModule "\"simpleBOLASetup.server.interfaceTable\""
+par simpleBOLASetup.server.ipv4 displayStringTextFormat "\"%i\""
+par simpleBOLASetup.server.nl typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.server.nl displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.server.nl forwardServiceRegistration true
+par simpleBOLASetup.server.nl forwardProtocolRegistration true
+par simpleBOLASetup.server.udp typename "\"inet.transportlayer.udp.Udp\""
+par simpleBOLASetup.server.udp interfaceTableModule "\"simpleBOLASetup.server.interfaceTable\""
+par simpleBOLASetup.server.udp icmpModule "\"^.ipv4.icmp\""
+par simpleBOLASetup.server.udp icmpv6Module "\"^.ipv6.icmpv6\""
+par simpleBOLASetup.server.udp crcMode "\"declared\""
+attr enum disabled,declared,computed
+par simpleBOLASetup.server.udp defaultMulticastLoop true
+scalar simpleBOLASetup.server.udp packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar simpleBOLASetup.server.udp packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar simpleBOLASetup.server.udp packetSent:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar simpleBOLASetup.server.udp packetSent:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar simpleBOLASetup.server.udp passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar simpleBOLASetup.server.udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar simpleBOLASetup.server.udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+par simpleBOLASetup.server.tcp typename "\"inet.transportlayer.tcp.Tcp\""
+par simpleBOLASetup.server.tcp crcMode "\"declared\""
+attr enum declared,computed
+par simpleBOLASetup.server.tcp advertisedWindow 7504
+par simpleBOLASetup.server.tcp delayedAcksEnabled false
+par simpleBOLASetup.server.tcp nagleEnabled true
+par simpleBOLASetup.server.tcp limitedTransmitEnabled false
+par simpleBOLASetup.server.tcp increasedIWEnabled false
+par simpleBOLASetup.server.tcp sackSupport false
+par simpleBOLASetup.server.tcp windowScalingSupport false
+par simpleBOLASetup.server.tcp windowScalingFactor -1
+par simpleBOLASetup.server.tcp timestampSupport false
+par simpleBOLASetup.server.tcp mss 536
+par simpleBOLASetup.server.tcp msl 120s
+attr unit s
+par simpleBOLASetup.server.tcp tcpAlgorithmClass "\"TcpReno\""
+attr enum TcpVegas,TcpWestwood,TcpNewReno,TcpReno,TcpTahoe,TcpNoCongestionControl
+par simpleBOLASetup.server.tcp useDataNotification false
+par simpleBOLASetup.server.tcp dupthresh 3
+par simpleBOLASetup.server.tcp initialSsthresh 4294967295
+par simpleBOLASetup.server.tcp stopOperationExtraTime 0s
+attr unit s
+par simpleBOLASetup.server.tcp stopOperationTimeout 2s
+attr unit s
+par simpleBOLASetup.server.tcp ecnWillingness false
+par simpleBOLASetup.server.tcp dctcpGamma 0.0625
+par simpleBOLASetup.server.tn typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.server.tn displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.server.tn forwardServiceRegistration true
+par simpleBOLASetup.server.tn forwardProtocolRegistration true
+par simpleBOLASetup.server.at typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.server.at displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.server.at forwardServiceRegistration true
+par simpleBOLASetup.server.at forwardProtocolRegistration true
+par simpleBOLASetup.server typename "\"inet.node.inet.StandardHost\""
+par simpleBOLASetup.server hasStatus false
+par simpleBOLASetup.server osgModel "\"\""
+par simpleBOLASetup.server osgModelColor "\"\""
+par simpleBOLASetup.server canvasImage "\"\""
+par simpleBOLASetup.server canvasImageColor "\"\""
+par simpleBOLASetup.server recordPcap false
+par simpleBOLASetup.server numPcapRecorders 0
+par simpleBOLASetup.server numLoInterfaces 1
+par simpleBOLASetup.server numWlanInterfaces 0
+par simpleBOLASetup.server numEthInterfaces 0
+par simpleBOLASetup.server numPppInterfaces 0
+par simpleBOLASetup.server numTunInterfaces 0
+par simpleBOLASetup.server numVirtInterfaces 0
+par simpleBOLASetup.server fcsMode "\"declared\""
+attr enum declared,computed
+par simpleBOLASetup.server hasIpv4 true
+par simpleBOLASetup.server hasIpv6 false
+par simpleBOLASetup.server hasGn false
+par simpleBOLASetup.server forwarding false
+par simpleBOLASetup.server multicastForwarding false
+par simpleBOLASetup.server hasUdp true
+par simpleBOLASetup.server hasTcp true
+par simpleBOLASetup.server hasSctp false
+par simpleBOLASetup.server numApps 0
+par simpleBOLASetup.client.pppg$i[0].channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.client.ppp[0].phys$o.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.client.interfaceTable typename "\"inet.networklayer.common.InterfaceTable\""
+par simpleBOLASetup.client.interfaceTable displayAddresses false
+par simpleBOLASetup.client.cb typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.client.cb displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.client.cb forwardServiceRegistration true
+par simpleBOLASetup.client.cb forwardProtocolRegistration true
+par simpleBOLASetup.client.bl typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.client.bl displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.client.bl forwardServiceRegistration true
+par simpleBOLASetup.client.bl forwardProtocolRegistration true
+par simpleBOLASetup.client.li typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.client.li displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.client.li forwardServiceRegistration true
+par simpleBOLASetup.client.li forwardProtocolRegistration true
+par simpleBOLASetup.client.lo[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.client.lo[0].lo.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.client.lo[0].lo typename "\"inet.linklayer.loopback.Loopback\""
+par simpleBOLASetup.client.lo[0].lo interfaceTableModule "\"simpleBOLASetup.client.interfaceTable\""
+par simpleBOLASetup.client.lo[0].lo mtu 4470B
+attr unit B
+scalar simpleBOLASetup.client.lo[0].lo rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar simpleBOLASetup.client.lo[0].lo rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar simpleBOLASetup.client.lo[0].lo passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar simpleBOLASetup.client.lo[0].lo passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+par simpleBOLASetup.client.lo[0] typename "\"inet.linklayer.loopback.LoopbackInterface\""
+par simpleBOLASetup.client.lo[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par simpleBOLASetup.client.lo[0] recordPcap false
+par simpleBOLASetup.client.lo[0] numPcapRecorders 0
+par simpleBOLASetup.client.lo[0] interfaceTableModule "\"simpleBOLASetup.client.interfaceTable\""
+scalar simpleBOLASetup.client.lo[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar simpleBOLASetup.client.lo[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar simpleBOLASetup.client.lo[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar simpleBOLASetup.client.lo[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+par simpleBOLASetup.client.ppp[0].phys$i.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.client.ppp[0].ppp.phys$o.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.client.ppp[0].ppp.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.client.ppp[0].upperLayerIn.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.client.ppp[0].queue typename "\"inet.queueing.queue.DropTailQueue\""
+par simpleBOLASetup.client.ppp[0].queue displayStringTextFormat "\"contains %p pk (%l) pushed %u\\npulled %o removed %r dropped %d\""
+par simpleBOLASetup.client.ppp[0].queue packetCapacity 10000
+par simpleBOLASetup.client.ppp[0].queue dataCapacity -1b
+attr unit b
+par simpleBOLASetup.client.ppp[0].queue dropperClass "\"inet::queueing::PacketAtCollectionEndDropper\""
+par simpleBOLASetup.client.ppp[0].queue comparatorClass "\"\""
+par simpleBOLASetup.client.ppp[0].queue bufferModule "\"\""
+scalar simpleBOLASetup.client.ppp[0].queue queueLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar simpleBOLASetup.client.ppp[0].queue queueLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar simpleBOLASetup.client.ppp[0].queue queueLength:timeavg nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar simpleBOLASetup.client.ppp[0].queue queueBitLength:last nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar simpleBOLASetup.client.ppp[0].queue queueBitLength:max nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar simpleBOLASetup.client.ppp[0].queue queueBitLength:timeavg nan
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic simpleBOLASetup.client.ppp[0].queue queueingTime:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar simpleBOLASetup.client.ppp[0].queue outgoingPackets:count 0
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar simpleBOLASetup.client.ppp[0].queue outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic simpleBOLASetup.client.ppp[0].queue outgoingPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic simpleBOLASetup.client.ppp[0].queue flowQueueingTime:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar simpleBOLASetup.client.ppp[0].queue incomingPackets:count 0
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar simpleBOLASetup.client.ppp[0].queue incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic simpleBOLASetup.client.ppp[0].queue incomingPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar simpleBOLASetup.client.ppp[0].queue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar simpleBOLASetup.client.ppp[0].queue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+par simpleBOLASetup.client.ppp[0].ppp typename "\"inet.linklayer.ppp.Ppp\""
+par simpleBOLASetup.client.ppp[0].ppp interfaceTableModule "\"simpleBOLASetup.client.interfaceTable\""
+par simpleBOLASetup.client.ppp[0].ppp displayStringTextFormat "\"rate: %b\\nsent: %s, rcvd: %r\\nqueue: %q, drop: %d\""
+par simpleBOLASetup.client.ppp[0].ppp sendRawBytes false
+par simpleBOLASetup.client.ppp[0].ppp mtu 4470B
+attr unit B
+par simpleBOLASetup.client.ppp[0].ppp stopOperationExtraTime -1s
+attr unit s
+par simpleBOLASetup.client.ppp[0].ppp stopOperationTimeout 2s
+attr unit s
+scalar simpleBOLASetup.client.ppp[0].ppp transmissionState:timeavg nan
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source transmissionStateChanged
+attr title "tx state, timeavg"
+scalar simpleBOLASetup.client.ppp[0].ppp rxPkOk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source rxPkOk
+attr title "packets received OK, count"
+scalar simpleBOLASetup.client.ppp[0].ppp rxPkOk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, sum(packetBytes)"
+scalar simpleBOLASetup.client.ppp[0].ppp txPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToLower
+attr title "packets transmitted, count"
+scalar simpleBOLASetup.client.ppp[0].ppp txPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, sum(packetBytes)"
+scalar simpleBOLASetup.client.ppp[0].ppp rcvdPkFromHl:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, count"
+scalar simpleBOLASetup.client.ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, sum(packetBytes)"
+scalar simpleBOLASetup.client.ppp[0].ppp passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed to higher layer, count"
+scalar simpleBOLASetup.client.ppp[0].ppp passedUpPk:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, sum(packetBytes)"
+scalar simpleBOLASetup.client.ppp[0].ppp packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, count"
+scalar simpleBOLASetup.client.ppp[0].ppp packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drop: incorrectly received, sum(packetBytes)"
+scalar simpleBOLASetup.client.ppp[0].ppp packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, count"
+scalar simpleBOLASetup.client.ppp[0].ppp packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drop: interface down, sum(packetBytes)"
+par simpleBOLASetup.client.ppp[0] typename "\"inet.linklayer.ppp.PppInterface\""
+par simpleBOLASetup.client.ppp[0] displayStringTextFormat "\"%a (%i)\\n%m\""
+par simpleBOLASetup.client.ppp[0] recordPcap false
+par simpleBOLASetup.client.ppp[0] numPcapRecorders 0
+par simpleBOLASetup.client.ppp[0] interfaceTableModule "\"simpleBOLASetup.client.interfaceTable\""
+scalar simpleBOLASetup.client.ppp[0] packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar simpleBOLASetup.client.ppp[0] packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar simpleBOLASetup.client.ppp[0] packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar simpleBOLASetup.client.ppp[0] packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+par simpleBOLASetup.client.ipv4.transportIn.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.client.ipv4.up.out[0].channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.client.ipv4.lp.out[2].channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.client.ipv4.ifIn.channel typename "\"ned.IdealChannel\""
+par simpleBOLASetup.client.ipv4.configurator typename "\"inet.networklayer.configurator.ipv4.Ipv4NodeConfigurator\""
+par simpleBOLASetup.client.ipv4.configurator interfaceTableModule "\"simpleBOLASetup.client.interfaceTable\""
+par simpleBOLASetup.client.ipv4.configurator routingTableModule "\"simpleBOLASetup.client.ipv4.routingTable\""
+par simpleBOLASetup.client.ipv4.configurator networkConfiguratorModule "\"configurator\""
+par simpleBOLASetup.client.ipv4.configurator configureRoutingTable true
+par simpleBOLASetup.client.ipv4.routingTable typename "\"inet.networklayer.ipv4.Ipv4RoutingTable\""
+par simpleBOLASetup.client.ipv4.routingTable interfaceTableModule "\"simpleBOLASetup.client.interfaceTable\""
+par simpleBOLASetup.client.ipv4.routingTable routerId "\"auto\""
+par simpleBOLASetup.client.ipv4.routingTable netmaskRoutes "\"*\""
+par simpleBOLASetup.client.ipv4.routingTable forwarding false
+par simpleBOLASetup.client.ipv4.routingTable multicastForwarding false
+par simpleBOLASetup.client.ipv4.routingTable useAdminDist false
+par simpleBOLASetup.client.ipv4.routingTable routingFile "\"\""
+par simpleBOLASetup.client.ipv4.natTable typename "\"inet.networklayer.ipv4.Ipv4NatTable\""
+par simpleBOLASetup.client.ipv4.natTable networkProtocolModule "\"^.ip\""
+par simpleBOLASetup.client.ipv4.natTable config "<config/> at content:1"
+par simpleBOLASetup.client.ipv4.up typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.client.ipv4.up displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.client.ipv4.up forwardServiceRegistration true
+par simpleBOLASetup.client.ipv4.up forwardProtocolRegistration true
+par simpleBOLASetup.client.ipv4.igmp typename "\"inet.networklayer.ipv4.Igmpv2\""
+par simpleBOLASetup.client.ipv4.igmp interfaceTableModule "\"simpleBOLASetup.client.interfaceTable\""
+par simpleBOLASetup.client.ipv4.igmp routingTableModule "\"simpleBOLASetup.client.ipv4.routingTable\""
+par simpleBOLASetup.client.ipv4.igmp crcMode "\"declared\""
+attr enum declared,computed
+par simpleBOLASetup.client.ipv4.igmp enabled true
+par simpleBOLASetup.client.ipv4.igmp robustnessVariable 2
+par simpleBOLASetup.client.ipv4.igmp queryInterval 125s
+attr unit s
+par simpleBOLASetup.client.ipv4.igmp queryResponseInterval 10s
+attr unit s
+par simpleBOLASetup.client.ipv4.igmp groupMembershipInterval 260s
+attr unit s
+par simpleBOLASetup.client.ipv4.igmp otherQuerierPresentInterval 255s
+attr unit s
+par simpleBOLASetup.client.ipv4.igmp startupQueryInterval 31.25s
+attr unit s
+par simpleBOLASetup.client.ipv4.igmp startupQueryCount 2
+par simpleBOLASetup.client.ipv4.igmp lastMemberQueryInterval 1s
+attr unit s
+par simpleBOLASetup.client.ipv4.igmp lastMemberQueryCount 2
+par simpleBOLASetup.client.ipv4.igmp unsolicitedReportInterval 10s
+attr unit s
+par simpleBOLASetup.client.ipv4.icmp typename "\"inet.networklayer.ipv4.Icmp\""
+par simpleBOLASetup.client.ipv4.icmp interfaceTableModule "\"simpleBOLASetup.client.interfaceTable\""
+par simpleBOLASetup.client.ipv4.icmp routingTableModule "\"simpleBOLASetup.client.ipv4.routingTable\""
+par simpleBOLASetup.client.ipv4.icmp crcMode "\"declared\""
+attr enum declared,computed
+attr mutable ""
+par simpleBOLASetup.client.ipv4.icmp quoteLength 8B
+attr mutable ""
+attr unit B
+par simpleBOLASetup.client.ipv4.mp typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.client.ipv4.mp displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.client.ipv4.mp forwardServiceRegistration true
+par simpleBOLASetup.client.ipv4.mp forwardProtocolRegistration true
+par simpleBOLASetup.client.ipv4.ip typename "\"inet.networklayer.ipv4.Ipv4\""
+par simpleBOLASetup.client.ipv4.ip interfaceTableModule "\"simpleBOLASetup.client.interfaceTable\""
+par simpleBOLASetup.client.ipv4.ip routingTableModule "\"simpleBOLASetup.client.ipv4.routingTable\""
+par simpleBOLASetup.client.ipv4.ip arpModule "\"simpleBOLASetup.client.ipv4.arp\""
+par simpleBOLASetup.client.ipv4.ip icmpModule "\"simpleBOLASetup.client.ipv4.icmp\""
+par simpleBOLASetup.client.ipv4.ip crcMode "\"declared\""
+attr enum declared,computed
+par simpleBOLASetup.client.ipv4.ip timeToLive 32
+par simpleBOLASetup.client.ipv4.ip multicastTimeToLive 32
+par simpleBOLASetup.client.ipv4.ip fragmentTimeout 60s
+attr unit s
+par simpleBOLASetup.client.ipv4.ip limitedBroadcast false
+par simpleBOLASetup.client.ipv4.ip directBroadcastInterfaces "\"\""
+scalar simpleBOLASetup.client.ipv4.ip packetDropAddressResolutionFailed:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, count"
+scalar simpleBOLASetup.client.ipv4.ip packetDropAddressResolutionFailed:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsAddressResolutionFailed(packetDropped)
+attr title "packet drop: address resolution failed, sum(packetBytes)"
+scalar simpleBOLASetup.client.ipv4.ip packetDropHopLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, count"
+scalar simpleBOLASetup.client.ipv4.ip packetDropHopLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsHopLimitReached(packetDropped)
+attr title "packet drop: hop limit reached, sum(packetBytes)"
+scalar simpleBOLASetup.client.ipv4.ip packetDropForwardingDisabled:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, count"
+scalar simpleBOLASetup.client.ipv4.ip packetDropForwardingDisabled:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsForwardingDisabled(packetDropped)
+attr title "packet drop: forwarding disabled, sum(packetBytes)"
+scalar simpleBOLASetup.client.ipv4.ip packetDropNoInterfaceFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, count"
+scalar simpleBOLASetup.client.ipv4.ip packetDropNoInterfaceFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoInterfaceFound(packetDropped)
+attr title "packet drop: no interface found, sum(packetBytes)"
+scalar simpleBOLASetup.client.ipv4.ip packetDropNoRouteFound:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, count"
+scalar simpleBOLASetup.client.ipv4.ip packetDropNoRouteFound:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoRouteFound(packetDropped)
+attr title "packet drop: no route found, sum(packetBytes)"
+scalar simpleBOLASetup.client.ipv4.ip packetDropUndefined:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, count"
+scalar simpleBOLASetup.client.ipv4.ip packetDropUndefined:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsUndefined(packetDropped)
+attr title "packet drop: undefined, sum(packetBytes)"
+par simpleBOLASetup.client.ipv4.arp typename "\"inet.networklayer.arp.ipv4.Arp\""
+par simpleBOLASetup.client.ipv4.arp interfaceTableModule "\"simpleBOLASetup.client.interfaceTable\""
+par simpleBOLASetup.client.ipv4.arp routingTableModule "\"simpleBOLASetup.client.ipv4.routingTable\""
+par simpleBOLASetup.client.ipv4.arp retryTimeout 1s
+attr unit s
+par simpleBOLASetup.client.ipv4.arp retryCount 3
+par simpleBOLASetup.client.ipv4.arp cacheTimeout 120s
+attr unit s
+par simpleBOLASetup.client.ipv4.arp proxyArpInterfaces "\"\""
+scalar simpleBOLASetup.client.ipv4.arp arpResolutionFailed:count 0
+attr recordingmode count
+attr title "ARP failed resolutions, count"
+scalar simpleBOLASetup.client.ipv4.arp arpResolutionCompleted:count 0
+attr recordingmode count
+attr title "ARP completed resolutions, count"
+scalar simpleBOLASetup.client.ipv4.arp arpResolutionInitiated:count 0
+attr recordingmode count
+attr title "ARP initiated resolutions, count"
+scalar simpleBOLASetup.client.ipv4.arp arpReplySent:count 0
+attr recordingmode count
+attr source arpReplySent
+attr title "ARP replies sent, count"
+scalar simpleBOLASetup.client.ipv4.arp arpReplySent:sum(packetBytes) 0
+attr recordingmode sum(packetBytes)
+attr source arpReplySent
+attr title "ARP replies sent, sum(packetBytes)"
+scalar simpleBOLASetup.client.ipv4.arp arpRequestSent:count 0
+attr recordingmode count
+attr source arpRequestSent
+attr title "ARP request sent, count"
+scalar simpleBOLASetup.client.ipv4.arp arpRequestSent:sum(packetBytes) 0
+attr recordingmode sum(packetBytes)
+attr source arpRequestSent
+attr title "ARP request sent, sum(packetBytes)"
+par simpleBOLASetup.client.ipv4.lp typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.client.ipv4.lp displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.client.ipv4.lp forwardServiceRegistration true
+par simpleBOLASetup.client.ipv4.lp forwardProtocolRegistration true
+par simpleBOLASetup.client.ipv4 typename "\"inet.networklayer.ipv4.Ipv4NetworkLayer\""
+par simpleBOLASetup.client.ipv4 forwarding false
+par simpleBOLASetup.client.ipv4 multicastForwarding false
+par simpleBOLASetup.client.ipv4 interfaceTableModule "\"simpleBOLASetup.client.interfaceTable\""
+par simpleBOLASetup.client.ipv4 displayStringTextFormat "\"%i\""
+par simpleBOLASetup.client.nl typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.client.nl displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.client.nl forwardServiceRegistration true
+par simpleBOLASetup.client.nl forwardProtocolRegistration true
+par simpleBOLASetup.client.udp typename "\"inet.transportlayer.udp.Udp\""
+par simpleBOLASetup.client.udp interfaceTableModule "\"simpleBOLASetup.client.interfaceTable\""
+par simpleBOLASetup.client.udp icmpModule "\"^.ipv4.icmp\""
+par simpleBOLASetup.client.udp icmpv6Module "\"^.ipv6.icmpv6\""
+par simpleBOLASetup.client.udp crcMode "\"declared\""
+attr enum disabled,declared,computed
+par simpleBOLASetup.client.udp defaultMulticastLoop true
+scalar simpleBOLASetup.client.udp packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar simpleBOLASetup.client.udp packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+scalar simpleBOLASetup.client.udp packetSent:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar simpleBOLASetup.client.udp packetSent:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+scalar simpleBOLASetup.client.udp passedUpPk:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetSentToUpper
+attr title "packets passed up, count"
+scalar simpleBOLASetup.client.udp droppedPkWrongPort:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+scalar simpleBOLASetup.client.udp droppedPkBadChecksum:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+par simpleBOLASetup.client.tcp typename "\"inet.transportlayer.tcp.Tcp\""
+par simpleBOLASetup.client.tcp crcMode "\"declared\""
+attr enum declared,computed
+par simpleBOLASetup.client.tcp advertisedWindow 7504
+par simpleBOLASetup.client.tcp delayedAcksEnabled false
+par simpleBOLASetup.client.tcp nagleEnabled true
+par simpleBOLASetup.client.tcp limitedTransmitEnabled false
+par simpleBOLASetup.client.tcp increasedIWEnabled false
+par simpleBOLASetup.client.tcp sackSupport false
+par simpleBOLASetup.client.tcp windowScalingSupport false
+par simpleBOLASetup.client.tcp windowScalingFactor -1
+par simpleBOLASetup.client.tcp timestampSupport false
+par simpleBOLASetup.client.tcp mss 536
+par simpleBOLASetup.client.tcp msl 120s
+attr unit s
+par simpleBOLASetup.client.tcp tcpAlgorithmClass "\"TcpReno\""
+attr enum TcpVegas,TcpWestwood,TcpNewReno,TcpReno,TcpTahoe,TcpNoCongestionControl
+par simpleBOLASetup.client.tcp useDataNotification false
+par simpleBOLASetup.client.tcp dupthresh 3
+par simpleBOLASetup.client.tcp initialSsthresh 4294967295
+par simpleBOLASetup.client.tcp stopOperationExtraTime 0s
+attr unit s
+par simpleBOLASetup.client.tcp stopOperationTimeout 2s
+attr unit s
+par simpleBOLASetup.client.tcp ecnWillingness false
+par simpleBOLASetup.client.tcp dctcpGamma 0.0625
+par simpleBOLASetup.client.tn typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.client.tn displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.client.tn forwardServiceRegistration true
+par simpleBOLASetup.client.tn forwardProtocolRegistration true
+par simpleBOLASetup.client.at typename "\"inet.common.MessageDispatcher\""
+par simpleBOLASetup.client.at displayStringTextFormat "\"processed %p pk (%l)\""
+par simpleBOLASetup.client.at forwardServiceRegistration true
+par simpleBOLASetup.client.at forwardProtocolRegistration true
+par simpleBOLASetup.client typename "\"inet.node.inet.StandardHost\""
+par simpleBOLASetup.client hasStatus false
+par simpleBOLASetup.client osgModel "\"\""
+par simpleBOLASetup.client osgModelColor "\"\""
+par simpleBOLASetup.client canvasImage "\"\""
+par simpleBOLASetup.client canvasImageColor "\"\""
+par simpleBOLASetup.client recordPcap false
+par simpleBOLASetup.client numPcapRecorders 0
+par simpleBOLASetup.client numLoInterfaces 1
+par simpleBOLASetup.client numWlanInterfaces 0
+par simpleBOLASetup.client numEthInterfaces 0
+par simpleBOLASetup.client numPppInterfaces 0
+par simpleBOLASetup.client numTunInterfaces 0
+par simpleBOLASetup.client numVirtInterfaces 0
+par simpleBOLASetup.client fcsMode "\"declared\""
+attr enum declared,computed
+par simpleBOLASetup.client hasIpv4 true
+par simpleBOLASetup.client hasIpv6 false
+par simpleBOLASetup.client hasGn false
+par simpleBOLASetup.client forwarding false
+par simpleBOLASetup.client multicastForwarding false
+par simpleBOLASetup.client hasUdp true
+par simpleBOLASetup.client hasTcp true
+par simpleBOLASetup.client hasSctp false
+par simpleBOLASetup.client numApps 0
+par simpleBOLASetup typename "\"improved5gns.simulations.simpleBOLASetup\""
+

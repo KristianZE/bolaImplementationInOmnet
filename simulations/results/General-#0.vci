@@ -1,0 +1,95 @@
+file 3124 1680600694                                            
+version 3
+run General-0-20230404-11:31:21-76654
+attr configname General
+attr datetime 20230404-11:31:21
+attr datetimef 20230404-113121
+attr experiment General
+attr inifile simpleBOLASetup.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network simpleBOLASetup
+attr processid 76654
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config image-path ../../inet/images
+config network simpleBOLASetup
+
+vector 0 simpleBOLASetup.router0.ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "tx state"
+vector 1 simpleBOLASetup.router0.ppp[1].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "tx state"
+vector 2 simpleBOLASetup.router1.ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "tx state"
+vector 3 simpleBOLASetup.router1.ppp[1].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "tx state"
+vector 4 simpleBOLASetup.server.ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "tx state"
+vector 5 simpleBOLASetup.server.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 6 simpleBOLASetup.server.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 7 simpleBOLASetup.server.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 8 simpleBOLASetup.client.ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "tx state"
+vector 9 simpleBOLASetup.client.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 10 simpleBOLASetup.client.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 11 simpleBOLASetup.client.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+0	3025 8 0 0 0 0 1 0 0 0 0
+1	3033 8 0 0 0 0 1 0 0 0 0
+2	3041 8 0 0 0 0 1 0 0 0 0
+3	3049 8 0 0 0 0 1 0 0 0 0
+4	3057 8 0 0 0 0 1 0 0 0 0
+5	3065 8 0 0 0 0 1 0 0 0 0
+6	3073 8 0 0 0 0 1 0 0 0 0
+7	3081 8 0 0 0 0 1 0 0 0 0
+8	3089 8 0 0 0 0 1 0 0 0 0
+9	3097 8 0 0 0 0 1 0 0 0 0
+10	3105 9 0 0 0 0 1 0 0 0 0
+11	3114 9 0 0 0 0 1 0 0 0 0
+

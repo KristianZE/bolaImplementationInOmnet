@@ -60,8 +60,8 @@ int TCPVideoStreamCliAppV2lite::generateRandomizedBitrate(int minBitrate, int ma
     }
 }
 
-int TCPVideoStreamCliAppV2lite::getVideoBitrate(int resolution) {
-    if (resolution == 240) {
+int TCPVideoStreamCliAppV2lite::getVideoBitrate(int newLevel) {
+   /* if (resolution == 240) {
         return generateRandomizedBitrate(75, 150);
     } else if (resolution == 360) {
         return generateRandomizedBitrate(220, 450);
@@ -73,7 +73,9 @@ int TCPVideoStreamCliAppV2lite::getVideoBitrate(int resolution) {
         return generateRandomizedBitrate(1875, 6000);
     } else { // Just return the lowest possible bit rate if invalid resolution chosen
         return generateRandomizedBitrate(75, 150);
-    }
+    }*/
+    int bitRate = rates[newLevel] * 8;
+    return bitRate;
 }
 
 double TCPVideoStreamCliAppV2lite::getSize(int m) //rates should be global?
@@ -129,15 +131,15 @@ int TCPVideoStreamCliAppV2lite::get_m_star_n(int max_level, double V_D, double y
 
 int TCPVideoStreamCliAppV2lite::getBufferLevel()  { //last_level must be set globally
     int p = segment_length;
-    double y = 5.0 * p;
+    double y = 5.0 / p; //Code says 5.0 * p but paper says otherwise
     double q_max = (int)(video_buffer_max_length / p); // maximal buffer size in chucks
     int q = (int)(video_buffer / p);         // buffer level in chuncks
 
 
-    double playtime_from_beginning = simTime(); //Not sure if simTime will be the current playtime.
+    double playtime_from_beginning = simTime().dbl(); //simtime, starttime of video
     double playtime_to_end = video_duration - playtime_from_beginning;
 
-    double t = std::min(playtime_from_beginning, playtime_to_end);
+    double t = std::min(playtime_from_beginning,playtime_to_end);
     double t_dash = std::max(t / 2, (double)3 * p);
     double q_D_max = std::min(q_max, t_dash / p);
     double V_D = (q_D_max - 1) / (utility_v(0) + y * p); // or V=0.93
@@ -249,7 +251,8 @@ void TCPVideoStreamCliAppV2lite::initialize(int stage) {
     video_current_quality_index = 0;  // start with min quality
     DASH_video_bitrate_signal = registerSignal("DASHVideoBitrate");
     int initialResolution = video_resolution[video_current_quality_index];
-    int initialBitrate = getVideoBitrate(initialResolution);
+    int initialBufferLevel = getBufferLevel();
+    int initialBitrate = getVideoBitrate(initialBufferLevel);
     emit(DASH_video_bitrate_signal, initialBitrate);
 //    std::pair<simtime_t, double> timeQualityPair;
 //    timeQualityPair.first = simTime();
@@ -306,7 +309,8 @@ void TCPVideoStreamCliAppV2lite::sendRequest() {
         if (manifestAlreadySent) {
             // Determine the bitrate of the next segment to download
             int reqResolution = video_resolution[video_current_quality_index];
-            int reqVideoBitrate = getVideoBitrate(reqResolution); // kbits -> bytes.
+            int currentBufferLevel = getBufferLevel();
+            int reqVideoBitrate = getVideoBitrate(currentBufferLevel); // kbits -> bytes.
             // Determine how much data should be requested in order to download the next segment
             if (video_duration % segment_length > 0 && numRequestsToSend == 1) {
                 EV << "Download last partial segment" << endl;
