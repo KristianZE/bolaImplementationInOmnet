@@ -104,11 +104,11 @@ int TCPVideoStreamCliAppV2lite::get_m_dash(){
 
 
 
-double TCPVideoStreamCliAppV2lite::utility_v(int m)
+double TCPVideoStreamCliAppV2lite::utility_v(int m) //Double check this
     {
         double size_m = getSize(m);
-        double size_max = getSize(max_level);
-        return (size_m / size_max);
+        double size_min = getSize(0);
+        return (size_m / size_min);
     }
 
 int TCPVideoStreamCliAppV2lite::get_m_star_n(int max_level, double V_D, double y, double p, int q)
@@ -131,8 +131,8 @@ int TCPVideoStreamCliAppV2lite::get_m_star_n(int max_level, double V_D, double y
 
 int TCPVideoStreamCliAppV2lite::getBufferLevel()  { //last_level must be set globally
     int p = segment_length;
-    double y = 5.0 / p; //Code says 5.0 * p but paper says otherwise
-    double q_max = (int)(video_buffer_max_length / p); // maximal buffer size in chucks
+    double y = 5.0 / p; //pyCode says 5.0 * p but paper says otherwise
+    double q_max = (int)(video_buffer_max_length / p); // maximal buffer size in chunks
     int q = (int)(video_buffer / p);         // buffer level in chuncks
 
 
@@ -142,7 +142,8 @@ int TCPVideoStreamCliAppV2lite::getBufferLevel()  { //last_level must be set glo
     double t = std::min(playtime_from_beginning,playtime_to_end);
     double t_dash = std::max(t / 2, (double)3 * p);
     double q_D_max = std::min(q_max, t_dash / p);
-    double V_D = (q_D_max - 1) / (utility_v(0) + y * p); // or V=0.93
+    int rateListSize = rates.size();
+    double V_D = (q_D_max - 1) / (utility_v(rateListSize) + y * p); // or V=0.93
     int m_star_n = get_m_star_n(max_level, V_D, y, p, q);
 
     if (m_star_n > last_level) // Is m*[n] > m*[n-1]?

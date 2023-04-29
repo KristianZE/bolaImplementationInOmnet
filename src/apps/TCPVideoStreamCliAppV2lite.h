@@ -44,8 +44,9 @@ protected:
     int max_level = 5;
     int last_level = 0;
     long current_rate;
-    int rates[5] = {14, 42, 70, 197, 492}; // In byte/s
-    int p = 10;
+    std::vector<int> rates = {41, 83, 178, 370, 750}; // In byte/s331
+    //std::vector<int> rates = {14, 42, 70, 197, 492}; // In byte/s
+    int p = 3;
 
     simtime_t startTime;
     simtime_t stopTime;
