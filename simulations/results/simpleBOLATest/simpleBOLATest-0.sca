@@ -1,8 +1,8 @@
 version 3
-run simpleBOLATest-0-20230411-16:48:22-84453
+run simpleBOLATest-0-20230503-12:44:57-11926
 attr configname simpleBOLATest
-attr datetime 20230411-16:48:22
-attr datetimef 20230411-164822
+attr datetime 20230503-12:44:57
+attr datetimef 20230503-124457
 attr experiment simpleBOLATest
 attr inifile BOLASetup.ini
 attr iterationvars ""
@@ -10,7 +10,7 @@ attr iterationvarsd ""
 attr iterationvarsf ""
 attr measurement ""
 attr network simpleBOLASetup
-attr processid 84453
+attr processid 11926
 attr repetition 0
 attr replication #0
 attr resultdir results
@@ -19,7 +19,7 @@ attr seedset 0
 config image-path ../../inet/images
 config description "All five applications - base configuration without any resource allocation"
 config network simpleBOLASetup
-config sim-time-limit 280s
+config sim-time-limit 300s
 config output-vector-file results/simpleBOLATest/simpleBOLATest-0.vec
 config output-scalar-file results/simpleBOLATest/simpleBOLATest-0.sca
 config **.crcMode "\"computed\""
@@ -31,7 +31,7 @@ config **.hostVID[*].app[0].localPort -1
 config **.hostVID[*].app[0].connectAddress "\"serverVID\""
 config **.hostVID[*].app[0].connectPort 1042
 config **.hostVID[*].app[0].dataTransferMode "\"object\""
-config **.hostVID[*].app[0].startTime uniform(0.01s,1s)
+config **.hostVID[*].app[0].startTime 0.1s
 config **.hostVID[*].app[0].stopTime -1s
 config **.hostVID[*].app[0].idleInterval 1s
 config **.hostVID[*].app[0].requestLength 200B
@@ -40,9 +40,9 @@ config **.hostVID[*].app[0].numRequestsPerSession 1
 config **.hostVID[*].app[0].thinkTime 1s
 config **.hostVID[*].app[0].video_resolution "\"360 480 720 1080\""
 config **.hostVID[*].app[0].manifest_size 100000
-config **.hostVID[*].app[0].video_buffer_max_length 30s
-config **.hostVID[*].app[0].video_duration int(uniform(120s,200s))
-config **.hostVID[*].app[0].segment_length 5s
+config **.hostVID[*].app[0].video_buffer_max_length 25s
+config **.hostVID[*].app[0].video_duration 300s
+config **.hostVID[*].app[0].segment_length 3s
 config **.hostVID[*].app[0].useFlexibleBitrate "\"flexible\""
 config *.serverVID.hasTcp true
 config *.serverVID.numApps 1
@@ -84,7 +84,7 @@ attr mutable ""
 par simpleBOLASetup.router0.pppg$o[0].conn1 delay 1e-07s
 attr mutable ""
 attr unit s
-par simpleBOLASetup.router0.pppg$o[0].conn1 datarate 1e+10bps
+par simpleBOLASetup.router0.pppg$o[0].conn1 datarate 1e+08bps
 attr mutable ""
 attr unit bps
 par simpleBOLASetup.router0.pppg$o[0].conn1 ber 0
@@ -97,7 +97,7 @@ attr mutable ""
 par simpleBOLASetup.router1.pppg$o[0].conn1 delay 1e-07s
 attr mutable ""
 attr unit s
-par simpleBOLASetup.router1.pppg$o[0].conn1 datarate 1e+10bps
+par simpleBOLASetup.router1.pppg$o[0].conn1 datarate 1e+08bps
 attr mutable ""
 attr unit bps
 par simpleBOLASetup.router1.pppg$o[0].conn1 ber 0
@@ -110,7 +110,7 @@ attr mutable ""
 par simpleBOLASetup.hostVID[0].pppg$o[0].channel delay 1e-07s
 attr mutable ""
 attr unit s
-par simpleBOLASetup.hostVID[0].pppg$o[0].channel datarate 1e+10bps
+par simpleBOLASetup.hostVID[0].pppg$o[0].channel datarate 1e+08bps
 attr mutable ""
 attr unit bps
 par simpleBOLASetup.hostVID[0].pppg$o[0].channel ber 0
@@ -123,7 +123,7 @@ attr mutable ""
 par simpleBOLASetup.router0.pppg$o[1].channel delay 1e-07s
 attr mutable ""
 attr unit s
-par simpleBOLASetup.router0.pppg$o[1].channel datarate 1e+10bps
+par simpleBOLASetup.router0.pppg$o[1].channel datarate 1e+08bps
 attr mutable ""
 attr unit bps
 par simpleBOLASetup.router0.pppg$o[1].channel ber 0
@@ -136,7 +136,7 @@ attr mutable ""
 par simpleBOLASetup.serverVID.pppg$o[0].channel delay 1e-07s
 attr mutable ""
 attr unit s
-par simpleBOLASetup.serverVID.pppg$o[0].channel datarate 1e+10bps
+par simpleBOLASetup.serverVID.pppg$o[0].channel datarate 1e+08bps
 attr mutable ""
 attr unit bps
 par simpleBOLASetup.serverVID.pppg$o[0].channel ber 0
@@ -149,7 +149,7 @@ attr mutable ""
 par simpleBOLASetup.router1.pppg$o[1].channel delay 1e-07s
 attr mutable ""
 attr unit s
-par simpleBOLASetup.router1.pppg$o[1].channel datarate 1e+10bps
+par simpleBOLASetup.router1.pppg$o[1].channel datarate 1e+08bps
 attr mutable ""
 attr unit bps
 par simpleBOLASetup.router1.pppg$o[1].channel ber 0
@@ -266,7 +266,7 @@ attr recordingmode max
 attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
 attr title "queue length, max"
 attr unit pk
-scalar simpleBOLASetup.hostVID[0].ppp[0].queue queueLength:timeavg 2.8223160453611e-09
+scalar simpleBOLASetup.hostVID[0].ppp[0].queue queueLength:timeavg 1.1283761253751e-07
 attr autoWarmupFilter false
 attr interpolationmode sample-hold
 attr recordingmode timeavg
@@ -287,7 +287,7 @@ attr recordingmode max
 attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
 attr title "queue bit length, max"
 attr unit b
-scalar simpleBOLASetup.hostVID[0].ppp[0].queue queueBitLength:timeavg 4.9887796001811e-06
+scalar simpleBOLASetup.hostVID[0].ppp[0].queue queueBitLength:timeavg 0.00021664821607202
 attr autoWarmupFilter false
 attr interpolationmode sample-hold
 attr recordingmode timeavg
@@ -295,86 +295,86 @@ attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetP
 attr title "queue bit length, timeavg"
 attr unit b
 statistic simpleBOLASetup.hostVID[0].ppp[0].queue queueingTime:histogram
-field count 8352
-field mean 9.4540229885057e-11
-field stddev 1.8831355186097e-09
+field count 73022
+field mean 4.6342198241626e-10
+field stddev 4.1740576823421e-08
 field min 0
-field max 3.76e-08
-field sum 7.896e-07
-field sqrsum 2.968896e-14
+field max 3.76e-06
+field sum 3.384e-05
+field sqrsum 1.272384e-10
 attr interpolationmode none
 attr recordingmode histogram
 attr source queueingTime(packetPulled)
 attr title "queueing times"
 attr unit s
 bin	-inf	0
-bin	0	8331
-bin	1e-09	0
-bin	2e-09	0
-bin	3e-09	0
-bin	4e-09	0
-bin	5e-09	0
-bin	6e-09	0
-bin	7e-09	0
-bin	8e-09	0
-bin	9e-09	0
-bin	1e-08	0
-bin	1.1e-08	0
-bin	1.2e-08	0
-bin	1.3e-08	0
-bin	1.4e-08	0
-bin	1.5e-08	0
-bin	1.6e-08	0
-bin	1.7e-08	0
-bin	1.8e-08	0
-bin	1.9e-08	0
-bin	2e-08	0
-bin	2.1e-08	0
-bin	2.2e-08	0
-bin	2.3e-08	0
-bin	2.4e-08	0
-bin	2.5e-08	0
-bin	2.6e-08	0
-bin	2.7e-08	0
-bin	2.8e-08	0
-bin	2.9e-08	0
-bin	3e-08	0
-bin	3.1e-08	0
-bin	3.2e-08	0
-bin	3.3e-08	0
-bin	3.4e-08	0
-bin	3.5e-08	0
-bin	3.6e-08	0
-bin	3.7e-08	21
-bin	3.8e-08	0
-bin	3.9e-08	0
-bin	4e-08	0
-bin	4.1e-08	0
-bin	4.2e-08	0
-bin	4.3e-08	0
-bin	4.4e-08	0
-bin	4.5e-08	0
-bin	4.6e-08	0
-bin	4.7e-08	0
-scalar simpleBOLASetup.hostVID[0].ppp[0].queue outgoingPackets:count 8352
+bin	0	73013
+bin	1e-07	0
+bin	2e-07	0
+bin	3e-07	0
+bin	4e-07	0
+bin	5e-07	0
+bin	6e-07	0
+bin	7e-07	0
+bin	8e-07	0
+bin	9e-07	0
+bin	1e-06	0
+bin	1.1e-06	0
+bin	1.2e-06	0
+bin	1.3e-06	0
+bin	1.4e-06	0
+bin	1.5e-06	0
+bin	1.6e-06	0
+bin	1.7e-06	0
+bin	1.8e-06	0
+bin	1.9e-06	0
+bin	2e-06	0
+bin	2.1e-06	0
+bin	2.2e-06	0
+bin	2.3e-06	0
+bin	2.4e-06	0
+bin	2.5e-06	0
+bin	2.6e-06	0
+bin	2.7e-06	0
+bin	2.8e-06	0
+bin	2.9e-06	0
+bin	3e-06	0
+bin	3.1e-06	0
+bin	3.2e-06	0
+bin	3.3e-06	0
+bin	3.4e-06	0
+bin	3.5e-06	0
+bin	3.6e-06	0
+bin	3.7e-06	9
+bin	3.8e-06	0
+bin	3.9e-06	0
+bin	4e-06	0
+bin	4.1e-06	0
+bin	4.2e-06	0
+bin	4.3e-06	0
+bin	4.4e-06	0
+bin	4.5e-06	0
+bin	4.6e-06	0
+bin	4.7e-06	0
+scalar simpleBOLASetup.hostVID[0].ppp[0].queue outgoingPackets:count 73022
 attr recordingmode count
 attr source packetPulled
 attr title "outgoing packets, count"
 attr unit pk
-scalar simpleBOLASetup.hostVID[0].ppp[0].queue outgoingPacketLengths:sum 2771936
+scalar simpleBOLASetup.hostVID[0].ppp[0].queue outgoingPacketLengths:sum 23528672
 attr interpolationmode none
 attr recordingmode sum
 attr source packetLength(packetPulled)
 attr title "outgoing packet lengths, sum"
 attr unit b
 statistic simpleBOLASetup.hostVID[0].ppp[0].queue outgoingPacketLengths:histogram
-field count 8352
-field mean 331.88888888889
-field stddev 137.35032693289
+field count 73022
+field mean 322.21346991318
+field stddev 59.464390189364
 field min 320
 field max 1920
-field sum 2771936
-field sqrsum 1077517312
+field sum 23528672
+field sqrsum 7839458304
 attr interpolationmode none
 attr recordingmode histogram
 attr source packetLength(packetPulled)
@@ -387,8 +387,8 @@ bin	100	0
 bin	150	0
 bin	200	0
 bin	250	0
-bin	300	8287
-bin	350	3
+bin	300	72920
+bin	350	1
 bin	400	0
 bin	450	0
 bin	500	0
@@ -419,7 +419,7 @@ bin	1700	0
 bin	1750	0
 bin	1800	0
 bin	1850	0
-bin	1900	62
+bin	1900	101
 bin	1950	0
 bin	2000	0
 bin	2050	0
@@ -445,25 +445,25 @@ attr unit s
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar simpleBOLASetup.hostVID[0].ppp[0].queue incomingPackets:count 8352
+scalar simpleBOLASetup.hostVID[0].ppp[0].queue incomingPackets:count 73022
 attr recordingmode count
 attr source packetPushStarted
 attr title "incoming packets, count"
 attr unit pk
-scalar simpleBOLASetup.hostVID[0].ppp[0].queue incomingPacketLengths:sum 2771936
+scalar simpleBOLASetup.hostVID[0].ppp[0].queue incomingPacketLengths:sum 23528672
 attr interpolationmode none
 attr recordingmode sum
 attr source packetLength(packetPushStarted)
 attr title "incoming packet lengths, sum"
 attr unit b
 statistic simpleBOLASetup.hostVID[0].ppp[0].queue incomingPacketLengths:histogram
-field count 8352
-field mean 331.88888888889
-field stddev 137.35032693289
+field count 73022
+field mean 322.21346991318
+field stddev 59.464390189364
 field min 320
 field max 1920
-field sum 2771936
-field sqrsum 1077517312
+field sum 23528672
+field sqrsum 7839458304
 attr interpolationmode none
 attr recordingmode histogram
 attr source packetLength(packetPushStarted)
@@ -476,8 +476,8 @@ bin	100	0
 bin	150	0
 bin	200	0
 bin	250	0
-bin	300	8287
-bin	350	3
+bin	300	72920
+bin	350	1
 bin	400	0
 bin	450	0
 bin	500	0
@@ -508,7 +508,7 @@ bin	1700	0
 bin	1750	0
 bin	1800	0
 bin	1850	0
-bin	1900	62
+bin	1900	101
 bin	1950	0
 bin	2000	0
 bin	2050	0
@@ -540,47 +540,47 @@ par simpleBOLASetup.hostVID[0].ppp[0].ppp stopOperationExtraTime -1s
 attr unit s
 par simpleBOLASetup.hostVID[0].ppp[0].ppp stopOperationTimeout 2s
 attr unit s
-scalar simpleBOLASetup.hostVID[0].ppp[0].ppp transmissionState:timeavg 1.157017142857e-06
+scalar simpleBOLASetup.hostVID[0].ppp[0].ppp transmissionState:timeavg 0.00092059679999975
 attr interpolationmode sample-hold
 attr recordingmode timeavg
 attr source transmissionStateChanged
 attr title "tx state, timeavg"
-scalar simpleBOLASetup.hostVID[0].ppp[0].ppp rxPkOk:count 8349
+scalar simpleBOLASetup.hostVID[0].ppp[0].ppp rxPkOk:count 73021
 attr interpolationmode none
 attr recordingmode count
 attr source rxPkOk
 attr title "packets received OK, count"
-scalar simpleBOLASetup.hostVID[0].ppp[0].ppp rxPkOk:sum(packetBytes) 12378415
+scalar simpleBOLASetup.hostVID[0].ppp[0].ppp rxPkOk:sum(packetBytes) 109233991
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source rxPkOk
 attr title "packets received OK, sum(packetBytes)"
-scalar simpleBOLASetup.hostVID[0].ppp[0].ppp txPk:count 8352
+scalar simpleBOLASetup.hostVID[0].ppp[0].ppp txPk:count 73022
 attr interpolationmode none
 attr recordingmode count
 attr source packetSentToLower
 attr title "packets transmitted, count"
-scalar simpleBOLASetup.hostVID[0].ppp[0].ppp txPk:sum(packetBytes) 404956
+scalar simpleBOLASetup.hostVID[0].ppp[0].ppp txPk:sum(packetBytes) 3452238
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetSentToLower
 attr title "packets transmitted, sum(packetBytes)"
-scalar simpleBOLASetup.hostVID[0].ppp[0].ppp rcvdPkFromHl:count 8352
+scalar simpleBOLASetup.hostVID[0].ppp[0].ppp rcvdPkFromHl:count 73022
 attr interpolationmode none
 attr recordingmode count
 attr source packetReceivedFromUpper
 attr title "packets received from higher layer, count"
-scalar simpleBOLASetup.hostVID[0].ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 346492
+scalar simpleBOLASetup.hostVID[0].ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 2941084
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetReceivedFromUpper
 attr title "packets received from higher layer, sum(packetBytes)"
-scalar simpleBOLASetup.hostVID[0].ppp[0].ppp passedUpPk:count 8349
+scalar simpleBOLASetup.hostVID[0].ppp[0].ppp passedUpPk:count 73021
 attr interpolationmode none
 attr recordingmode count
 attr source packetSentToUpper
 attr title "packets passed to higher layer, count"
-scalar simpleBOLASetup.hostVID[0].ppp[0].ppp passedUpPk:sum(packetBytes) 12319972
+scalar simpleBOLASetup.hostVID[0].ppp[0].ppp passedUpPk:sum(packetBytes) 108722844
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetSentToUpper
@@ -855,8 +855,6 @@ attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
 attr title "packets dropped (checksum error), count"
 par simpleBOLASetup.hostVID[0].tcp.crcInsertion typename "\"inet.transportlayer.tcp_common.TcpCrcInsertionHook\""
 par simpleBOLASetup.hostVID[0].tcp.conn-8 typename "\"inet.transportlayer.tcp.TcpConnection\""
-par simpleBOLASetup.hostVID[0].tcp.conn-10 typename "\"inet.transportlayer.tcp.TcpConnection\""
-par simpleBOLASetup.hostVID[0].tcp.conn-12 typename "\"inet.transportlayer.tcp.TcpConnection\""
 par simpleBOLASetup.hostVID[0].tcp typename "\"inet.transportlayer.tcp.Tcp\""
 par simpleBOLASetup.hostVID[0].tcp crcMode "\"computed\""
 attr enum declared,computed
@@ -894,7 +892,7 @@ par simpleBOLASetup.hostVID[0].app[0] connectAddress "\"serverVID\""
 par simpleBOLASetup.hostVID[0].app[0] connectPort 1042
 par simpleBOLASetup.hostVID[0].app[0] dataTransferMode "\"object\""
 attr enum bytecount,object,bytestream
-par simpleBOLASetup.hostVID[0].app[0] startTime 0.229773s
+par simpleBOLASetup.hostVID[0].app[0] startTime 0.1s
 attr unit s
 par simpleBOLASetup.hostVID[0].app[0] stopTime -1s
 attr unit s
@@ -913,11 +911,11 @@ par simpleBOLASetup.hostVID[0].app[0] tos -1
 par simpleBOLASetup.hostVID[0].app[0] video_resolution "\"360 480 720 1080\""
 par simpleBOLASetup.hostVID[0].app[0] manifest_size 100000
 attr units byte
-par simpleBOLASetup.hostVID[0].app[0] video_buffer_max_length 30s
+par simpleBOLASetup.hostVID[0].app[0] video_buffer_max_length 25s
 attr unit s
-par simpleBOLASetup.hostVID[0].app[0] video_duration 124s
+par simpleBOLASetup.hostVID[0].app[0] video_duration 300s
 attr unit s
-par simpleBOLASetup.hostVID[0].app[0] segment_length 5s
+par simpleBOLASetup.hostVID[0].app[0] segment_length 3s
 attr unit s
 par simpleBOLASetup.hostVID[0].app[0] useFlexibleBitrate "\"flexible\""
 scalar simpleBOLASetup.hostVID[0].app[0] positionY:last nan
@@ -949,77 +947,89 @@ attr recordingmode sum(packetBytes)
 attr source rcvdPk
 attr title "packets received, sum(packetBytes)"
 statistic simpleBOLASetup.hostVID[0].app[0] endToEndDelay:histogram
-field count 8280
-field mean 9.1179029758455e-05
-field stddev 5.0552650972293e-05
-field min 3.9352e-06
-field max 0.0001834584
-field sum 0.7549623664
-field sqrsum 8.9994304410282e-05
+field count 72919
+field mean 0.04584403871227
+field stddev 0.026612031969156
+field min 0.00036382
+field max 0.09243074
+field sum 3342.90145886
+field sqrsum 204.89264939465
 attr interpolationmode none
 attr recordingmode histogram
 attr source dataAge(packetReceived)
 attr title "end-to-end delay"
 attr unit s
 bin	-inf	0
-bin	0	62
-bin	4e-06	48
-bin	8e-06	140
-bin	1.2e-05	202
-bin	1.6e-05	232
-bin	2e-05	186
-bin	2.4e-05	202
-bin	2.8e-05	232
-bin	3.2e-05	186
-bin	3.6e-05	202
-bin	4e-05	232
-bin	4.4e-05	186
-bin	4.8e-05	202
-bin	5.2e-05	232
-bin	5.6e-05	186
-bin	6e-05	194
-bin	6.4e-05	218
-bin	6.8e-05	168
-bin	7.2e-05	180
-bin	7.6e-05	212
-bin	8e-05	168
-bin	8.4e-05	180
-bin	8.8e-05	210
-bin	9.2e-05	166
-bin	9.6e-05	177
-bin	0.0001	208
-bin	0.000104	165
-bin	0.000108	177
-bin	0.000112	208
-bin	0.000116	165
-bin	0.00012	177
-bin	0.000124	208
-bin	0.000128	165
-bin	0.000132	177
-bin	0.000136	208
-bin	0.00014	165
-bin	0.000144	175
-bin	0.000148	202
-bin	0.000152	159
-bin	0.000156	171
-bin	0.00016	200
-bin	0.000164	159
-bin	0.000168	171
-bin	0.000172	200
-bin	0.000176	135
-bin	0.00018	82
-bin	0.000184	0
+bin	0	832
+bin	0.0016	1313
+bin	0.0032	1313
+bin	0.0048	1414
+bin	0.0064	1313
+bin	0.008	1316
+bin	0.0096	1386
+bin	0.0112	1287
+bin	0.0128	1294
+bin	0.0144	1379
+bin	0.016	1287
+bin	0.0176	1294
+bin	0.0192	1379
+bin	0.0208	1251
+bin	0.0224	1252
+bin	0.024	1340
+bin	0.0256	1248
+bin	0.0272	1252
+bin	0.0288	1340
+bin	0.0304	1248
+bin	0.032	1252
+bin	0.0336	1340
+bin	0.0352	1248
+bin	0.0368	1252
+bin	0.0384	1340
+bin	0.04	1248
+bin	0.0416	1344
+bin	0.0432	1239
+bin	0.0448	1209
+bin	0.0464	1302
+bin	0.048	1209
+bin	0.0496	1209
+bin	0.0512	1302
+bin	0.0528	1209
+bin	0.0544	1209
+bin	0.056	1302
+bin	0.0576	1209
+bin	0.0592	1209
+bin	0.0608	1302
+bin	0.0624	1209
+bin	0.064	1209
+bin	0.0656	1302
+bin	0.0672	1209
+bin	0.0688	1210
+bin	0.0704	1301
+bin	0.072	1209
+bin	0.0736	1210
+bin	0.0752	1301
+bin	0.0768	1209
+bin	0.0784	1210
+bin	0.08	1301
+bin	0.0816	1209
+bin	0.0832	1210
+bin	0.0848	1301
+bin	0.0864	1209
+bin	0.088	1210
+bin	0.0896	1301
+bin	0.0912	927
+bin	0.0928	0
 scalar simpleBOLASetup.hostVID[0].app[0] numActiveSessions:max 1
 attr interpolationmode sample-hold
 attr recordingmode max
 attr source sum(connect)
 attr title "number of active sessions, max"
-scalar simpleBOLASetup.hostVID[0].app[0] numActiveSessions:timeavg 0.7848947372412
+scalar simpleBOLASetup.hostVID[0].app[0] numActiveSessions:timeavg 0.99966666666667
 attr interpolationmode sample-hold
 attr recordingmode timeavg
 attr source sum(connect)
 attr title "number of active sessions, timeavg"
-scalar simpleBOLASetup.hostVID[0].app[0] numSessions:last 3
+scalar simpleBOLASetup.hostVID[0].app[0] numSessions:last 1
 attr recordingmode last
 attr source sum(connect+1)/2
 attr title "total number of sessions, last"
@@ -1176,7 +1186,7 @@ attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetP
 attr title "queue bit length, timeavg"
 attr unit b
 statistic simpleBOLASetup.router0.ppp[0].queue queueingTime:histogram
-field count 8352
+field count 73022
 field mean 0
 field stddev 0
 field min 0
@@ -1214,7 +1224,7 @@ bin	-0.08	0
 bin	-0.06	0
 bin	-0.04	0
 bin	-0.02	0
-bin	0	8352
+bin	0	73022
 bin	0.02	0
 bin	0.04	0
 bin	0.06	0
@@ -1240,25 +1250,25 @@ bin	0.44	0
 bin	0.46	0
 bin	0.48	0
 bin	0.5	0
-scalar simpleBOLASetup.router0.ppp[0].queue outgoingPackets:count 8352
+scalar simpleBOLASetup.router0.ppp[0].queue outgoingPackets:count 73022
 attr recordingmode count
 attr source packetPulled
 attr title "outgoing packets, count"
 attr unit pk
-scalar simpleBOLASetup.router0.ppp[0].queue outgoingPacketLengths:sum 2771936
+scalar simpleBOLASetup.router0.ppp[0].queue outgoingPacketLengths:sum 23528672
 attr interpolationmode none
 attr recordingmode sum
 attr source packetLength(packetPulled)
 attr title "outgoing packet lengths, sum"
 attr unit b
 statistic simpleBOLASetup.router0.ppp[0].queue outgoingPacketLengths:histogram
-field count 8352
-field mean 331.88888888889
-field stddev 137.35032693289
+field count 73022
+field mean 322.21346991318
+field stddev 59.464390189364
 field min 320
 field max 1920
-field sum 2771936
-field sqrsum 1077517312
+field sum 23528672
+field sqrsum 7839458304
 attr interpolationmode none
 attr recordingmode histogram
 attr source packetLength(packetPulled)
@@ -1271,8 +1281,8 @@ bin	100	0
 bin	150	0
 bin	200	0
 bin	250	0
-bin	300	8287
-bin	350	3
+bin	300	72920
+bin	350	1
 bin	400	0
 bin	450	0
 bin	500	0
@@ -1303,7 +1313,7 @@ bin	1700	0
 bin	1750	0
 bin	1800	0
 bin	1850	0
-bin	1900	62
+bin	1900	101
 bin	1950	0
 bin	2000	0
 bin	2050	0
@@ -1329,25 +1339,25 @@ attr unit s
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar simpleBOLASetup.router0.ppp[0].queue incomingPackets:count 8352
+scalar simpleBOLASetup.router0.ppp[0].queue incomingPackets:count 73022
 attr recordingmode count
 attr source packetPushStarted
 attr title "incoming packets, count"
 attr unit pk
-scalar simpleBOLASetup.router0.ppp[0].queue incomingPacketLengths:sum 2771936
+scalar simpleBOLASetup.router0.ppp[0].queue incomingPacketLengths:sum 23528672
 attr interpolationmode none
 attr recordingmode sum
 attr source packetLength(packetPushStarted)
 attr title "incoming packet lengths, sum"
 attr unit b
 statistic simpleBOLASetup.router0.ppp[0].queue incomingPacketLengths:histogram
-field count 8352
-field mean 331.88888888889
-field stddev 137.35032693289
+field count 73022
+field mean 322.21346991318
+field stddev 59.464390189364
 field min 320
 field max 1920
-field sum 2771936
-field sqrsum 1077517312
+field sum 23528672
+field sqrsum 7839458304
 attr interpolationmode none
 attr recordingmode histogram
 attr source packetLength(packetPushStarted)
@@ -1360,8 +1370,8 @@ bin	100	0
 bin	150	0
 bin	200	0
 bin	250	0
-bin	300	8287
-bin	350	3
+bin	300	72920
+bin	350	1
 bin	400	0
 bin	450	0
 bin	500	0
@@ -1392,7 +1402,7 @@ bin	1700	0
 bin	1750	0
 bin	1800	0
 bin	1850	0
-bin	1900	62
+bin	1900	101
 bin	1950	0
 bin	2000	0
 bin	2050	0
@@ -1424,47 +1434,47 @@ par simpleBOLASetup.router0.ppp[0].ppp stopOperationExtraTime -1s
 attr unit s
 par simpleBOLASetup.router0.ppp[0].ppp stopOperationTimeout 2s
 attr unit s
-scalar simpleBOLASetup.router0.ppp[0].ppp transmissionState:timeavg 1.157017142857e-06
+scalar simpleBOLASetup.router0.ppp[0].ppp transmissionState:timeavg 0.00092059679999975
 attr interpolationmode sample-hold
 attr recordingmode timeavg
 attr source transmissionStateChanged
 attr title "tx state, timeavg"
-scalar simpleBOLASetup.router0.ppp[0].ppp rxPkOk:count 8349
+scalar simpleBOLASetup.router0.ppp[0].ppp rxPkOk:count 73021
 attr interpolationmode none
 attr recordingmode count
 attr source rxPkOk
 attr title "packets received OK, count"
-scalar simpleBOLASetup.router0.ppp[0].ppp rxPkOk:sum(packetBytes) 12378415
+scalar simpleBOLASetup.router0.ppp[0].ppp rxPkOk:sum(packetBytes) 109233991
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source rxPkOk
 attr title "packets received OK, sum(packetBytes)"
-scalar simpleBOLASetup.router0.ppp[0].ppp txPk:count 8352
+scalar simpleBOLASetup.router0.ppp[0].ppp txPk:count 73022
 attr interpolationmode none
 attr recordingmode count
 attr source packetSentToLower
 attr title "packets transmitted, count"
-scalar simpleBOLASetup.router0.ppp[0].ppp txPk:sum(packetBytes) 404956
+scalar simpleBOLASetup.router0.ppp[0].ppp txPk:sum(packetBytes) 3452238
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetSentToLower
 attr title "packets transmitted, sum(packetBytes)"
-scalar simpleBOLASetup.router0.ppp[0].ppp rcvdPkFromHl:count 8352
+scalar simpleBOLASetup.router0.ppp[0].ppp rcvdPkFromHl:count 73022
 attr interpolationmode none
 attr recordingmode count
 attr source packetReceivedFromUpper
 attr title "packets received from higher layer, count"
-scalar simpleBOLASetup.router0.ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 346492
+scalar simpleBOLASetup.router0.ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 2941084
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetReceivedFromUpper
 attr title "packets received from higher layer, sum(packetBytes)"
-scalar simpleBOLASetup.router0.ppp[0].ppp passedUpPk:count 8349
+scalar simpleBOLASetup.router0.ppp[0].ppp passedUpPk:count 73021
 attr interpolationmode none
 attr recordingmode count
 attr source packetSentToUpper
 attr title "packets passed to higher layer, count"
-scalar simpleBOLASetup.router0.ppp[0].ppp passedUpPk:sum(packetBytes) 12319972
+scalar simpleBOLASetup.router0.ppp[0].ppp passedUpPk:sum(packetBytes) 108722844
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetSentToUpper
@@ -1569,7 +1579,7 @@ attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetP
 attr title "queue bit length, timeavg"
 attr unit b
 statistic simpleBOLASetup.router0.ppp[1].queue queueingTime:histogram
-field count 8349
+field count 73021
 field mean 0
 field stddev 0
 field min 0
@@ -1607,7 +1617,7 @@ bin	-0.08	0
 bin	-0.06	0
 bin	-0.04	0
 bin	-0.02	0
-bin	0	8349
+bin	0	73021
 bin	0.02	0
 bin	0.04	0
 bin	0.06	0
@@ -1633,25 +1643,25 @@ bin	0.44	0
 bin	0.46	0
 bin	0.48	0
 bin	0.5	0
-scalar simpleBOLASetup.router0.ppp[1].queue outgoingPackets:count 8349
+scalar simpleBOLASetup.router0.ppp[1].queue outgoingPackets:count 73021
 attr recordingmode count
 attr source packetPulled
 attr title "outgoing packets, count"
 attr unit pk
-scalar simpleBOLASetup.router0.ppp[1].queue outgoingPacketLengths:sum 98559776
+scalar simpleBOLASetup.router0.ppp[1].queue outgoingPacketLengths:sum 869782752
 attr interpolationmode none
 attr recordingmode sum
 attr source packetLength(packetPulled)
 attr title "outgoing packet lengths, sum"
 attr unit b
 statistic simpleBOLASetup.router0.ppp[1].queue outgoingPacketLengths:histogram
-field count 8349
-field mean 11804.979758055
-field stddev 1131.4033554205
+field count 73021
+field mean 11911.405650429
+field stddev 489.28256721836
 field min 320
 field max 11936
-field sum 98559776
-field sqrsum 1174182214656
+field sum 869782752
+field sqrsum 10377815987200
 attr interpolationmode none
 attr recordingmode histogram
 attr source packetLength(packetPulled)
@@ -1659,7 +1669,7 @@ attr title "outgoing packet lengths"
 attr unit b
 bin	-inf	0
 bin	0	0
-bin	200	69
+bin	200	102
 bin	400	0
 bin	600	0
 bin	800	0
@@ -1671,7 +1681,7 @@ bin	1800	0
 bin	2000	0
 bin	2200	0
 bin	2400	0
-bin	2600	6
+bin	2600	0
 bin	2800	0
 bin	3000	0
 bin	3200	0
@@ -1686,8 +1696,8 @@ bin	4800	0
 bin	5000	0
 bin	5200	0
 bin	5400	0
-bin	5600	0
-bin	5800	0
+bin	5600	93
+bin	5800	3
 bin	6000	0
 bin	6200	0
 bin	6400	0
@@ -1696,15 +1706,15 @@ bin	6800	0
 bin	7000	0
 bin	7200	0
 bin	7400	0
-bin	7600	53
+bin	7600	0
 bin	7800	0
 bin	8000	0
 bin	8200	0
-bin	8400	2
+bin	8400	1
 bin	8600	0
 bin	8800	0
 bin	9000	0
-bin	9200	0
+bin	9200	3
 bin	9400	0
 bin	9600	0
 bin	9800	0
@@ -1717,7 +1727,7 @@ bin	11000	0
 bin	11200	0
 bin	11400	0
 bin	11600	0
-bin	11800	8218
+bin	11800	72818
 bin	12000	0
 bin	12200	0
 bin	12400	0
@@ -1750,25 +1760,25 @@ attr unit s
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar simpleBOLASetup.router0.ppp[1].queue incomingPackets:count 8349
+scalar simpleBOLASetup.router0.ppp[1].queue incomingPackets:count 73021
 attr recordingmode count
 attr source packetPushStarted
 attr title "incoming packets, count"
 attr unit pk
-scalar simpleBOLASetup.router0.ppp[1].queue incomingPacketLengths:sum 98559776
+scalar simpleBOLASetup.router0.ppp[1].queue incomingPacketLengths:sum 869782752
 attr interpolationmode none
 attr recordingmode sum
 attr source packetLength(packetPushStarted)
 attr title "incoming packet lengths, sum"
 attr unit b
 statistic simpleBOLASetup.router0.ppp[1].queue incomingPacketLengths:histogram
-field count 8349
-field mean 11804.979758055
-field stddev 1131.4033554205
+field count 73021
+field mean 11911.405650429
+field stddev 489.28256721836
 field min 320
 field max 11936
-field sum 98559776
-field sqrsum 1174182214656
+field sum 869782752
+field sqrsum 10377815987200
 attr interpolationmode none
 attr recordingmode histogram
 attr source packetLength(packetPushStarted)
@@ -1776,7 +1786,7 @@ attr title "incoming packet lengths"
 attr unit b
 bin	-inf	0
 bin	0	0
-bin	200	69
+bin	200	102
 bin	400	0
 bin	600	0
 bin	800	0
@@ -1788,7 +1798,7 @@ bin	1800	0
 bin	2000	0
 bin	2200	0
 bin	2400	0
-bin	2600	6
+bin	2600	0
 bin	2800	0
 bin	3000	0
 bin	3200	0
@@ -1803,8 +1813,8 @@ bin	4800	0
 bin	5000	0
 bin	5200	0
 bin	5400	0
-bin	5600	0
-bin	5800	0
+bin	5600	93
+bin	5800	3
 bin	6000	0
 bin	6200	0
 bin	6400	0
@@ -1813,15 +1823,15 @@ bin	6800	0
 bin	7000	0
 bin	7200	0
 bin	7400	0
-bin	7600	53
+bin	7600	0
 bin	7800	0
 bin	8000	0
 bin	8200	0
-bin	8400	2
+bin	8400	1
 bin	8600	0
 bin	8800	0
 bin	9000	0
-bin	9200	0
+bin	9200	3
 bin	9400	0
 bin	9600	0
 bin	9800	0
@@ -1834,7 +1844,7 @@ bin	11000	0
 bin	11200	0
 bin	11400	0
 bin	11600	0
-bin	11800	8218
+bin	11800	72818
 bin	12000	0
 bin	12200	0
 bin	12400	0
@@ -1873,47 +1883,47 @@ par simpleBOLASetup.router0.ppp[1].ppp stopOperationExtraTime -1s
 attr unit s
 par simpleBOLASetup.router0.ppp[1].ppp stopOperationTimeout 2s
 attr unit s
-scalar simpleBOLASetup.router0.ppp[1].ppp transmissionState:timeavg 3.5366900000002e-05
+scalar simpleBOLASetup.router0.ppp[1].ppp transmissionState:timeavg 0.029129064266695
 attr interpolationmode sample-hold
 attr recordingmode timeavg
 attr source transmissionStateChanged
 attr title "tx state, timeavg"
-scalar simpleBOLASetup.router0.ppp[1].ppp rxPkOk:count 8352
+scalar simpleBOLASetup.router0.ppp[1].ppp rxPkOk:count 73022
 attr interpolationmode none
 attr recordingmode count
 attr source rxPkOk
 attr title "packets received OK, count"
-scalar simpleBOLASetup.router0.ppp[1].ppp rxPkOk:sum(packetBytes) 404956
+scalar simpleBOLASetup.router0.ppp[1].ppp rxPkOk:sum(packetBytes) 3452238
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source rxPkOk
 attr title "packets received OK, sum(packetBytes)"
-scalar simpleBOLASetup.router0.ppp[1].ppp txPk:count 8349
+scalar simpleBOLASetup.router0.ppp[1].ppp txPk:count 73021
 attr interpolationmode none
 attr recordingmode count
 attr source packetSentToLower
 attr title "packets transmitted, count"
-scalar simpleBOLASetup.router0.ppp[1].ppp txPk:sum(packetBytes) 12378415
+scalar simpleBOLASetup.router0.ppp[1].ppp txPk:sum(packetBytes) 109233991
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetSentToLower
 attr title "packets transmitted, sum(packetBytes)"
-scalar simpleBOLASetup.router0.ppp[1].ppp rcvdPkFromHl:count 8349
+scalar simpleBOLASetup.router0.ppp[1].ppp rcvdPkFromHl:count 73021
 attr interpolationmode none
 attr recordingmode count
 attr source packetReceivedFromUpper
 attr title "packets received from higher layer, count"
-scalar simpleBOLASetup.router0.ppp[1].ppp rcvdPkFromHl:sum(packetBytes) 12319972
+scalar simpleBOLASetup.router0.ppp[1].ppp rcvdPkFromHl:sum(packetBytes) 108722844
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetReceivedFromUpper
 attr title "packets received from higher layer, sum(packetBytes)"
-scalar simpleBOLASetup.router0.ppp[1].ppp passedUpPk:count 8352
+scalar simpleBOLASetup.router0.ppp[1].ppp passedUpPk:count 73022
 attr interpolationmode none
 attr recordingmode count
 attr source packetSentToUpper
 attr title "packets passed to higher layer, count"
-scalar simpleBOLASetup.router0.ppp[1].ppp passedUpPk:sum(packetBytes) 346492
+scalar simpleBOLASetup.router0.ppp[1].ppp passedUpPk:sum(packetBytes) 2941084
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetSentToUpper
@@ -2306,7 +2316,7 @@ attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetP
 attr title "queue bit length, timeavg"
 attr unit b
 statistic simpleBOLASetup.router1.ppp[0].queue queueingTime:histogram
-field count 8349
+field count 73021
 field mean 0
 field stddev 0
 field min 0
@@ -2344,7 +2354,7 @@ bin	-0.08	0
 bin	-0.06	0
 bin	-0.04	0
 bin	-0.02	0
-bin	0	8349
+bin	0	73021
 bin	0.02	0
 bin	0.04	0
 bin	0.06	0
@@ -2370,25 +2380,25 @@ bin	0.44	0
 bin	0.46	0
 bin	0.48	0
 bin	0.5	0
-scalar simpleBOLASetup.router1.ppp[0].queue outgoingPackets:count 8349
+scalar simpleBOLASetup.router1.ppp[0].queue outgoingPackets:count 73021
 attr recordingmode count
 attr source packetPulled
 attr title "outgoing packets, count"
 attr unit pk
-scalar simpleBOLASetup.router1.ppp[0].queue outgoingPacketLengths:sum 98559776
+scalar simpleBOLASetup.router1.ppp[0].queue outgoingPacketLengths:sum 869782752
 attr interpolationmode none
 attr recordingmode sum
 attr source packetLength(packetPulled)
 attr title "outgoing packet lengths, sum"
 attr unit b
 statistic simpleBOLASetup.router1.ppp[0].queue outgoingPacketLengths:histogram
-field count 8349
-field mean 11804.979758055
-field stddev 1131.4033554205
+field count 73021
+field mean 11911.405650429
+field stddev 489.28256721836
 field min 320
 field max 11936
-field sum 98559776
-field sqrsum 1174182214656
+field sum 869782752
+field sqrsum 10377815987200
 attr interpolationmode none
 attr recordingmode histogram
 attr source packetLength(packetPulled)
@@ -2396,7 +2406,7 @@ attr title "outgoing packet lengths"
 attr unit b
 bin	-inf	0
 bin	0	0
-bin	200	69
+bin	200	102
 bin	400	0
 bin	600	0
 bin	800	0
@@ -2408,7 +2418,7 @@ bin	1800	0
 bin	2000	0
 bin	2200	0
 bin	2400	0
-bin	2600	6
+bin	2600	0
 bin	2800	0
 bin	3000	0
 bin	3200	0
@@ -2423,8 +2433,8 @@ bin	4800	0
 bin	5000	0
 bin	5200	0
 bin	5400	0
-bin	5600	0
-bin	5800	0
+bin	5600	93
+bin	5800	3
 bin	6000	0
 bin	6200	0
 bin	6400	0
@@ -2433,15 +2443,15 @@ bin	6800	0
 bin	7000	0
 bin	7200	0
 bin	7400	0
-bin	7600	53
+bin	7600	0
 bin	7800	0
 bin	8000	0
 bin	8200	0
-bin	8400	2
+bin	8400	1
 bin	8600	0
 bin	8800	0
 bin	9000	0
-bin	9200	0
+bin	9200	3
 bin	9400	0
 bin	9600	0
 bin	9800	0
@@ -2454,7 +2464,7 @@ bin	11000	0
 bin	11200	0
 bin	11400	0
 bin	11600	0
-bin	11800	8218
+bin	11800	72818
 bin	12000	0
 bin	12200	0
 bin	12400	0
@@ -2487,25 +2497,25 @@ attr unit s
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar simpleBOLASetup.router1.ppp[0].queue incomingPackets:count 8349
+scalar simpleBOLASetup.router1.ppp[0].queue incomingPackets:count 73021
 attr recordingmode count
 attr source packetPushStarted
 attr title "incoming packets, count"
 attr unit pk
-scalar simpleBOLASetup.router1.ppp[0].queue incomingPacketLengths:sum 98559776
+scalar simpleBOLASetup.router1.ppp[0].queue incomingPacketLengths:sum 869782752
 attr interpolationmode none
 attr recordingmode sum
 attr source packetLength(packetPushStarted)
 attr title "incoming packet lengths, sum"
 attr unit b
 statistic simpleBOLASetup.router1.ppp[0].queue incomingPacketLengths:histogram
-field count 8349
-field mean 11804.979758055
-field stddev 1131.4033554205
+field count 73021
+field mean 11911.405650429
+field stddev 489.28256721836
 field min 320
 field max 11936
-field sum 98559776
-field sqrsum 1174182214656
+field sum 869782752
+field sqrsum 10377815987200
 attr interpolationmode none
 attr recordingmode histogram
 attr source packetLength(packetPushStarted)
@@ -2513,7 +2523,7 @@ attr title "incoming packet lengths"
 attr unit b
 bin	-inf	0
 bin	0	0
-bin	200	69
+bin	200	102
 bin	400	0
 bin	600	0
 bin	800	0
@@ -2525,7 +2535,7 @@ bin	1800	0
 bin	2000	0
 bin	2200	0
 bin	2400	0
-bin	2600	6
+bin	2600	0
 bin	2800	0
 bin	3000	0
 bin	3200	0
@@ -2540,8 +2550,8 @@ bin	4800	0
 bin	5000	0
 bin	5200	0
 bin	5400	0
-bin	5600	0
-bin	5800	0
+bin	5600	93
+bin	5800	3
 bin	6000	0
 bin	6200	0
 bin	6400	0
@@ -2550,15 +2560,15 @@ bin	6800	0
 bin	7000	0
 bin	7200	0
 bin	7400	0
-bin	7600	53
+bin	7600	0
 bin	7800	0
 bin	8000	0
 bin	8200	0
-bin	8400	2
+bin	8400	1
 bin	8600	0
 bin	8800	0
 bin	9000	0
-bin	9200	0
+bin	9200	3
 bin	9400	0
 bin	9600	0
 bin	9800	0
@@ -2571,7 +2581,7 @@ bin	11000	0
 bin	11200	0
 bin	11400	0
 bin	11600	0
-bin	11800	8218
+bin	11800	72818
 bin	12000	0
 bin	12200	0
 bin	12400	0
@@ -2610,47 +2620,47 @@ par simpleBOLASetup.router1.ppp[0].ppp stopOperationExtraTime -1s
 attr unit s
 par simpleBOLASetup.router1.ppp[0].ppp stopOperationTimeout 2s
 attr unit s
-scalar simpleBOLASetup.router1.ppp[0].ppp transmissionState:timeavg 3.5366900000002e-05
+scalar simpleBOLASetup.router1.ppp[0].ppp transmissionState:timeavg 0.029129064266695
 attr interpolationmode sample-hold
 attr recordingmode timeavg
 attr source transmissionStateChanged
 attr title "tx state, timeavg"
-scalar simpleBOLASetup.router1.ppp[0].ppp rxPkOk:count 8352
+scalar simpleBOLASetup.router1.ppp[0].ppp rxPkOk:count 73022
 attr interpolationmode none
 attr recordingmode count
 attr source rxPkOk
 attr title "packets received OK, count"
-scalar simpleBOLASetup.router1.ppp[0].ppp rxPkOk:sum(packetBytes) 404956
+scalar simpleBOLASetup.router1.ppp[0].ppp rxPkOk:sum(packetBytes) 3452238
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source rxPkOk
 attr title "packets received OK, sum(packetBytes)"
-scalar simpleBOLASetup.router1.ppp[0].ppp txPk:count 8349
+scalar simpleBOLASetup.router1.ppp[0].ppp txPk:count 73021
 attr interpolationmode none
 attr recordingmode count
 attr source packetSentToLower
 attr title "packets transmitted, count"
-scalar simpleBOLASetup.router1.ppp[0].ppp txPk:sum(packetBytes) 12378415
+scalar simpleBOLASetup.router1.ppp[0].ppp txPk:sum(packetBytes) 109233991
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetSentToLower
 attr title "packets transmitted, sum(packetBytes)"
-scalar simpleBOLASetup.router1.ppp[0].ppp rcvdPkFromHl:count 8349
+scalar simpleBOLASetup.router1.ppp[0].ppp rcvdPkFromHl:count 73021
 attr interpolationmode none
 attr recordingmode count
 attr source packetReceivedFromUpper
 attr title "packets received from higher layer, count"
-scalar simpleBOLASetup.router1.ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 12319972
+scalar simpleBOLASetup.router1.ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 108722844
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetReceivedFromUpper
 attr title "packets received from higher layer, sum(packetBytes)"
-scalar simpleBOLASetup.router1.ppp[0].ppp passedUpPk:count 8352
+scalar simpleBOLASetup.router1.ppp[0].ppp passedUpPk:count 73022
 attr interpolationmode none
 attr recordingmode count
 attr source packetSentToUpper
 attr title "packets passed to higher layer, count"
-scalar simpleBOLASetup.router1.ppp[0].ppp passedUpPk:sum(packetBytes) 346492
+scalar simpleBOLASetup.router1.ppp[0].ppp passedUpPk:sum(packetBytes) 2941084
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetSentToUpper
@@ -2755,7 +2765,7 @@ attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetP
 attr title "queue bit length, timeavg"
 attr unit b
 statistic simpleBOLASetup.router1.ppp[1].queue queueingTime:histogram
-field count 8352
+field count 73022
 field mean 0
 field stddev 0
 field min 0
@@ -2793,7 +2803,7 @@ bin	-0.08	0
 bin	-0.06	0
 bin	-0.04	0
 bin	-0.02	0
-bin	0	8352
+bin	0	73022
 bin	0.02	0
 bin	0.04	0
 bin	0.06	0
@@ -2819,25 +2829,25 @@ bin	0.44	0
 bin	0.46	0
 bin	0.48	0
 bin	0.5	0
-scalar simpleBOLASetup.router1.ppp[1].queue outgoingPackets:count 8352
+scalar simpleBOLASetup.router1.ppp[1].queue outgoingPackets:count 73022
 attr recordingmode count
 attr source packetPulled
 attr title "outgoing packets, count"
 attr unit pk
-scalar simpleBOLASetup.router1.ppp[1].queue outgoingPacketLengths:sum 2771936
+scalar simpleBOLASetup.router1.ppp[1].queue outgoingPacketLengths:sum 23528672
 attr interpolationmode none
 attr recordingmode sum
 attr source packetLength(packetPulled)
 attr title "outgoing packet lengths, sum"
 attr unit b
 statistic simpleBOLASetup.router1.ppp[1].queue outgoingPacketLengths:histogram
-field count 8352
-field mean 331.88888888889
-field stddev 137.35032693289
+field count 73022
+field mean 322.21346991318
+field stddev 59.464390189364
 field min 320
 field max 1920
-field sum 2771936
-field sqrsum 1077517312
+field sum 23528672
+field sqrsum 7839458304
 attr interpolationmode none
 attr recordingmode histogram
 attr source packetLength(packetPulled)
@@ -2850,8 +2860,8 @@ bin	100	0
 bin	150	0
 bin	200	0
 bin	250	0
-bin	300	8287
-bin	350	3
+bin	300	72920
+bin	350	1
 bin	400	0
 bin	450	0
 bin	500	0
@@ -2882,7 +2892,7 @@ bin	1700	0
 bin	1750	0
 bin	1800	0
 bin	1850	0
-bin	1900	62
+bin	1900	101
 bin	1950	0
 bin	2000	0
 bin	2050	0
@@ -2908,25 +2918,25 @@ attr unit s
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar simpleBOLASetup.router1.ppp[1].queue incomingPackets:count 8352
+scalar simpleBOLASetup.router1.ppp[1].queue incomingPackets:count 73022
 attr recordingmode count
 attr source packetPushStarted
 attr title "incoming packets, count"
 attr unit pk
-scalar simpleBOLASetup.router1.ppp[1].queue incomingPacketLengths:sum 2771936
+scalar simpleBOLASetup.router1.ppp[1].queue incomingPacketLengths:sum 23528672
 attr interpolationmode none
 attr recordingmode sum
 attr source packetLength(packetPushStarted)
 attr title "incoming packet lengths, sum"
 attr unit b
 statistic simpleBOLASetup.router1.ppp[1].queue incomingPacketLengths:histogram
-field count 8352
-field mean 331.88888888889
-field stddev 137.35032693289
+field count 73022
+field mean 322.21346991318
+field stddev 59.464390189364
 field min 320
 field max 1920
-field sum 2771936
-field sqrsum 1077517312
+field sum 23528672
+field sqrsum 7839458304
 attr interpolationmode none
 attr recordingmode histogram
 attr source packetLength(packetPushStarted)
@@ -2939,8 +2949,8 @@ bin	100	0
 bin	150	0
 bin	200	0
 bin	250	0
-bin	300	8287
-bin	350	3
+bin	300	72920
+bin	350	1
 bin	400	0
 bin	450	0
 bin	500	0
@@ -2971,7 +2981,7 @@ bin	1700	0
 bin	1750	0
 bin	1800	0
 bin	1850	0
-bin	1900	62
+bin	1900	101
 bin	1950	0
 bin	2000	0
 bin	2050	0
@@ -3003,47 +3013,47 @@ par simpleBOLASetup.router1.ppp[1].ppp stopOperationExtraTime -1s
 attr unit s
 par simpleBOLASetup.router1.ppp[1].ppp stopOperationTimeout 2s
 attr unit s
-scalar simpleBOLASetup.router1.ppp[1].ppp transmissionState:timeavg 1.157017142857e-06
+scalar simpleBOLASetup.router1.ppp[1].ppp transmissionState:timeavg 0.00092059679999975
 attr interpolationmode sample-hold
 attr recordingmode timeavg
 attr source transmissionStateChanged
 attr title "tx state, timeavg"
-scalar simpleBOLASetup.router1.ppp[1].ppp rxPkOk:count 8349
+scalar simpleBOLASetup.router1.ppp[1].ppp rxPkOk:count 73021
 attr interpolationmode none
 attr recordingmode count
 attr source rxPkOk
 attr title "packets received OK, count"
-scalar simpleBOLASetup.router1.ppp[1].ppp rxPkOk:sum(packetBytes) 12378415
+scalar simpleBOLASetup.router1.ppp[1].ppp rxPkOk:sum(packetBytes) 109233991
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source rxPkOk
 attr title "packets received OK, sum(packetBytes)"
-scalar simpleBOLASetup.router1.ppp[1].ppp txPk:count 8352
+scalar simpleBOLASetup.router1.ppp[1].ppp txPk:count 73022
 attr interpolationmode none
 attr recordingmode count
 attr source packetSentToLower
 attr title "packets transmitted, count"
-scalar simpleBOLASetup.router1.ppp[1].ppp txPk:sum(packetBytes) 404956
+scalar simpleBOLASetup.router1.ppp[1].ppp txPk:sum(packetBytes) 3452238
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetSentToLower
 attr title "packets transmitted, sum(packetBytes)"
-scalar simpleBOLASetup.router1.ppp[1].ppp rcvdPkFromHl:count 8352
+scalar simpleBOLASetup.router1.ppp[1].ppp rcvdPkFromHl:count 73022
 attr interpolationmode none
 attr recordingmode count
 attr source packetReceivedFromUpper
 attr title "packets received from higher layer, count"
-scalar simpleBOLASetup.router1.ppp[1].ppp rcvdPkFromHl:sum(packetBytes) 346492
+scalar simpleBOLASetup.router1.ppp[1].ppp rcvdPkFromHl:sum(packetBytes) 2941084
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetReceivedFromUpper
 attr title "packets received from higher layer, sum(packetBytes)"
-scalar simpleBOLASetup.router1.ppp[1].ppp passedUpPk:count 8349
+scalar simpleBOLASetup.router1.ppp[1].ppp passedUpPk:count 73021
 attr interpolationmode none
 attr recordingmode count
 attr source packetSentToUpper
 attr title "packets passed to higher layer, count"
-scalar simpleBOLASetup.router1.ppp[1].ppp passedUpPk:sum(packetBytes) 12319972
+scalar simpleBOLASetup.router1.ppp[1].ppp passedUpPk:sum(packetBytes) 108722844
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetSentToUpper
@@ -4105,7 +4115,7 @@ attr recordingmode max
 attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
 attr title "queue length, max"
 attr unit pk
-scalar simpleBOLASetup.serverVID.ppp[0].queue queueLength:timeavg 0.0010152050806755
+scalar simpleBOLASetup.serverVID.ppp[0].queue queueLength:timeavg 1.1440010869826
 attr autoWarmupFilter false
 attr interpolationmode sample-hold
 attr recordingmode timeavg
@@ -4126,7 +4136,7 @@ attr recordingmode max
 attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
 attr title "queue bit length, max"
 attr unit b
-scalar simpleBOLASetup.serverVID.ppp[0].queue queueBitLength:timeavg 12.117484720655
+scalar simpleBOLASetup.serverVID.ppp[0].queue queueBitLength:timeavg 13654.796974239
 attr autoWarmupFilter false
 attr interpolationmode sample-hold
 attr recordingmode timeavg
@@ -4134,106 +4144,106 @@ attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetP
 attr title "queue bit length, timeavg"
 attr unit b
 statistic simpleBOLASetup.serverVID.ppp[0].queue queueingTime:histogram
-field count 8349
-field mean 3.4018943011139e-05
-field stddev 1.7766332778502e-05
+field count 73021
+field mean 0.0046984553983147
+field stddev 0.0010309343070621
 field min 0
-field max 5.28024e-05
-field sum 0.2840241552
-field sqrsum 1.2297185810686e-05
+field max 0.00528024
+field sum 343.08591164034
+field sqrsum 1.689581374963
 attr interpolationmode none
 attr recordingmode histogram
 attr source queueingTime(packetPulled)
 attr title "queueing times"
 attr unit s
 bin	-inf	0
-bin	0	331
-bin	1e-06	246
-bin	2e-06	154
-bin	3e-06	16
-bin	4e-06	108
-bin	5e-06	92
-bin	6e-06	108
-bin	7e-06	108
-bin	8e-06	108
-bin	9e-06	16
-bin	1e-05	108
-bin	1.1e-05	92
-bin	1.2e-05	108
-bin	1.3e-05	108
-bin	1.4e-05	108
-bin	1.5e-05	16
-bin	1.6e-05	108
-bin	1.7e-05	92
-bin	1.8e-05	108
-bin	1.9e-05	108
-bin	2e-05	108
-bin	2.1e-05	16
-bin	2.2e-05	108
-bin	2.3e-05	92
-bin	2.4e-05	108
-bin	2.5e-05	104
-bin	2.6e-05	104
-bin	2.7e-05	16
-bin	2.8e-05	104
-bin	2.9e-05	88
-bin	3e-05	104
-bin	3.1e-05	104
-bin	3.2e-05	104
-bin	3.3e-05	16
-bin	3.4e-05	104
-bin	3.5e-05	88
-bin	3.6e-05	104
-bin	3.7e-05	102
-bin	3.8e-05	102
-bin	3.9e-05	16
-bin	4e-05	102
-bin	4.1e-05	86
-bin	4.2e-05	102
-bin	4.3e-05	102
-bin	4.4e-05	102
-bin	4.5e-05	16
-bin	4.6e-05	102
-bin	4.7e-05	86
-bin	4.8e-05	102
-bin	4.9e-05	3566
-bin	5e-05	16
-bin	5.1e-05	16
-bin	5.2e-05	16
-bin	5.3e-05	0
-bin	5.4e-05	0
-bin	5.5e-05	0
-bin	5.6e-05	0
-bin	5.7e-05	0
-bin	5.8e-05	0
-bin	5.9e-05	0
-bin	6e-05	0
-bin	6.1e-05	0
-bin	6.2e-05	0
-bin	6.3e-05	0
-bin	6.4e-05	0
-bin	6.5e-05	0
-bin	6.6e-05	0
-bin	6.7e-05	0
-scalar simpleBOLASetup.serverVID.ppp[0].queue outgoingPackets:count 8349
+bin	0	490
+bin	0.0001	380
+bin	0.0002	287
+bin	0.0003	194
+bin	0.0004	194
+bin	0.0005	186
+bin	0.0006	8
+bin	0.0007	194
+bin	0.0008	194
+bin	0.0009	194
+bin	0.001	194
+bin	0.0011	186
+bin	0.0012	8
+bin	0.0013	194
+bin	0.0014	194
+bin	0.0015	194
+bin	0.0016	194
+bin	0.0017	186
+bin	0.0018	8
+bin	0.0019	194
+bin	0.002	194
+bin	0.0021	194
+bin	0.0022	194
+bin	0.0023	186
+bin	0.0024	8
+bin	0.0025	194
+bin	0.0026	194
+bin	0.0027	194
+bin	0.0028	194
+bin	0.0029	186
+bin	0.003	8
+bin	0.0031	194
+bin	0.0032	194
+bin	0.0033	194
+bin	0.0034	194
+bin	0.0035	186
+bin	0.0036	8
+bin	0.0037	194
+bin	0.0038	192
+bin	0.0039	192
+bin	0.004	192
+bin	0.0041	184
+bin	0.0042	8
+bin	0.0043	192
+bin	0.0044	192
+bin	0.0045	192
+bin	0.0046	192
+bin	0.0047	184
+bin	0.0048	8
+bin	0.0049	192
+bin	0.005	64302
+bin	0.0051	8
+bin	0.0052	8
+bin	0.0053	0
+bin	0.0054	0
+bin	0.0055	0
+bin	0.0056	0
+bin	0.0057	0
+bin	0.0058	0
+bin	0.0059	0
+bin	0.006	0
+bin	0.0061	0
+bin	0.0062	0
+bin	0.0063	0
+bin	0.0064	0
+bin	0.0065	0
+bin	0.0066	0
+bin	0.0067	0
+scalar simpleBOLASetup.serverVID.ppp[0].queue outgoingPackets:count 73021
 attr recordingmode count
 attr source packetPulled
 attr title "outgoing packets, count"
 attr unit pk
-scalar simpleBOLASetup.serverVID.ppp[0].queue outgoingPacketLengths:sum 98559776
+scalar simpleBOLASetup.serverVID.ppp[0].queue outgoingPacketLengths:sum 869782752
 attr interpolationmode none
 attr recordingmode sum
 attr source packetLength(packetPulled)
 attr title "outgoing packet lengths, sum"
 attr unit b
 statistic simpleBOLASetup.serverVID.ppp[0].queue outgoingPacketLengths:histogram
-field count 8349
-field mean 11804.979758055
-field stddev 1131.4033554205
+field count 73021
+field mean 11911.405650429
+field stddev 489.28256721836
 field min 320
 field max 11936
-field sum 98559776
-field sqrsum 1174182214656
+field sum 869782752
+field sqrsum 10377815987200
 attr interpolationmode none
 attr recordingmode histogram
 attr source packetLength(packetPulled)
@@ -4241,7 +4251,7 @@ attr title "outgoing packet lengths"
 attr unit b
 bin	-inf	0
 bin	0	0
-bin	200	69
+bin	200	102
 bin	400	0
 bin	600	0
 bin	800	0
@@ -4253,7 +4263,7 @@ bin	1800	0
 bin	2000	0
 bin	2200	0
 bin	2400	0
-bin	2600	6
+bin	2600	0
 bin	2800	0
 bin	3000	0
 bin	3200	0
@@ -4268,8 +4278,8 @@ bin	4800	0
 bin	5000	0
 bin	5200	0
 bin	5400	0
-bin	5600	0
-bin	5800	0
+bin	5600	93
+bin	5800	3
 bin	6000	0
 bin	6200	0
 bin	6400	0
@@ -4278,15 +4288,15 @@ bin	6800	0
 bin	7000	0
 bin	7200	0
 bin	7400	0
-bin	7600	53
+bin	7600	0
 bin	7800	0
 bin	8000	0
 bin	8200	0
-bin	8400	2
+bin	8400	1
 bin	8600	0
 bin	8800	0
 bin	9000	0
-bin	9200	0
+bin	9200	3
 bin	9400	0
 bin	9600	0
 bin	9800	0
@@ -4299,7 +4309,7 @@ bin	11000	0
 bin	11200	0
 bin	11400	0
 bin	11600	0
-bin	11800	8218
+bin	11800	72818
 bin	12000	0
 bin	12200	0
 bin	12400	0
@@ -4332,25 +4342,25 @@ attr unit s
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar simpleBOLASetup.serverVID.ppp[0].queue incomingPackets:count 8349
+scalar simpleBOLASetup.serverVID.ppp[0].queue incomingPackets:count 73021
 attr recordingmode count
 attr source packetPushStarted
 attr title "incoming packets, count"
 attr unit pk
-scalar simpleBOLASetup.serverVID.ppp[0].queue incomingPacketLengths:sum 98559776
+scalar simpleBOLASetup.serverVID.ppp[0].queue incomingPacketLengths:sum 869782752
 attr interpolationmode none
 attr recordingmode sum
 attr source packetLength(packetPushStarted)
 attr title "incoming packet lengths, sum"
 attr unit b
 statistic simpleBOLASetup.serverVID.ppp[0].queue incomingPacketLengths:histogram
-field count 8349
-field mean 11804.979758055
-field stddev 1131.4033554205
+field count 73021
+field mean 11911.405650429
+field stddev 489.28256721836
 field min 320
 field max 11936
-field sum 98559776
-field sqrsum 1174182214656
+field sum 869782752
+field sqrsum 10377815987200
 attr interpolationmode none
 attr recordingmode histogram
 attr source packetLength(packetPushStarted)
@@ -4358,7 +4368,7 @@ attr title "incoming packet lengths"
 attr unit b
 bin	-inf	0
 bin	0	0
-bin	200	69
+bin	200	102
 bin	400	0
 bin	600	0
 bin	800	0
@@ -4370,7 +4380,7 @@ bin	1800	0
 bin	2000	0
 bin	2200	0
 bin	2400	0
-bin	2600	6
+bin	2600	0
 bin	2800	0
 bin	3000	0
 bin	3200	0
@@ -4385,8 +4395,8 @@ bin	4800	0
 bin	5000	0
 bin	5200	0
 bin	5400	0
-bin	5600	0
-bin	5800	0
+bin	5600	93
+bin	5800	3
 bin	6000	0
 bin	6200	0
 bin	6400	0
@@ -4395,15 +4405,15 @@ bin	6800	0
 bin	7000	0
 bin	7200	0
 bin	7400	0
-bin	7600	53
+bin	7600	0
 bin	7800	0
 bin	8000	0
 bin	8200	0
-bin	8400	2
+bin	8400	1
 bin	8600	0
 bin	8800	0
 bin	9000	0
-bin	9200	0
+bin	9200	3
 bin	9400	0
 bin	9600	0
 bin	9800	0
@@ -4416,7 +4426,7 @@ bin	11000	0
 bin	11200	0
 bin	11400	0
 bin	11600	0
-bin	11800	8218
+bin	11800	72818
 bin	12000	0
 bin	12200	0
 bin	12400	0
@@ -4455,47 +4465,47 @@ par simpleBOLASetup.serverVID.ppp[0].ppp stopOperationExtraTime -1s
 attr unit s
 par simpleBOLASetup.serverVID.ppp[0].ppp stopOperationTimeout 2s
 attr unit s
-scalar simpleBOLASetup.serverVID.ppp[0].ppp transmissionState:timeavg 3.5366900000002e-05
+scalar simpleBOLASetup.serverVID.ppp[0].ppp transmissionState:timeavg 0.029129064266695
 attr interpolationmode sample-hold
 attr recordingmode timeavg
 attr source transmissionStateChanged
 attr title "tx state, timeavg"
-scalar simpleBOLASetup.serverVID.ppp[0].ppp rxPkOk:count 8352
+scalar simpleBOLASetup.serverVID.ppp[0].ppp rxPkOk:count 73022
 attr interpolationmode none
 attr recordingmode count
 attr source rxPkOk
 attr title "packets received OK, count"
-scalar simpleBOLASetup.serverVID.ppp[0].ppp rxPkOk:sum(packetBytes) 404956
+scalar simpleBOLASetup.serverVID.ppp[0].ppp rxPkOk:sum(packetBytes) 3452238
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source rxPkOk
 attr title "packets received OK, sum(packetBytes)"
-scalar simpleBOLASetup.serverVID.ppp[0].ppp txPk:count 8349
+scalar simpleBOLASetup.serverVID.ppp[0].ppp txPk:count 73021
 attr interpolationmode none
 attr recordingmode count
 attr source packetSentToLower
 attr title "packets transmitted, count"
-scalar simpleBOLASetup.serverVID.ppp[0].ppp txPk:sum(packetBytes) 12378415
+scalar simpleBOLASetup.serverVID.ppp[0].ppp txPk:sum(packetBytes) 109233991
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetSentToLower
 attr title "packets transmitted, sum(packetBytes)"
-scalar simpleBOLASetup.serverVID.ppp[0].ppp rcvdPkFromHl:count 8349
+scalar simpleBOLASetup.serverVID.ppp[0].ppp rcvdPkFromHl:count 73021
 attr interpolationmode none
 attr recordingmode count
 attr source packetReceivedFromUpper
 attr title "packets received from higher layer, count"
-scalar simpleBOLASetup.serverVID.ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 12319972
+scalar simpleBOLASetup.serverVID.ppp[0].ppp rcvdPkFromHl:sum(packetBytes) 108722844
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetReceivedFromUpper
 attr title "packets received from higher layer, sum(packetBytes)"
-scalar simpleBOLASetup.serverVID.ppp[0].ppp passedUpPk:count 8352
+scalar simpleBOLASetup.serverVID.ppp[0].ppp passedUpPk:count 73022
 attr interpolationmode none
 attr recordingmode count
 attr source packetSentToUpper
 attr title "packets passed to higher layer, count"
-scalar simpleBOLASetup.serverVID.ppp[0].ppp passedUpPk:sum(packetBytes) 346492
+scalar simpleBOLASetup.serverVID.ppp[0].ppp passedUpPk:sum(packetBytes) 2941084
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetSentToUpper
@@ -4770,7 +4780,7 @@ attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
 attr title "packets dropped (checksum error), count"
 par simpleBOLASetup.serverVID.tcp.crcInsertion typename "\"inet.transportlayer.tcp_common.TcpCrcInsertionHook\""
 par simpleBOLASetup.serverVID.tcp.conn-1 typename "\"inet.transportlayer.tcp.TcpConnection\""
-par simpleBOLASetup.serverVID.tcp.conn-13 typename "\"inet.transportlayer.tcp.TcpConnection\""
+par simpleBOLASetup.serverVID.tcp.conn-9 typename "\"inet.transportlayer.tcp.TcpConnection\""
 par simpleBOLASetup.serverVID.tcp typename "\"inet.transportlayer.tcp.Tcp\""
 par simpleBOLASetup.serverVID.tcp crcMode "\"computed\""
 attr enum declared,computed
@@ -4810,12 +4820,12 @@ par simpleBOLASetup.serverVID.app[0] stopOperationExtraTime -1s
 attr unit s
 par simpleBOLASetup.serverVID.app[0] stopOperationTimeout 2s
 attr unit s
-scalar simpleBOLASetup.serverVID.app[0] packetReceived:count 62
+scalar simpleBOLASetup.serverVID.app[0] packetReceived:count 101
 attr interpolationmode none
 attr recordingmode count
 attr source packetReceived
 attr title "packets received, count"
-scalar simpleBOLASetup.serverVID.app[0] packetReceived:sum(packetBytes) 12400
+scalar simpleBOLASetup.serverVID.app[0] packetReceived:sum(packetBytes) 20200
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetReceived
@@ -4854,12 +4864,12 @@ attr unit s
 bin	-inf	0
 bin	0	0
 bin	1	0
-scalar simpleBOLASetup.serverVID.app[0] packetSent:count 62
+scalar simpleBOLASetup.serverVID.app[0] packetSent:count 101
 attr interpolationmode none
 attr recordingmode count
 attr source packetSent
 attr title "packets sent, count"
-scalar simpleBOLASetup.serverVID.app[0] packetSent:sum(packetBytes) 11986000
+scalar simpleBOLASetup.serverVID.app[0] packetSent:sum(packetBytes) 105802000
 attr interpolationmode none
 attr recordingmode sum(packetBytes)
 attr source packetSent

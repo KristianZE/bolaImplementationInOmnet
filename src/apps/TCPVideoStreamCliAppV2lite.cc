@@ -75,6 +75,7 @@ int TCPVideoStreamCliAppV2lite::getVideoBitrate(int newLevel) {
         return generateRandomizedBitrate(75, 150);
     }*/
     int bitRate = rates[newLevel] * 8;
+    current_rate = bitRate;
     return bitRate;
 }
 
@@ -129,7 +130,7 @@ int TCPVideoStreamCliAppV2lite::get_m_star_n(int max_level, double V_D, double y
         return cur_m;
     }
 
-int TCPVideoStreamCliAppV2lite::getBufferLevel()  { //last_level must be set globally
+int TCPVideoStreamCliAppV2lite::getBOLAQualityLevel()  { //last_level must be set globally
     int p = segment_length;
     double y = 5.0 / p; //pyCode says 5.0 * p but paper says otherwise
     double q_max = (int)(video_buffer_max_length / p); // maximal buffer size in chunks
@@ -143,7 +144,7 @@ int TCPVideoStreamCliAppV2lite::getBufferLevel()  { //last_level must be set glo
     double t_dash = std::max(t / 2, (double)3 * p);
     double q_D_max = std::min(q_max, t_dash / p);
     int rateListSize = rates.size();
-    double V_D = (q_D_max - 1) / (utility_v(rateListSize) + y * p); // or V=0.93
+    double V_D = (q_D_max - 1) / (utility_v(rateListSize-1) + y * p); // or V=0.93
     int m_star_n = get_m_star_n(max_level, V_D, y, p, q);
 
     if (m_star_n > last_level) // Is m*[n] > m*[n-1]?
@@ -165,7 +166,10 @@ int TCPVideoStreamCliAppV2lite::getBufferLevel()  { //last_level must be set glo
     }
 
     last_level = m_star_n;
+
     int new_level = m_star_n;
+    current_BOLA_level = new_level;
+    emit(BOLA_quality_level, new_level);
     return new_level;
 }
 
@@ -229,6 +233,11 @@ void TCPVideoStreamCliAppV2lite::initialize(int stage) {
     EV << "Initial numRequestsToSend = " << numRequestsToSend << endl;
     EV << "video_duration % segment_length = " << video_duration % segment_length << endl;
 
+    WATCH(current_BOLA_level);
+    current_BOLA_level = 0;
+    BOLA_quality_level = registerSignal("BOLAQualityLevel");
+    emit(BOLA_quality_level, current_BOLA_level);
+
     WATCH(video_buffer);
     video_buffer = 0;
     DASH_buffer_length_signal = registerSignal("DASHBufferLength");
@@ -251,9 +260,8 @@ void TCPVideoStreamCliAppV2lite::initialize(int stage) {
 
     video_current_quality_index = 0;  // start with min quality
     DASH_video_bitrate_signal = registerSignal("DASHVideoBitrate");
-    int initialResolution = video_resolution[video_current_quality_index];
-    int initialBufferLevel = getBufferLevel();
-    int initialBitrate = getVideoBitrate(initialBufferLevel);
+    int initialResolutionIndex = video_current_quality_index;
+    int initialBitrate = getVideoBitrate(initialResolutionIndex);
     emit(DASH_video_bitrate_signal, initialBitrate);
 //    std::pair<simtime_t, double> timeQualityPair;
 //    timeQualityPair.first = simTime();
@@ -262,7 +270,7 @@ void TCPVideoStreamCliAppV2lite::initialize(int stage) {
     EV << "quality zones: " << video_resolution[0] << endl;
 
     DASH_video_resolution_signal = registerSignal("DASHVideoResolution");
-    emit(DASH_video_resolution_signal, initialResolution);
+    emit(DASH_video_resolution_signal, initialResolutionIndex);
 //    std::pair<simtime_t, int> timeResolutionPair;
 //    timeResolutionPair.first = simTime();
 //    timeResolutionPair.second = initialResolution;
@@ -309,9 +317,8 @@ void TCPVideoStreamCliAppV2lite::sendRequest() {
         long replyLength = -1;
         if (manifestAlreadySent) {
             // Determine the bitrate of the next segment to download
-            int reqResolution = video_resolution[video_current_quality_index];
-            int currentBufferLevel = getBufferLevel();
-            int reqVideoBitrate = getVideoBitrate(currentBufferLevel); // kbits -> bytes.
+            int reqResolutionIndex = video_current_quality_index;
+            int reqVideoBitrate = getVideoBitrate(reqResolutionIndex); // kbits -> bytes.
             // Determine how much data should be requested in order to download the next segment
             if (video_duration % segment_length > 0 && numRequestsToSend == 1) {
                 EV << "Download last partial segment" << endl;
@@ -328,7 +335,7 @@ void TCPVideoStreamCliAppV2lite::sendRequest() {
 //            timeQualityPair.second = reqVideoBitrate;
 //            videoBitrate.push_back(timeQualityPair);
 
-            emit(DASH_video_resolution_signal, reqResolution);
+            emit(DASH_video_resolution_signal, reqResolutionIndex);
 //            std::pair<simtime_t, int> timeResolutionPair;
 //            timeResolutionPair.first = simTime();
 //            timeResolutionPair.second = reqResolution;
@@ -532,17 +539,8 @@ void TCPVideoStreamCliAppV2lite::socketDataArrived(TcpSocket *socket, Packet *ms
         }
 
         // Algorithm to choose the video quality
-        int num_qualities = video_resolution.size(); // Number of possible quality classes
-        int bufLenForLowestQuality = ceil((double)video_buffer_max_length / 4.0);
-        int quality_range = (video_buffer_max_length-bufLenForLowestQuality)/(num_qualities - 1); //Range of the quality classes in terms of the place in buffer when the switch occurs
-
         if (can_switch) {
-            if (video_buffer <= bufLenForLowestQuality) {
-                video_current_quality_index = 0;
-            } else {                                            // Otherwise choose the quality according to the buffer length zone it fits into
-                int quality_zone = ceil((double)(video_buffer - bufLenForLowestQuality)/(double)quality_range);
-                video_current_quality_index = std::min(quality_zone, num_qualities - 1);
-            }
+            video_current_quality_index = getBOLAQualityLevel();
             can_switch = false;
         }
 
@@ -570,7 +568,7 @@ void TCPVideoStreamCliAppV2lite::socketDataArrived(TcpSocket *socket, Packet *ms
             }
         } else {
             EV << "We are changing the video quality index" << endl;    //EDIT!
-            video_current_quality_index = std::max(video_current_quality_index - 1, 0);
+            video_current_quality_index = getBOLAQualityLevel();
         }
 
         if (numRequestsToSend > 0) {

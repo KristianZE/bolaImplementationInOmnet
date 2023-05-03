@@ -107,6 +107,8 @@ simple TCPVideoStreamCliAppV2lite like IApp {
         @statistic[DASHVideoPlaybackStatus](title="Video playback status (playing=1, buffering=0)"; record=vector);
 //        @signal[DASHmosScore](type="double");
 //        @statistic[DASHmosScore](title="MOS Score calculated after the video finished"; record=vector);
+       	@signal[BOLAQualityLevel](type="int"); //EDIT! changed from int to long in order for it to cooperate with this version of omnet
+        @statistic[BOLAQualityLevel](title="Requested BOLA quality level (resolution)"; record=vector);
         
     gates:
         input socketIn @labels(TcpCommand/up);

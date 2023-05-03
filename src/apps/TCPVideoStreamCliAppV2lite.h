@@ -44,6 +44,7 @@ protected:
     int max_level = 5;
     int last_level = 0;
     long current_rate;
+    int current_BOLA_level;
     std::vector<int> rates = {41, 83, 178, 370, 750}; // In byte/s
     //std::vector<int> rates = {14, 42, 70, 197, 492}; // In byte/s
     int p = 3;
@@ -72,6 +73,7 @@ protected:
     simsignal_t DASH_playback_pointer;
     simsignal_t DASH_received_bytes;
     simsignal_t DASHmosScoreSignal;
+    simsignal_t BOLA_quality_level;
 
     static simsignal_t rcvdPkSignal;
     static simsignal_t sentPkSignal;
@@ -124,7 +126,7 @@ protected:
     int generateRandomNumberFromRange(int min, int max);
     int generateRandomizedBitrate(int minBitrate, int maxBitrate);
     int getVideoBitrate(int resolution);
-    int getBufferLevel();
+    int getBOLAQualityLevel();
     int get_m_star_n(int max_level, double V_D, double y, double p, int q);
     double utility_v(int m);
     int get_m_dash();
