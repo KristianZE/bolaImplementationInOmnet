@@ -109,7 +109,7 @@ double TCPVideoStreamCliAppV2lite::utility_v(int m) //Double check this
     {
         double size_m = getSize(m);
         double size_min = getSize(0);
-        return (size_m / size_min);
+        return std::log(size_m / size_min);
     }
 
 int TCPVideoStreamCliAppV2lite::get_m_star_n(int max_level, double V_D, double y, double p, int q)
@@ -117,7 +117,7 @@ int TCPVideoStreamCliAppV2lite::get_m_star_n(int max_level, double V_D, double y
         double cur_val = V_D * utility_v(0) + V_D * y * p - q;
         double size_m = getSize(0);
         int cur_m = 0;
-        for (int m = 1; m <= max_level; m++)
+        for (int m = 1; m < max_level; m++)
         {
             size_m = getSize(m);
             double new_val = (V_D * utility_v(m) + V_D * y * p - q) / size_m;
@@ -133,8 +133,8 @@ int TCPVideoStreamCliAppV2lite::get_m_star_n(int max_level, double V_D, double y
 int TCPVideoStreamCliAppV2lite::getBOLAQualityLevel()  { //last_level must be set globally
     int p = segment_length;
     double y = 5.0 / p; //pyCode says 5.0 * p but paper says otherwise
-    double q_max = (int)(video_buffer_max_length / p); // maximal buffer size in chunks
-    int q = (int)(video_buffer / p);         // buffer level in chuncks
+    double q_max = (double)(video_buffer_max_length / p); // maximal buffer size in chunks
+    q_buffer = (double)(video_buffer / p);         // buffer level in chuncks
 
 
     double playtime_from_beginning = simTime().dbl(); //simtime, starttime of video
@@ -142,10 +142,10 @@ int TCPVideoStreamCliAppV2lite::getBOLAQualityLevel()  { //last_level must be se
 
     double t = std::min(playtime_from_beginning,playtime_to_end);
     double t_dash = std::max(t / 2, (double)3 * p);
-    double q_D_max = std::min(q_max, t_dash / p);
+    q_D_max = std::min(q_max, t_dash / p);
     int rateListSize = rates.size();
-    double V_D = (q_D_max - 1) / (utility_v(rateListSize-1) + y * p); // or V=0.93
-    int m_star_n = get_m_star_n(max_level, V_D, y, p, q);
+    double V_D = (q_D_max - 1) / (utility_v(rateListSize-1) + (y * p)); // or V=0.93
+    int m_star_n = get_m_star_n(max_level, V_D, y, p, q_buffer);
 
     if (m_star_n > last_level) // Is m*[n] > m*[n-1]?
     {
@@ -343,7 +343,7 @@ void TCPVideoStreamCliAppV2lite::sendRequest() {
 
             numRequestsToSend--;
             // Switching algoritm
-            tLastPacketRequested = simTime();
+            //tLastPacketRequested = simTime();
         } else {
             replyLength = manifest_size;
             EV<< "sending manifest request\n";
@@ -500,8 +500,8 @@ void TCPVideoStreamCliAppV2lite::socketDataArrived(TcpSocket *socket, Packet *ms
             return;
         }
         // Switching algorithm - it limits the shortest time after which a quality change can be made
-        packetTimePointer = (packetTimePointer + 1) % packetTimeArrayLength; //That should be ok...
-        packetTime[packetTimePointer] = simTime() - tLastPacketRequested;
+        //packetTimePointer = (packetTimePointer + 1) % packetTimeArrayLength; //That should be ok...
+        //packetTime[packetTimePointer] = simTime() - tLastPacketRequested;
 
         int replySeconds = segment_length;
 
@@ -521,17 +521,10 @@ void TCPVideoStreamCliAppV2lite::socketDataArrived(TcpSocket *socket, Packet *ms
 //        timeBufferPair.second = video_buffer;
 //        bufferLength.push_back(timeBufferPair);
 
-        // Update switch timer
-        if(!can_switch) {
-            EV << "Switch timer: " << switch_timer << endl;
-            switch_timer--;
-            if (switch_timer == 0) {
-                can_switch = true;
-                switch_timer = switch_timeout;
-            }
-        }
+        double pauseTime = p*(q_buffer-(q_D_max+1));
+
         // Full buffer
-        if (video_buffer >= video_buffer_max_length) {  //EDIT!
+        if (pauseTime > 0) {  //EDIT!
             EV << "Video buffer full\n";
             video_is_buffering = false;
             // the next video fragment will be requested when the buffer gets some space, so nothing to do here.
@@ -539,10 +532,11 @@ void TCPVideoStreamCliAppV2lite::socketDataArrived(TcpSocket *socket, Packet *ms
         }
 
         // Algorithm to choose the video quality
-        if (can_switch) {
+        //int num_qualities = rates.size(); // Number of possible quality classes
+        //int bufLenForLowestQuality = ceil((double)video_buffer_max_length / 4.0); //Is this good?
+
             video_current_quality_index = getBOLAQualityLevel();
-            can_switch = false;
-        }
+
 
 
         EV<< "---------------------> Buffer=" << video_buffer << "    min= " << video_buffer_min_rebuffering << "\n";           //EDIT!

@@ -71,9 +71,9 @@ simple TCPVideoStreamCliAppV2lite like IApp {
         // Adaptive Video parameters
         string 			video_resolution = default("240 360 480 720 1080"); // Chosen resolution. Available 240 (as 240p), 360 (as 360p), 480 (as 480p), 720 (as 720p) and 1080 (as 1080p). Based on ITU-T P.1203.1 Table 1-1
         int 			manifest_size @units(byte) = default(100000);
-        int 			video_buffer_max_length @unit(s) = default(40s); // buffer max length in seconds
+        int 			video_buffer_max_length @unit(s) = default(25s); // buffer max length in seconds
         int 			video_duration @unit(s) = default(300s); // video length in seconds
-        int				segment_length @unit(s) = default(1s);  // video segment length in seconds
+        int				segment_length @unit(s) = default(3s);  // video segment length in seconds
         string			useFlexibleBitrate = default("flexible"); // should flexible bitrate offset be used. Possible "flexible" or  "non-flexible"
         
         // General statistics

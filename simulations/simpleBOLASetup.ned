@@ -51,10 +51,10 @@ network simpleBOLASetup
             @display("p=560,53");
         }
     connections:
-        router0.pppg++ <--> conn1: C { datarate = 100Mbps; delay = 100ns; } <--> router1.pppg++;
+        router0.pppg++ <--> conn1: C { datarate = 1Gbps; delay = 100ns; } <--> router1.pppg++;
 
         for i=0..nVID-1 {
-            hostVID[i].pppg++ <--> C {  datarate = 100Mbps; delay = 100ns; } <--> router0.pppg++;
+            hostVID[i].pppg++ <--> C {  datarate = 5Mbps; delay = 100ns; } <--> router0.pppg++;
         }
-        serverVID.pppg++ <--> C {  datarate = 100Mbps; delay = 100ns; } <--> router1.pppg++;
+        serverVID.pppg++ <--> C {  datarate = 5Mbps; delay = 100ns; } <--> router1.pppg++;
 }

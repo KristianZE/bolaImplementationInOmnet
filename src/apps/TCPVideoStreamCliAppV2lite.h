@@ -44,7 +44,9 @@ protected:
     int max_level = 5;
     int last_level = 0;
     long current_rate;
-    int current_BOLA_level;
+    int current_BOLA_level = 0;
+    double q_D_max = 0;
+    double q_buffer = 0;
     std::vector<int> rates = {41, 83, 178, 370, 750}; // In byte/s
     //std::vector<int> rates = {14, 42, 70, 197, 492}; // In byte/s
     int p = 3;
@@ -97,10 +99,10 @@ protected:
     std::string useFlexibleFlag;
 
     // Enhanced switch algorithm (estimate available bit rate before switching to higher quality level)
-    int packetTimeArrayLength = 5;
-    simtime_t packetTime[5];
-    int packetTimePointer = 0;
-    simtime_t tLastPacketRequested;
+    //int packetTimeArrayLength = 5;
+    //simtime_t packetTime[5];
+    //int packetTimePointer = 0;
+    //simtime_t tLastPacketRequested;
 
     // Lists with collected statistics with timestamps used for MOS calculation
 //    std::list<std::pair<simtime_t, bool>> videoPlaying;
