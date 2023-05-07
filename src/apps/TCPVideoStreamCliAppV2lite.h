@@ -41,6 +41,7 @@ protected:
     int manifest_size;
 
     //FOR BOLA
+    bool use_BOLA = false;
     int max_level = 5;
     int last_level = 0;
     long current_rate;
@@ -87,6 +88,12 @@ protected:
     bool can_switch = true;
     int switch_timeout = 3;
     int switch_timer = switch_timeout;
+
+    // Enhanced switch algorithm (estimate available bit rate before switching to higher quality level)
+    int packetTimeArrayLength = 5;
+    simtime_t packetTime[5];
+    int packetTimePointer = 0;
+    simtime_t tLastPacketRequested;
 
     // Other flags and guards
     std::list<long> requestedReplyLengths;

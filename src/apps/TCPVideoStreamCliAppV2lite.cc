@@ -499,94 +499,150 @@ void TCPVideoStreamCliAppV2lite::socketDataArrived(TcpSocket *socket, Packet *ms
             }
             return;
         }
-        // Switching algorithm - it limits the shortest time after which a quality change can be made
-        //packetTimePointer = (packetTimePointer + 1) % packetTimeArrayLength; //That should be ok...
-        //packetTime[packetTimePointer] = simTime() - tLastPacketRequested;
+        if (use_BOLA){
+            // Switching algorithm - it limits the shortest time after which a quality change can be made
+            //packetTimePointer = (packetTimePointer + 1) % packetTimeArrayLength; //That should be ok...
+            //packetTime[packetTimePointer] = simTime() - tLastPacketRequested;
 
-        int replySeconds = segment_length;
+            int replySeconds = segment_length;
 
-        if (numRequestsToSend == 0 && video_duration % segment_length > 0) {
-            replySeconds = video_duration % segment_length;
-        }
-
-        EV << "replySeconds = " << replySeconds << endl;
-
-        video_buffer += replySeconds;
-
-        EV << "video_buffer = " << video_buffer << endl;
-
-        emit(DASH_buffer_length_signal, video_buffer);
-//        std::pair<simtime_t, double> timeBufferPair;
-//        timeBufferPair.first = simTime();
-//        timeBufferPair.second = video_buffer;
-//        bufferLength.push_back(timeBufferPair);
-
-        double pauseTime = p*(q_buffer-(q_D_max+1));
-
-        // Full buffer
-        if (pauseTime > 0) {  //EDIT!
-            EV << "Video buffer full\n";
-            video_is_buffering = false;
-            // the next video fragment will be requested when the buffer gets some space, so nothing to do here.
-            return;
-        }
-
-        // Algorithm to choose the video quality
-        //int num_qualities = rates.size(); // Number of possible quality classes
-        //int bufLenForLowestQuality = ceil((double)video_buffer_max_length / 4.0); //Is this good?
-
-            video_current_quality_index = getBOLAQualityLevel();
-
-
-
-        EV<< "---------------------> Buffer=" << video_buffer << "    min= " << video_buffer_min_rebuffering << "\n";           //EDIT!
-        // Exit rebuffering state and continue the video playback
-        EV << "numRequestsToSend = " << numRequestsToSend << "; video_playback_pointer = " << video_playback_pointer << endl;   //EDIT!
-
-        if ((numRequestsToSend >= 0 && video_buffer >= video_buffer_min_rebuffering) || (numRequestsToSend == 0 && video_playback_pointer < video_duration) ) { //EDIT!
-            if (!video_is_playing) {
-                EV << "Video is not playing anymore..." << endl;
-                video_is_playing = true;
-
-                emit(DASH_video_is_playing_signal, video_is_playing);
-//                std::pair<simtime_t, double> timePlayingPair;
-//                timePlayingPair.first = simTime();
-//                timePlayingPair.second = video_is_playing;
-//                videoPlaying.push_back(timePlayingPair);
-
-                simtime_t d = simTime() + 1;   //M: This +1 is used to schedule video play event in one second
-                cMessage *videoPlaybackMsg = new cMessage("playback");
-                videoPlaybackMsg->setKind(MSGKIND_VIDEO_PLAY);
-                scheduleAt(d, videoPlaybackMsg);
-                //rescheduleAfterOrDeleteTimer(d, MSGKIND_VIDEO_PLAY);
+            if (numRequestsToSend == 0 && video_duration % segment_length > 0) {
+                replySeconds = video_duration % segment_length;
             }
-        } else {
-            EV << "We are changing the video quality index" << endl;    //EDIT!
-            video_current_quality_index = getBOLAQualityLevel();
+
+            EV << "replySeconds = " << replySeconds << endl;
+
+            video_buffer += replySeconds;
+
+            EV << "video_buffer = " << video_buffer << endl;
+
+            emit(DASH_buffer_length_signal, video_buffer);
+    //        std::pair<simtime_t, double> timeBufferPair;
+    //        timeBufferPair.first = simTime();
+    //        timeBufferPair.second = video_buffer;
+    //        bufferLength.push_back(timeBufferPair);
+
+            double pauseTime = p*(q_buffer-(q_D_max+1));
+
+            // Full buffer
+            if (pauseTime > 0) {  //EDIT!
+                EV << "Video buffer full\n";
+                video_is_buffering = false;
+                // the next video fragment will be requested when the buffer gets some space, so nothing to do here.
+                return;
+            }
+
+            // Algorithm to choose the video quality
+            //int num_qualities = rates.size(); // Number of possible quality classes
+            //int bufLenForLowestQuality = ceil((double)video_buffer_max_length / 4.0); //Is this good?
+
+                video_current_quality_index = getBOLAQualityLevel();
+
+        }
+        else {
+            // Switching algorithm - it limits the shortest time after which a quality change can be made
+            packetTimePointer = (packetTimePointer + 1) % packetTimeArrayLength; //That should be ok...
+            packetTime[packetTimePointer] = simTime() - tLastPacketRequested;
+
+            int replySeconds = segment_length;
+
+            if (numRequestsToSend == 0 && video_duration % segment_length > 0) {
+                replySeconds = video_duration % segment_length;
+            }
+
+            EV << "replySeconds = " << replySeconds << endl;
+
+            video_buffer += replySeconds;
+
+            EV << "video_buffer = " << video_buffer << endl;
+
+            emit(DASH_buffer_length_signal, video_buffer);
+    //        std::pair<simtime_t, double> timeBufferPair;
+    //        timeBufferPair.first = simTime();
+    //        timeBufferPair.second = video_buffer;
+    //        bufferLength.push_back(timeBufferPair);
+
+            // Update switch timer
+            if(!can_switch) {
+                EV << "Switch timer: " << switch_timer << endl;
+                switch_timer--;
+                if (switch_timer == 0) {
+                    can_switch = true;
+                    switch_timer = switch_timeout;
+                }
+            }
+            // Full buffer
+            if (video_buffer >= video_buffer_max_length) {  //EDIT!
+                EV << "Video buffer full\n";
+                video_is_buffering = false;
+                // the next video fragment will be requested when the buffer gets some space, so nothing to do here.
+                return;
+            }
+
+            // Algorithm to choose the video quality
+            int num_qualities = video_resolution.size(); // Number of possible quality classes
+            int bufLenForLowestQuality = ceil((double)video_buffer_max_length / 4.0);
+            int quality_range = (video_buffer_max_length-bufLenForLowestQuality)/(num_qualities - 1); //Range of the quality classes in terms of the place in buffer when the switch occurs
+
+            if (can_switch) {
+                if (video_buffer <= bufLenForLowestQuality) {
+                    video_current_quality_index = 0;
+                } else {                                            // Otherwise choose the quality according to the buffer length zone it fits into
+                    int quality_zone = ceil((double)(video_buffer - bufLenForLowestQuality)/(double)quality_range);
+                    video_current_quality_index = std::min(quality_zone, num_qualities - 1);
+                }
+                can_switch = false;
+            }
         }
 
-        if (numRequestsToSend > 0) {
-            EV<< "reply arrived\n";
+            EV<< "---------------------> Buffer=" << video_buffer << "    min= " << video_buffer_min_rebuffering << "\n";           //EDIT!
+            // Exit rebuffering state and continue the video playback
+            EV << "numRequestsToSend = " << numRequestsToSend << "; video_playback_pointer = " << video_playback_pointer << endl;   //EDIT!
 
-            if (timeoutMsg)
+            if ((numRequestsToSend >= 0 && video_buffer >= video_buffer_min_rebuffering) || (numRequestsToSend == 0 && video_playback_pointer < video_duration) ) { //EDIT!
+                if (!video_is_playing) {
+                    EV << "Video is not playing anymore..." << endl;
+                    video_is_playing = true;
+
+                    emit(DASH_video_is_playing_signal, video_is_playing);
+    //                std::pair<simtime_t, double> timePlayingPair;
+    //                timePlayingPair.first = simTime();
+    //                timePlayingPair.second = video_is_playing;
+    //                videoPlaying.push_back(timePlayingPair);
+
+                    simtime_t d = simTime() + 1;   //M: This +1 is used to schedule video play event in one second
+                    cMessage *videoPlaybackMsg = new cMessage("playback");
+                    videoPlaybackMsg->setKind(MSGKIND_VIDEO_PLAY);
+                    scheduleAt(d, videoPlaybackMsg);
+                    //rescheduleAfterOrDeleteTimer(d, MSGKIND_VIDEO_PLAY);
+                }
+            } else {
+                EV << "We are changing the video quality index" << endl;    //EDIT!
+                video_current_quality_index = getBOLAQualityLevel();
+            }
+
+            if (numRequestsToSend > 0) {
+                EV<< "reply arrived\n";
+
+                if (timeoutMsg)
+                {
+                    // Send new request
+                    simtime_t d = simTime();
+                    rescheduleAfterOrDeleteTimer(d, MSGKIND_SEND);
+                }
+                int recvd = just_received_bytes;
+                msgsRcvd++;
+                bytesRcvd += recvd;
+            }
+            else if (socket->getState() == 6)                            //EDIT! //M: There is still a case somewhere that tries to close the socket even though it has been already closed.
+            {                                                           //EDIT! //M: That's the reason for this if...
+                EV << "Session seems to be closed already" << endl;     //EDIT!
+            }                                                           //EDIT!
+            else //M: Only close if the socket is not closed already!
             {
-                // Send new request
-                simtime_t d = simTime();
-                rescheduleAfterOrDeleteTimer(d, MSGKIND_SEND);
+                EV << "reply to last request arrived, closing session\n";
+                close();
             }
-            int recvd = just_received_bytes;
-            msgsRcvd++;
-            bytesRcvd += recvd;
-        }
-        else if (socket->getState() == 6)                            //EDIT! //M: There is still a case somewhere that tries to close the socket even though it has been already closed.
-        {                                                           //EDIT! //M: That's the reason for this if...
-            EV << "Session seems to be closed already" << endl;     //EDIT!
-        }                                                           //EDIT!
-        else //M: Only close if the socket is not closed already!
-        {
-            EV << "reply to last request arrived, closing session\n";
-            close();
-        }
     }
 }
 
