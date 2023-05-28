@@ -14,13 +14,14 @@
 // 
 
 package improved5gns.simulations;
+import inet.common.scenario.ScenarioManager;
 import inet.networklayer.configurator.ipv4.Ipv4NetworkConfigurator;
 import inet.node.inet.Router;
 import inet.node.inet.StandardHost;
 import inet.visualizer.common.IntegratedVisualizer;
-import inet.visualizer.common.InterfaceTableVisualizer;
 import ned.DatarateChannel;
-import inet.node.internetcloud.InternetCloud;
+
+
 //
 // TODO documentation
 //
@@ -29,13 +30,19 @@ network simpleBOLASetup
     parameters:
         @display("bgb=710,417");
         int nVID = default(1); // Number of video clients
+
     types:
         channel C extends DatarateChannel
         {
         }
+
     submodules:
         configurator: Ipv4NetworkConfigurator {
             @display("p=10,10;is=s");
+        }
+        scenarioManager: ScenarioManager {
+
+            @display("p=249.24,49.245");
         }
         hostVID[nVID]: StandardHost;
         router0: Router {
@@ -49,12 +56,13 @@ network simpleBOLASetup
         }
         serverVID: StandardHost {
             @display("p=560,53");
-        }
+        }  
+   
     connections:
-        router0.pppg++ <--> conn1: C { datarate = 1Gbps; delay = 100ns; } <--> router1.pppg++;
+        router0.pppg++ <--> conn1: C {  datarate = 100Gbps; delay = 0ms; } <--> router1.pppg++;
 
         for i=0..nVID-1 {
-            hostVID[i].pppg++ <--> C {  datarate = 1.5Mbps; delay = 100ns; } <--> router0.pppg++;
+            hostVID[i].pppg++ <--> C {  datarate = 1.5Mbps; delay = 0ns; } <--> router0.pppg++;
         }
-        serverVID.pppg++ <--> C {  datarate = 1.5Mbps; delay = 100ns; } <--> router1.pppg++;
+        serverVID.pppg++ <--> C {  datarate = 1.5Mbps; delay = 0ns; } <--> router1.pppg++;
 }

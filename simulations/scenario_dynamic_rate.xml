@@ -1,0 +1,107 @@
+<scenario>
+    <at t="0s">
+        <set-channel-param src-module="serverVID" src-gate="pppg[0]" par="datarate" value="5Mbps"/>
+        <set-channel-param src-module="hostVID[0]" src-gate="pppg[0]" par="datarate" value="5Mbps"/>
+        <set-channel-param src-module="router0" src-gate="pppg[0]" par="delay" value="38ms"/>
+    </at>
+    <at t="30s">
+        <set-channel-param src-module="serverVID" src-gate="pppg[0]" par="datarate" value="4Mbps"/>
+        <set-channel-param src-module="hostVID[0]" src-gate="pppg[0]" par="datarate" value="4Mbps"/>
+        <set-channel-param src-module="router0" src-gate="pppg[0]" par="delay" value="50ms"/>        
+    </at>
+    <at t="60s">
+        <set-channel-param src-module="serverVID" src-gate="pppg[0]" par="datarate" value="3Mbps"/>
+        <set-channel-param src-module="hostVID[0]" src-gate="pppg[0]" par="datarate" value="3Mbps"/>
+        <set-channel-param src-module="router0" src-gate="pppg[0]" par="delay" value="75ms"/>
+    </at>
+    <at t="90s">
+        <set-channel-param src-module="serverVID" src-gate="pppg[0]" par="datarate" value="2Mbps"/>
+        <set-channel-param src-module="hostVID[0]" src-gate="pppg[0]" par="datarate" value="2Mbps"/>
+        <set-channel-param src-module="router0" src-gate="pppg[0]" par="delay" value="88ms"/>
+    </at>
+    <at t="120s">
+        <set-channel-param src-module="serverVID" src-gate="pppg[0]" par="datarate" value="1.5Mbps"/>
+        <set-channel-param src-module="hostVID[0]" src-gate="pppg[0]" par="datarate" value="1.5Mbps"/>
+        <set-channel-param src-module="router0" src-gate="pppg[0]" par="delay" value="100ms"/>
+    </at>
+    <at t="150s">
+        <set-channel-param src-module="serverVID" src-gate="pppg[0]" par="datarate" value="2Mbps"/>
+        <set-channel-param src-module="hostVID[0]" src-gate="pppg[0]" par="datarate" value="2Mbps"/>
+        <set-channel-param src-module="router0" src-gate="pppg[0]" par="delay" value="88ms"/>
+    </at>
+    <at t="180s">
+        <set-channel-param src-module="serverVID" src-gate="pppg[0]" par="datarate" value="3Mbps"/>
+        <set-channel-param src-module="hostVID[0]" src-gate="pppg[0]" par="datarate" value="3Mbps"/>
+        <set-channel-param src-module="router0" src-gate="pppg[0]" par="delay" value="75ms"/>
+    </at>
+    <at t="210s">
+        <set-channel-param src-module="serverVID" src-gate="pppg[0]" par="datarate" value="4Mbps"/>
+        <set-channel-param src-module="hostVID[0]" src-gate="pppg[0]" par="datarate" value="4Mbps"/>
+        <set-channel-param src-module="router0" src-gate="pppg[0]" par="delay" value="50ms"/>
+    </at>
+    <at t="240s">
+        <set-channel-param src-module="serverVID" src-gate="pppg[0]" par="datarate" value="5Mbps"/>
+        <set-channel-param src-module="hostVID[0]" src-gate="pppg[0]" par="datarate" value="5Mbps"/>
+        <set-channel-param src-module="router0" src-gate="pppg[0]" par="delay" value="38ms"/>
+    </at>
+    <at t="270s">
+        <set-channel-param src-module="serverVID" src-gate="pppg[0]" par="datarate" value="4Mbps"/>
+        <set-channel-param src-module="hostVID[0]" src-gate="pppg[0]" par="datarate" value="4Mbps"/>
+        <set-channel-param src-module="router0" src-gate="pppg[0]" par="delay" value="50ms"/>
+    </at>
+    <at t="300s">
+        <set-channel-param src-module="serverVID" src-gate="pppg[0]" par="datarate" value="3Mbps"/>
+        <set-channel-param src-module="hostVID[0]" src-gate="pppg[0]" par="datarate" value="3Mbps"/>
+        <set-channel-param src-module="router0" src-gate="pppg[0]" par="delay" value="75ms"/>
+    </at>
+    <at t="330s">
+        <set-channel-param src-module="serverVID" src-gate="pppg[0]" par="datarate" value="2Mbps"/>
+        <set-channel-param src-module="hostVID[0]" src-gate="pppg[0]" par="datarate" value="2Mbps"/>
+        <set-channel-param src-module="router0" src-gate="pppg[0]" par="delay" value="88ms"/>
+    </at>
+    <at t="360s">
+        <set-channel-param src-module="serverVID" src-gate="pppg[0]" par="datarate" value="1.5Mbps"/>
+        <set-channel-param src-module="hostVID[0]" src-gate="pppg[0]" par="datarate" value="1.5Mbps"/>
+        <set-channel-param src-module="router0" src-gate="pppg[0]" par="delay" value="100ms"/>
+    </at>
+    <at t="390s">
+        <set-channel-param src-module="serverVID" src-gate="pppg[0]" par="datarate" value="2Mbps"/>
+        <set-channel-param src-module="hostVID[0]" src-gate="pppg[0]" par="datarate" value="2Mbps"/>
+        <set-channel-param src-module="router0" src-gate="pppg[0]" par="delay" value="88ms"/>
+    </at>
+    <at t="420s">
+        <set-channel-param src-module="serverVID" src-gate="pppg[0]" par="datarate" value="3Mbps"/>
+        <set-channel-param src-module="hostVID[0]" src-gate="pppg[0]" par="datarate" value="3Mbps"/>
+        <set-channel-param src-module="router0" src-gate="pppg[0]" par="delay" value="75ms"/>
+    </at>
+    <at t="450s">
+        <set-channel-param src-module="serverVID" src-gate="pppg[0]" par="datarate" value="4Mbps"/>
+        <set-channel-param src-module="hostVID[0]" src-gate="pppg[0]" par="datarate" value="4Mbps"/>
+        <set-channel-param src-module="router0" src-gate="pppg[0]" par="delay" value="50ms"/>
+    </at>
+    <at t="480">
+        <set-channel-param src-module="serverVID" src-gate="pppg[0]" par="datarate" value="5Mbps"/>
+        <set-channel-param src-module="hostVID[0]" src-gate="pppg[0]" par="datarate" value="5Mbps"/>
+        <set-channel-param src-module="router0" src-gate="pppg[0]" par="delay" value="38ms"/>
+    </at>
+    <at t="510">
+        <set-channel-param src-module="serverVID" src-gate="pppg[0]" par="datarate" value="4Mbps"/>
+        <set-channel-param src-module="hostVID[0]" src-gate="pppg[0]" par="datarate" value="4Mbps"/>
+        <set-channel-param src-module="router0" src-gate="pppg[0]" par="delay" value="50ms"/>
+    </at>
+    <at t="540">
+        <set-channel-param src-module="serverVID" src-gate="pppg[0]" par="datarate" value="3Mbps"/>
+        <set-channel-param src-module="hostVID[0]" src-gate="pppg[0]" par="datarate" value="3Mbps"/>
+        <set-channel-param src-module="router0" src-gate="pppg[0]" par="delay" value="75ms"/>
+    </at>
+    <at t="570">
+        <set-channel-param src-module="serverVID" src-gate="pppg[0]" par="datarate" value="2Mbps"/>
+        <set-channel-param src-module="hostVID[0]" src-gate="pppg[0]" par="datarate" value="2Mbps"/>
+        <set-channel-param src-module="router0" src-gate="pppg[0]" par="delay" value="88ms"/>
+    </at>
+    <at t="600s">
+        <set-channel-param src-module="serverVID" src-gate="pppg[0]" par="datarate" value="1.5Mbps"/>
+        <set-channel-param src-module="hostVID[0]" src-gate="pppg[0]" par="datarate" value="1.5Mbps"/>
+        <set-channel-param src-module="router0" src-gate="pppg[0]" par="delay" value="100ms"/>
+    </at>
+</scenario>

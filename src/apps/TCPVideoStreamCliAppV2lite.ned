@@ -109,6 +109,17 @@ simple TCPVideoStreamCliAppV2lite like IApp {
 //        @statistic[DASHmosScore](title="MOS Score calculated after the video finished"; record=vector);
        	@signal[BOLAQualityLevel](type="int"); //EDIT! changed from int to long in order for it to cooperate with this version of omnet
         @statistic[BOLAQualityLevel](title="Requested BOLA quality level (resolution)"; record=vector);
+        @signal[BOLAUtility](type="double"); //EDIT! changed from int to long in order for it to cooperate with this version of omnet
+        @statistic[BOLAUtility](title="Requested BOLA utility"; record=vector);
+        @signal[BOLAQDMAX](type="double"); //EDIT! changed from int to long in order for it to cooperate with this version of omnet
+        @statistic[BOLAQDMAX](title="Current BOLA Q_D_Max"; record=vector);
+        @signal[BOLAVD](type="double"); //EDIT! changed from int to long in order for it to cooperate with this version of omnet
+        @statistic[BOLAVD](title="Current BOLA V_D"; record=vector);
+        @signal[BitrateChange](type="double"); //EDIT! changed from int to long in order for it to cooperate with this version of omnet
+        @statistic[BitrateChange](title="Current bitrate change between segments"; record=vector);
+        @signal[PauseTimer](type="double"); //EDIT! changed from int to long in order for it to cooperate with this version of omnet
+        @statistic[PauseTimer](title="BOLAs pausetimer"; record=vector);
+        
         
     gates:
         input socketIn @labels(TcpCommand/up);

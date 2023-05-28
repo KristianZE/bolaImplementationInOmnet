@@ -41,14 +41,20 @@ protected:
     int manifest_size;
 
     //FOR BOLA
-    bool use_BOLA = false;
+    bool use_BOLA = true;
     int max_level = 5;
     int last_level = 0;
-    long current_rate;
+    long current_rate = 5000;
     int current_BOLA_level = 0;
+    double current_bitrate_change = 0;
+    double current_BOLA_utility = 0;
     double q_D_max = 0;
+    double v_D = 0;
     double q_buffer = 0;
-    std::vector<int> rates = {41, 83, 178, 370, 750}; // In byte/s
+    double pause_time = 0;
+    int oldBitrate = 0;
+    std::vector<int> networkProfileRates = {5000, 4000, 3000, 2000, 1500}; //In bytes/s
+    std::vector<int> rates = {331, 688, 1427, 2962, 6000}; // In byte/s
     //std::vector<int> rates = {14, 42, 70, 197, 492}; // In byte/s
     int p = 3;
 
@@ -77,6 +83,11 @@ protected:
     simsignal_t DASH_received_bytes;
     simsignal_t DASHmosScoreSignal;
     simsignal_t BOLA_quality_level;
+    simsignal_t BOLA_Q_D_MAX;
+    simsignal_t BOLA_V_D;
+    simsignal_t BOLA_utility;
+    simsignal_t Bitrate_change;
+    simsignal_t Pause_time;
 
     static simsignal_t rcvdPkSignal;
     static simsignal_t sentPkSignal;
@@ -131,7 +142,7 @@ protected:
 //    void prepareCSV();
 //    double calculateMOS();
     void nextVidSetup();
-
+    double getCurrentBandwidthMeasure();
     int generateRandomNumberFromRange(int min, int max);
     int generateRandomizedBitrate(int minBitrate, int maxBitrate);
     int getVideoBitrate(int resolution);
