@@ -1,4 +1,4 @@
-# improved5gNS
+# A BOLA-U implementation for the OMNeT++ simulation platform.
 
 
 
